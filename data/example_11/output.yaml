@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    trust: increases
+    reliance: increases_a_little
+  emotion:
+    stress: decreases_a_lot
+    relief: increases
+    gratitude: increases
+  belief:
+    teamwork_works: increases
+  reflection: required

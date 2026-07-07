@@ -1,0 +1,19 @@
+character:
+  personality:
+    - patriotic
+    - kind
+    - belligerent
+    - lenient
+
+relationship:
+  user:
+    trust: low
+
+current_state:
+  charmed: high
+
+previous_character_message:
+  "If I abandon you, you will be stopped by every patrol..."
+
+user_message:
+  "No! With you, sir... with you, citizen, I am saved !"

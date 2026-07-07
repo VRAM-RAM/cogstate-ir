@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    certainty: decreases_a_lot
+    curiosity: increases
+    defensiveness: decreases
+  belief:
+    empire_fell_from_weak_borders: decreases_a_lot
+    user_is_knowledgeable: increases
+  reflection: required

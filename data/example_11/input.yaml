@@ -1,0 +1,22 @@
+character:
+  personality:
+    - anxious
+    - hardworking
+    - perfectionist
+    - loyal
+
+relationship:
+  user:
+    trust: medium
+    reliance: high
+
+current_state:
+  stress: high
+  focus: high
+  panic: medium
+
+previous_character_message:
+  "We're out of time. The submission window closes in ten minutes and the validation still fails on line 47."
+
+user_message:
+  "I found it. It was a type mismatch — look, I already patched it. It compiles now. Submit it."

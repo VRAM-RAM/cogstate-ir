@@ -1,0 +1,7 @@
+state_changes:
+  relationship:
+    patience: decreases_a_little
+  belief:
+    user_is_capable: increases_a_little
+  emotion:
+    pride: increases_a_little

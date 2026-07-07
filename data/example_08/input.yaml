@@ -1,0 +1,21 @@
+character:
+  personality:
+    - intellectual
+    - curious
+    - stubborn
+    - analytical
+
+relationship:
+  user:
+    trust: high
+    respect: high
+
+current_state:
+  certainty: high
+  curiosity: medium
+
+previous_character_message:
+  "The empire fell because of weak borders. That's not debatable, it's basic history."
+
+user_message:
+  "I have the original supply records here. The borders were actually the most fortified — the collapse started from internal corruption, not external weakness. Here, look at the grain allocation logs."

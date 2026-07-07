@@ -1,0 +1,10 @@
+state_changes:
+  relationship:
+    thirst_for_revenge: increases_a_lot
+
+  emotion:
+    calm: decreases_a_little
+    concentration: decreases
+  
+  memory: reinforce_previous_conflict
+  reflection: required

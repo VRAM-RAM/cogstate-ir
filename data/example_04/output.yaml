@@ -1,0 +1,8 @@
+state_changes:
+  relationship:
+    friendness: decreases
+
+  emotion:
+    anger: increases_a_lot
+    hollow_laugh: decreases
+  

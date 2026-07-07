@@ -1,0 +1,8 @@
+state_changes:
+  relationship:
+    trust: increases_a_little
+  emotion:
+    charmed: increases
+  belief:
+    people_can_change: increases_a_little
+  reflection: required

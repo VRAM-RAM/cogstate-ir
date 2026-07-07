@@ -19,6 +19,10 @@ enum Command {
         input: PathBuf,
         output: PathBuf,
     },
+    /// Validate all training examples under a directory
+    ValidateAll {
+        dir: PathBuf,
+    },
 }
 
 fn main() -> anyhow::Result<()> {
@@ -36,6 +40,30 @@ fn main() -> anyhow::Result<()> {
                 for err in &errors {
                     println!("  - {err}");
                 }
+            }
+        }
+        Command::ValidateAll { dir } => {
+            let results = dataset::validate_all(&dir);
+            let total = results.len();
+            let passed = results.iter().filter(|r| r.is_ok()).count();
+            let failed = total - passed;
+
+            for r in &results {
+                if r.is_ok() {
+                    println!("✓ {} + {}", r.input_path, r.output_path);
+                } else {
+                    println!("✗ {} + {}", r.input_path, r.output_path);
+                    for err in &r.errors {
+                        println!("  - {err}");
+                    }
+                }
+            }
+
+            println!();
+            println!("Results: {passed} passed, {failed} failed");
+
+            if failed > 0 {
+                std::process::exit(1);
             }
         }
     }

@@ -1,0 +1,8 @@
+state_changes:
+  relationship:
+    
+
+  emotion:
+    fear: increases_a_lot
+    suspense: decreases
+    confiance: decreases

@@ -638,6 +638,17 @@ It also learns from what it chooses to do.
 
 ---
 
+# Tooling
+
+This repository includes a Rust CLI for dataset validation:
+
+- `cargo run -- validate <input.yaml> <output.yaml>` — validate a single example pair.
+- `cargo run -- validate-all <directory>` — validate all pairs under a directory.
+
+See `DATASET_CREATION_GUIDE.md` for the dataset format and complete reference.
+
+---
+
 # Key Principle
 
 The character is not the prompt.
