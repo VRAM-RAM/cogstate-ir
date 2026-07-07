@@ -1,0 +1,9 @@
+state_changes:
+  relationship:
+    trust: increases_a_little
+  emotion:
+    anger: decreases
+  belief:
+    people_can_change: increases_a_little
+  memory: reinforce_previous_conflict
+  reflection: required
