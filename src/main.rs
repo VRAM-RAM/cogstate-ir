@@ -3,6 +3,7 @@ use std::path::PathBuf;
 use clap::{Parser, Subcommand};
 
 mod dataset;
+mod engine;
 mod spec;
 
 #[derive(Parser)]
@@ -22,6 +23,17 @@ enum Command {
     /// Validate all training examples under a directory
     ValidateAll {
         dir: PathBuf,
+    },
+    /// Create a new character state with the given personality traits
+    Init {
+        traits: Vec<String>,
+    },
+    /// Apply operations from a YAML file to a character state
+    Apply {
+        state: PathBuf,
+        ops: PathBuf,
+        #[arg(short = 'o')]
+        output: Option<PathBuf>,
     },
 }
 
@@ -64,6 +76,25 @@ fn main() -> anyhow::Result<()> {
 
             if failed > 0 {
                 std::process::exit(1);
+            }
+        }
+        Command::Init { traits } => {
+            let state = engine::CharacterState::new(traits);
+            println!("{}", state.to_json()?);
+        }
+        Command::Apply { state, ops, output } => {
+            let state_content = std::fs::read_to_string(&state)?;
+            let state = engine::CharacterState::from_json(&state_content)?;
+
+            let ops_content = std::fs::read_to_string(&ops)?;
+            let target: spec::Target = serde_yaml::from_str(&ops_content)?;
+            let ir_ops = engine::ops_from_state_changes(&target.state_changes);
+            let new_state = engine::Engine::apply_state(&state, &ir_ops);
+
+            let json = new_state.to_json()?;
+            match output {
+                Some(path) => std::fs::write(path, &json)?,
+                None => println!("{}", json),
             }
         }
     }

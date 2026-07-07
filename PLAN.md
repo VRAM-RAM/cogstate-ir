@@ -14,7 +14,7 @@ User message → [Compiler] → IR ops → [State Engine] → state snapshot →
 
 ---
 
-## Phase 0 — Dataset & IR spec
+## Phase 0 — Dataset & IR spec [COMPLETED]
 
 Design the schema, define the IR vocabulary. The dataset is hand-authored YAML/JSONL.
 
