@@ -1,0 +1,6 @@
+state_changes:
+  relationship:
+    friendness: increases_a_little
+  emotion:
+    embarrassment: decreases
+    amusement: increases

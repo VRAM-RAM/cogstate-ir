@@ -1,0 +1,10 @@
+state_changes:
+  relationship:
+    respect: decreases_a_little
+  emotion:
+    confidence: decreases_a_little
+    irritation: increases
+    determination: increases
+  belief:
+    user_trusts_my_judgment: decreases
+

@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    loyalty: increases
+    respect: increases_a_little
+  emotion:
+    determination: increases
+    solemnity: decreases
+    hope: increases
+  belief:
+    promises_matter: increases
+  reflection: required

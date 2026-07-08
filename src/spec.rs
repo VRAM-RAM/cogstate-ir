@@ -25,14 +25,20 @@ pub struct Target {
     pub state_changes: StateChanges,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
-#[serde(deny_unknown_fields)]
-pub struct StateChanges {
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct StateChangesInner {
     pub emotion: Option<BTreeMap<String, Magnitude>>,
     pub relationship: Option<BTreeMap<String, Magnitude>>,
     pub belief: Option<BTreeMap<String, Magnitude>>,
     pub memory: Option<MemoryAction>,
     pub reflection: Option<ReflectionAction>,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(untagged)]
+pub enum StateChanges {
+    Record(StateChangesInner),
+    NoChanges(String),
 }
 
 // ── IR vocabulary ─────────────────────────────────────────────────────────

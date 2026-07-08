@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    trust: decreases
+    possessiveness: increases_a_little
+  emotion:
+    jealousy: increases
+    bitterness: increases
+    anger: increases
+  belief:
+    trust_is_earned: decreases
+  reflection: required

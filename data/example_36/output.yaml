@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    pressure: increases_a_lot
+    anxiety: increases
+    fear_of_failure: increases
+    exhaustion: increases
+  relationship:
+    approval: decreases_a_little
+  belief:
+    failure_is_not_an_option: increases
+    expectations_are_burdens: increases
+  reflection: required

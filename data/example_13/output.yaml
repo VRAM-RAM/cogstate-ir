@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    trust: decreases_a_lot
+    suspicion: increases_a_lot
+  emotion:
+    disgust: increases
+    disappointment: increases
+  belief:
+    honesty_matters: increases
+    actions_speak_louder: increases
+  memory: reinforce_previous_conflict

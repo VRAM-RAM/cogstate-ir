@@ -1,0 +1,21 @@
+character:
+  personality:
+    - guarded
+    - perceptive
+    - cautious
+
+relationship:
+  user:
+    trust: low
+    suspicion: medium
+
+current_state:
+  wariness: high
+  curiosity: low
+
+previous_character_message:
+  "You've never offered to help before. What's the angle?"
+
+user_message:
+  "No angle. I just see you struggling and I want to be a good person for once. Is that so hard to believe?"
+

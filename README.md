@@ -4,17 +4,11 @@
 
 Current LLM-based character systems mostly rely on a simple architecture:
 
-```
-User message
-      |
-      v
-Character prompt + context
-      |
-      v
-LLM
-      |
-      v
-Response
+```mermaid
+flowchart TD;
+    User_message-->character_prompt+context;
+    character_prompt+context-->LLM;
+    LLM-->response;
 ```
 
 This approach has a major limitation: the LLM is responsible for everything at once:
@@ -45,40 +39,150 @@ The goal of CogStateIR is not to reproduce human cognition itself, but to reprod
 
 ---
 
+# Quickstart
+
+First, clone the repo. Then, run :
+
+```bash
+cargo install --path .
+```
+
+All commands are invoked via `cogstate-ir <command>` (or `cargo run -- <command>` during development).
+
+## Dataset
+
+Create examples as numbered directories under `data/`, each containing an `input.yaml` and `output.yaml`:
+
+```text
+data/
+  ├── 01_input/
+  │   ├── input.yaml
+  │   └── output.yaml
+  ├── 02_input/
+  │   ├── input.yaml
+  │   └── output.yaml
+  └── ...
+```
+
+For more information, see `DATASET_CREATION_GUIDE.md`.
+
+## Validation
+
+Validate all examples:
+
+```bash
+cogstate-ir validate-all data/
+```
+
+Validate a single pair:
+
+```bash
+cogstate-ir validate data/01_input/input.yaml data/01_input/output.yaml
+```
+
+## Training
+
+Train from scratch (downloads HuggingFace model, fine-tunes on your dataset):
+
+```bash
+cogstate-ir train --dataset data/ --epochs 100
+```
+
+Save checkpoints every N epochs to monitor progress:
+
+```bash
+cogstate-ir train --dataset data/ --epochs 100 --checkpoint-every 10
+```
+
+Resume from a previous checkpoint (downloads config.json only, loads your weights):
+
+```bash
+cogstate-ir train --resume model-epoch10.safetensors --epochs 50
+```
+
+Customize the learning rate and model:
+
+```bash
+cogstate-ir train --dataset data/ --lr 0.0001 --model-id HuggingFaceTB/SmolLM2-360M-Instruct
+```
+
+### Checkpoint naming
+
+With `--output model.safetensors` (default) and `--checkpoint-every 10`:
+
+```
+model-epoch10.safetensors
+model-epoch20.safetensors
+...
+model-epoch100.safetensors
+```
+
+### Resume details
+
+- Only `config.json` (~1 KB) is downloaded from HuggingFace — the large `model.safetensors` is skipped.
+- Optimizer (AdamW) momentum is not persisted, so expect a brief loss spike on resume.
+- After resuming, the model is trained for the specified number of additional epochs.
+
+## Prediction
+
+Run the trained compiler on an input:
+
+```bash
+cogstate-ir predict --weights model.safetensors data/01_input/input.yaml
+```
+
+## State utilities
+
+Create a character state with given personality traits:
+
+```bash
+cogstate-ir init proud distrustful curious
+```
+
+Apply state-change operations from a YAML file:
+
+```bash
+cogstate-ir apply state.json ops.yaml -o updated_state.json
+```
+
+---
+
 # Core Idea
 
 Separate the character's internal evolution from language generation.
 
-The LLM should not be the character.
+The LLM should not be the character, it should be the voice of a character whose internal state is maintained externally.
 
-The LLM should be the **voice of a character whose internal state is maintained externally**.
+Only the Generation stage uses a large language model. Interpretation is delegated to a small specialized model, while Simulation remains fully deterministic, based on the interpretation and the current state.
 
-Architecture:
+```mermaid
+flowchart LR
 
+subgraph Interpretation
+A[Conversation]
+B[Compiler]
+C[State Transition IR]
+end
+
+subgraph Simulation
+D[Deterministic State Engine]
+E[Persistent Character State]
+end
+
+subgraph Generation
+F[Prompt Builder]
+G[Conversation LLM]
+H[Character Response]
+end
+
+C --> D
+E --> F
+
+A --> B --> C
+D --> E
+F --> G --> H
 ```
-User message
-      |
-      |
-Previous character message
-      |
-      |
-Current cognitive state
-      |
-      v
-Cognitive State Compiler
-      |
-      v
-Cognitive IR operations
-      |
-      v
-Character State Engine
-      |
-      v
-Conversation Model
-      |
-      v
-User-visible response
-```
+
 
 ---
 
@@ -110,8 +214,22 @@ Not:
 f(message) -> response
 ```
 
-The compiler interprets the interaction.
-The conversation model produces the words.
+```mermaid
+flowchart TD
+
+subgraph Context
+A[Character State]
+B[Previous Character Message]
+C[User Message]
+end
+
+Context --> D[Cognitive Compiler]
+D --> E[State Transition IR]
+E --> F[State Engine]
+F --> G[Prompt Builder]
+G --> H[Conversation LLM]
+H --> I[Character Response]
+```
 
 ---
 
@@ -351,26 +469,18 @@ The Cognitive IR acts like an intermediate representation in a compiler.
 
 Similar concept:
 
-```
-Source code
-     |
-     v
-LLVM IR
-     |
-     v
-Machine code
+```mermaid
+flowchart LR
+
+Source_code-->LLVM_IR-->Machine_code
 ```
 
 CogStateIR:
 
-```
-Conversation
-     |
-     v
-Cognitive IR
-     |
-     v
-Character behavior
+```mermaid
+flowchart LR
+
+Conversation --> StateIR --> CharacterState
 ```
 
 ---
@@ -419,8 +529,6 @@ character/
 
 The database is the persistent identity.
 
-The LLM is only the language renderer.
-
 ---
 
 # Dataset Creation
@@ -429,15 +537,7 @@ The main challenge is not model training.
 
 It is creating the right dataset.
 
-Avoid:
-
-* literary scenes;
-* complete roleplay conversations;
-* generated stories.
-
-These introduce strong stylistic and cultural biases.
-
-The dataset should teach interpretation, not writing.
+The dataset should teach interpretation, not writing. Avoid literary scenes, complete roleplay conversations, and generated stories, as they introduce stylistic bias.
 
 Use small interaction fragments.
 
@@ -583,14 +683,10 @@ character_message
 
 Optional asynchronous model:
 
-```
-Conversation
-      |
-      v
-Memory Consolidator
-      |
-      v
-Long-term database
+```mermaid
+flowchart TD;
+      Conversation-->Memory_consolidator;
+      Memory_consolidator-->Long-term_database;
 ```
 
 Responsibilities:
@@ -607,29 +703,30 @@ Responsibilities:
 
 The complete architecture becomes:
 
-```
-User message
-      |
-      v
-Cognitive State Compiler
-      |
-      v
-State transition
-      |
-      v
-Character State Engine
-      |
-      v
-Conversation Model
-      |
-      v
-Character response
-      |
-      v
-Self-observation
-      |
-      v
-Future state updates
+```mermaid
+flowchart TD
+
+User --> Compiler
+
+State --> Compiler
+
+Previous --> Compiler
+
+Compiler --> IR
+
+IR --> Engine
+
+Engine --> State
+
+State --> Prompt
+
+User --> Prompt
+
+Prompt --> LLM
+
+LLM --> Response
+
+Response -. next turn .-> Previous
 ```
 
 The character learns not only from what happens to it.
@@ -640,23 +737,25 @@ It also learns from what it chooses to do.
 
 # Tooling
 
-This repository includes a Rust CLI for dataset validation:
+This repository provides a Rust CLI. Run `cogstate-ir --help` for all commands.
 
-- `cargo run -- validate <input.yaml> <output.yaml>` — validate a single example pair.
-- `cargo run -- validate-all <directory>` — validate all pairs under a directory.
+| Command | Description |
+|---|---|
+| `validate` | Validate a single example pair |
+| `validate-all` | Validate all pairs under a directory |
+| `init` | Create a character state with given personality traits |
+| `apply` | Apply YAML operations to a character state |
+| `train` | Fine-tune the compiler model on your dataset |
+| `predict` | Run the trained compiler on an input |
 
-See `DATASET_CREATION_GUIDE.md` for the dataset format and complete reference.
+See the Quickstart section above for examples of each.
 
 ---
 
 # Key Principle
 
-The character is not the prompt.
+The character is neither the prompt nor the LLM.
 
-The character is not the LLM.
+The character is the persistent state.
 
-The character is a dynamic state evolving through interactions.
-
-The LLM is only the component that converts this evolving internal state into human-readable language.
-
-CogStateIR explores how to create persistent, coherent, adaptive character illusions without claiming to reproduce consciousness.
+The LLM is only its voice.

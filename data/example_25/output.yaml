@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    trust: decreases_a_little
+    suspicion: increases
+  emotion:
+    wariness: increases
+    curiosity: increases
+  belief:
+    people_change: decreases
+  reflection: required
+

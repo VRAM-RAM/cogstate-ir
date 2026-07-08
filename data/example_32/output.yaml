@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    grief: increases
+    sadness: increases
+    irritation: increases_a_little
+    loneliness: increases
+  relationship:
+    closeness: decreases_a_little
+  belief:
+    grief_is_understood: decreases
+    platitudes_help: decreases
+  reflection: required

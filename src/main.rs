@@ -1,10 +1,22 @@
 use std::path::PathBuf;
 
+use candle_core::Device;
+use candle_nn::VarMap;
 use clap::{Parser, Subcommand};
 
 mod dataset;
 mod engine;
+mod model;
+mod predict;
+mod progress_handler;
 mod spec;
+mod tokenizer;
+mod train;
+
+/// Split a "owner/name" model identifier into separate parts.
+fn split_model_id(id: &str) -> (&str, &str) {
+    id.split_once('/').unwrap_or(("", id))
+}
 
 #[derive(Parser)]
 #[command(name = "cogstate", about = "Cognitive State IR toolchain")]
@@ -34,6 +46,32 @@ enum Command {
         ops: PathBuf,
         #[arg(short = 'o')]
         output: Option<PathBuf>,
+    },
+    /// Train the compiler model from the dataset
+    Train {
+        #[arg(long, default_value = "data/")]
+        dataset: PathBuf,
+        #[arg(long, default_value = "model.safetensors")]
+        output: PathBuf,
+        #[arg(long, default_value_t = 100)]
+        epochs: usize,
+        #[arg(long, default_value_t = 0.0001)]
+        lr: f64,
+        #[arg(long, default_value = "SupraLabs/Supra-50M-Instruct")]
+        model_id: String,
+        #[arg(long, default_value_t = 0)]
+        checkpoint_every: usize,
+        /// Path to a checkpoint to resume training from (downloads only config.json).
+        #[arg(long)]
+        resume: Option<PathBuf>,
+    },
+    /// Predict IR operations for a given input using a trained model
+    Predict {
+        #[arg(long, default_value = "model.safetensors")]
+        weights: PathBuf,
+        input: PathBuf,
+        #[arg(long, default_value = "SupraLabs/Supra-50M-Instruct")]
+        model_id: String,
     },
 }
 
@@ -97,7 +135,165 @@ fn main() -> anyhow::Result<()> {
                 None => println!("{}", json),
             }
         }
+        Command::Train {
+            dataset,
+            output,
+            epochs,
+            lr,
+            model_id,
+            checkpoint_every,
+            resume,
+        } => {
+            let device = Device::Cpu;
+            println!("device: {device:?}");
+            println!("model: {model_id}");
+
+            println!("loading tokenizer…");
+            let tokenizer = tokenizer::TokenizerWrapper::from_pretrained(&model_id)?;
+            println!("vocab size: {}", tokenizer.vocab_size());
+
+            let mut varmap = VarMap::new();
+            let (model, llama_config) = if let Some(resume_path) = &resume {
+                println!("downloading model config…");
+                let (owner, name) = split_model_id(&model_id);
+                let client = hf_hub::HFClientSync::new()?;
+                let repo = client.model(owner, name);
+                let config_path = repo
+                    .download_file()
+                    .filename("config.json".to_string())
+                    .send()
+                    .map_err(|e| anyhow::anyhow!("downloading config.json: {e}"))?;
+                let llama_config = model::config_from_json(&config_path)?;
+
+                println!("loading checkpoint from {}…", resume_path.display());
+                let model = model::load_model(&mut varmap, resume_path, &llama_config, &device)?;
+                (model, llama_config)
+            } else {
+                println!("downloading and loading model…");
+                model::build_model(&model_id, &mut varmap, &device)?
+            };
+
+            let examples = train::load_training_data(&dataset)?;
+            println!("loaded {} examples", examples.len());
+
+            if examples.is_empty() {
+                eprintln!("error: no training examples found in {}", dataset.display());
+                std::process::exit(1);
+            }
+
+            let train_config = train::TrainConfig {
+                epochs,
+                learning_rate: lr,
+                checkpoint_every,
+                output: output.clone(),
+                ..Default::default()
+            };
+
+            train::train(
+                &model,
+                &varmap,
+                &examples,
+                &tokenizer,
+                &device,
+                &train_config,
+                &llama_config,
+            )?;
+            model::save_model(&varmap, &output)?;
+            println!("model saved to {}", output.display());
+        }
+        Command::Predict {
+            weights,
+            input,
+            model_id,
+        } => {
+            let device = Device::Cpu;
+            println!("device: {device:?}");
+            println!("model: {model_id}");
+
+            println!("loading tokenizer…");
+            let tokenizer = tokenizer::TokenizerWrapper::from_pretrained(&model_id)?;
+
+            println!("downloading model config…");
+            let (owner, name) = split_model_id(&model_id);
+            let client = hf_hub::HFClientSync::new()?;
+            let repo = client.model(owner, name);
+            let config_path = repo
+                .download_file()
+                .filename("config.json".to_string())
+                .send()
+                .map_err(|e| anyhow::anyhow!("downloading config.json: {e}"))?;
+            let llama_config = model::config_from_json(&config_path)?;
+
+            println!("loading fine-tuned weights from {}…", weights.display());
+            let mut varmap = VarMap::new();
+            let model = model::load_model(&mut varmap, &weights, &llama_config, &device)?;
+
+            // load input yaml and format as text
+            let input_content = std::fs::read_to_string(&input)?;
+            let parsed_input: spec::Input = serde_yaml::from_str(&input_content)?;
+            println!("RAW INPUT:");
+            println!("{:?}", parsed_input);
+            let dummy_output = spec::Target {
+                state_changes: spec::StateChanges::Record(spec::StateChangesInner {
+                    emotion: None,
+                    relationship: None,
+                    belief: None,
+                    memory: None,
+                    reflection: None,
+                }),
+            };
+
+            let example = dataset::Example {
+                input: parsed_input,
+                target: dummy_output,
+                input_path: String::new(),
+                output_path: String::new(),
+            };
+
+            let input_text = format_input(&example);
+
+            let pipe = predict::generate(
+                &model,
+                &tokenizer,
+                &input_text,
+                &device,
+                &llama_config,
+                256,
+            )?;
+            println!("RAW OUTPUT:");
+            println!("{:?}", pipe);
+            let changes = predict::pipe_to_state_changes(&pipe);
+            let yaml = predict::state_changes_to_yaml(&changes);
+            println!("{}", yaml);
+        }
     }
 
     Ok(())
+}
+
+/// Format input example for prediction (mirrors train.rs format_input)
+fn format_input(example: &dataset::Example) -> String {
+    let input = &example.input;
+    let mut lines = Vec::new();
+
+    let traits: Vec<&str> = input.character.personality.iter().map(|s| s.as_str()).collect();
+    lines.push(format!("Personality: {}", traits.join(", ")));
+
+    for (target, traits_map) in &input.relationship {
+        for (trait_name, value) in traits_map {
+            lines.push(format!("Relationship ({target}): {trait_name}={value}"));
+        }
+    }
+
+    for (emotion, intensity) in &input.current_state {
+        lines.push(format!("Current state: {emotion}={intensity}"));
+    }
+
+    if let Some(prev) = &input.previous_character_message {
+        lines.push(format!("Previous: \"{prev}\""));
+    }
+
+    lines.push(format!("User: \"{}\"", input.user_message));
+    lines.push("---".to_string());
+    lines.join("\n")
 }

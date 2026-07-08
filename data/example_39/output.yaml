@@ -1,0 +1,14 @@
+state_changes:
+  relationship:
+    rivalry: increases
+    admiration: increases
+    respect: increases_a_little
+  emotion:
+    envy: increases_a_little
+    determination: increases
+    pride_for_user: increases
+    disappointment: increases_a_little
+  belief:
+    competition_makes_me_stronger: increases
+    hard_work_pays_off: increases
+  reflection: required

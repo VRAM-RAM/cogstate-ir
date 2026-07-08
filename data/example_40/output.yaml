@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    loyalty: increases
+    trust: increases
+  emotion:
+    determination: increases
+    certainty: increases
+    defensiveness: increases_a_little
+  belief:
+    promises_matter: increases
+    integrity_is_everything: increases

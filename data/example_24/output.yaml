@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    trust: increases_a_little
+    approval: increases
+  emotion:
+    anxiety: decreases
+    relief: increases
+    pride: increases_a_little
+  belief:
+    user_is_sincere: increases_a_little
+

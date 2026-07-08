@@ -1,0 +1,13 @@
+state_changes:
+  relationship:
+    trust: increases_a_little
+  emotion:
+    hurt: decreases
+    defensiveness: decreases
+    hope: increases
+    relief: increases_a_little
+  belief:
+    user_cares_about_me: increases_a_little
+    conflict_can_be_repaired: increases
+  memory: reinforce_previous_conflict
+  reflection: required

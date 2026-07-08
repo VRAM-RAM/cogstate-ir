@@ -52,7 +52,7 @@ impl ValidationResult {
     }
 }
 
-fn collect_pairs(dir: &Path, pairs: &mut Vec<PathBuf>) {
+pub fn collect_pairs(dir: &Path, pairs: &mut Vec<PathBuf>) {
     let Ok(entries) = std::fs::read_dir(dir) else { return };
     for entry in entries.flatten() {
         let path = entry.path();

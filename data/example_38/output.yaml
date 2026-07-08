@@ -1,0 +1,15 @@
+state_changes:
+  relationship:
+    trust: decreases_a_lot
+    suspicion: increases
+  emotion:
+    calm: decreases_a_lot
+    confidence: decreases_a_lot
+    defensiveness: increases
+    embarrassment: increases
+    panic: increases
+  belief:
+    lying_is_safe: decreases_a_lot
+    user_is_perceptive: increases
+  memory: reinforce_previous_conflict
+  reflection: required

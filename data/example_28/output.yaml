@@ -1,0 +1,9 @@
+state_changes:
+  relationship:
+    enthusiasm: decreases
+    patience: decreases_a_little
+  emotion:
+    excitement: decreases
+    restlessness: increases
+    disappointment: increases
+

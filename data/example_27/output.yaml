@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    trust: increases_a_little
+    closeness: increases_a_little
+  emotion:
+    defensiveness: decreases
+    loneliness: decreases_a_little
+    confusion: increases_a_little
+  belief:
+    user_is_genuine: increases_a_little
+

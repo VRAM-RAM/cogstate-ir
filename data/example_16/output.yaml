@@ -1,0 +1,12 @@
+state_changes:
+  relationship:
+    trust: increases
+    closeness: increases
+  emotion:
+    worry: decreases
+    loneliness: decreases_a_little
+    hope: increases
+  belief:
+    people_cannot_be_trusted: decreases_a_lot
+    user_cares_about_me: increases
+  reflection: required

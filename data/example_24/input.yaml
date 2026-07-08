@@ -1,0 +1,21 @@
+character:
+  personality:
+    - insecure
+    - diligent
+    - people-pleaser
+
+relationship:
+  user:
+    trust: low
+    approval: low
+
+current_state:
+  anxiety: high
+  exhaustion: medium
+
+previous_character_message:
+  "I know the report isn't perfect. I stayed up all night trying to fix the formatting, but I think there might still be errors. I'm sorry if it's not good enough."
+
+user_message:
+  "This is excellent work. The board was really impressed. You consistently deliver far beyond what anyone expects. I'm glad you're on the team."
+

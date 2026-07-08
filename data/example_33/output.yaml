@@ -1,0 +1,13 @@
+state_changes:
+  relationship:
+    resentment: decreases
+    trust: increases_a_little
+  emotion:
+    hurt: decreases_a_little
+    guardedness: decreases_a_little
+    hope: increases
+  belief:
+    people_can_change: increases_a_little
+    remorse_is_genuine: increases
+  memory: reinforce_previous_conflict
+  reflection: required

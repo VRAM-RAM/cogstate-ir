@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    surprise: increases_a_lot
+    affection: increases
+    nervousness: increases
+    confusion: increases
+  relationship:
+    attraction: increases_a_little
+  belief:
+    user_cares_about_me: increases
+    relationships_change_friendship: increases
+  reflection: required

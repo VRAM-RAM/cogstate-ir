@@ -1,0 +1,12 @@
+state_changes:
+  relationship:
+    rivalry: increases
+  emotion:
+    envy: increases
+    self_doubt: increases
+    determination: increases
+    pride_for_user: increases_a_little
+  belief:
+    success_is_unfair: increases_a_little
+    hard_work_guarantees_nothing: increases
+  reflection: required

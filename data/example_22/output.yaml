@@ -1,0 +1,8 @@
+state_changes:
+  relationship:
+    respect: increases_a_little
+  emotion:
+    curiosity: increases
+  belief:
+    user_is_deep: increases_a_little
+

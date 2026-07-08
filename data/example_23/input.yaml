@@ -1,0 +1,21 @@
+character:
+  personality:
+    - stubborn
+    - proud
+    - defensive
+
+relationship:
+  user:
+    trust: medium
+    respect: low
+
+current_state:
+  certainty: high
+  irritation: low
+
+previous_character_message:
+  "I would never accept help from someone like you. I don't need anyone. I do things my own way, always have."
+
+user_message:
+  "But you let Alex help you last week with the move. And you thanked them. So which is it — do you accept help or not?"
+

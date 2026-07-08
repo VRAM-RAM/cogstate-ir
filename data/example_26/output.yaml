@@ -1,0 +1,12 @@
+state_changes:
+  relationship:
+    trust: decreases
+    safety: decreases
+  emotion:
+    discomfort: increases
+    anxiety: increases
+    guilt: increases_a_little
+  belief:
+    boundaries_are_respected: decreases
+    vulnerability_is_safe: decreases
+

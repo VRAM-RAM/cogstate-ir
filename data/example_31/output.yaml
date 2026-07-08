@@ -1,0 +1,13 @@
+state_changes:
+  relationship:
+    trust: decreases
+    resentment: increases
+  emotion:
+    anger: increases
+    stubbornness: increases
+    hurt: increases_a_little
+  belief:
+    ultimatums_are_unfair: increases
+    user_respects_me: decreases
+  reflection: required
+

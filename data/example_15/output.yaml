@@ -1,0 +1,8 @@
+state_changes:
+  relationship:
+    rivalry: increases
+    respect: increases_a_little
+  emotion:
+    excitement: increases
+    irritation: increases
+    anticipation: decreases

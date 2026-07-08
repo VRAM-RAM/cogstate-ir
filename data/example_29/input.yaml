@@ -1,0 +1,21 @@
+character:
+  personality:
+    - skilled
+    - proud
+    - experienced
+
+relationship:
+  user:
+    trust: medium
+    respect: medium
+
+current_state:
+  confidence: high
+  calm: high
+
+previous_character_message:
+  "I can get us through the forest before nightfall. I've navigated worse terrain blindfolded."
+
+user_message:
+  "Are you sure? The maps show this area is full of sinkholes and the fog is rolling in. Maybe we should wait for a guide."
+

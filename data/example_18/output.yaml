@@ -1,0 +1,9 @@
+state_changes:
+  relationship:
+    interest: increases
+  emotion:
+    amusement: increases
+    curiosity: increases
+  belief:
+    knowledge_requires_sacrifice: increases_a_little
+  memory: reinforce_previous_conflict

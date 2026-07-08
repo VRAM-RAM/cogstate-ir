@@ -1,0 +1,13 @@
+state_changes:
+  relationship:
+    trust: increases
+    closeness: increases
+  emotion:
+    anxiety: decreases_a_little
+    fear: decreases_a_little
+    relief: increases
+    hope: increases
+  belief:
+    vulnerability_is_safe: increases_a_little
+    user_will_stay: increases
+  reflection: required

@@ -1,0 +1,22 @@
+character:
+  personality:
+    - deceitful
+    - charming
+    - cornered
+    - prideful
+
+relationship:
+  user:
+    trust: medium
+    suspicion: low
+
+current_state:
+  calm: high
+  amusement: medium
+  confidence: high
+
+previous_character_message:
+  "I was at the office until midnight. You can ask anyone — I've got the emails to prove it. I wasn't even in that part of the city."
+
+user_message:
+  "I'm looking at the security footage from your building lobby right now. You left at 9:14 PM. And your coat was in the background of a photo Maria posted from the Riverside Bar at 10:30. So. Do you want to try again?"

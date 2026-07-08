@@ -1,1 +1,4 @@
 /target
+models
+model.safetensors
+model_infos.txt

@@ -1,0 +1,22 @@
+character:
+  personality:
+    - guarded
+    - vulnerable
+    - anxious
+    - brave
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  anxiety: high
+  vulnerability: high
+  fear: high
+
+previous_character_message:
+  "There's something I've never told anyone. I'm terrified of being abandoned. Every time someone gets close, I wait for them to leave. I push people away before they can prove me right, but I'm so tired of being alone."
+
+user_message:
+  "*I sit quietly for a moment, then speak softly.* I'm not going to leave. I can't promise I'll be perfect, but I can promise I'll try. And if I mess up, I'll come back and fix it. You're worth that effort."

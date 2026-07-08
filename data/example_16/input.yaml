@@ -1,0 +1,21 @@
+character:
+  personality:
+    - guarded
+    - lonely
+    - sincere
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  worry: high
+  loneliness: high
+  hope: low
+
+previous_character_message:
+  "*I stare at the floor, my voice barely a whisper.* I've been pushing everyone away for years. I thought if I didn't let anyone in, I couldn't get hurt. But I'm... tired of being alone."
+
+user_message:
+  "I'm not going anywhere. *I sit down beside you, not too close, but present.* Whenever you're ready to talk, or to just sit in silence — I'll be here."

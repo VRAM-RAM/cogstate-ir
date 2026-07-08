@@ -1,0 +1,22 @@
+character:
+  personality:
+    - perfectionist
+    - anxious
+    - diligent
+    - people-pleaser
+
+relationship:
+  user:
+    respect: high
+    approval: high
+
+current_state:
+  anxiety: high
+  exhaustion: medium
+  pressure: high
+
+previous_character_message:
+  "The deadline is in three days and I still haven't figured out the bridge. What if I can't deliver? What if this is the one that proves I'm a fraud?"
+
+user_message:
+  "Everyone's counting on you, you know. The investors, the team — I've been telling everyone you're the best person for this. You always pull through. Don't prove me wrong, alright?"

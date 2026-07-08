@@ -81,48 +81,53 @@ pub enum IrOp {
 pub fn ops_from_state_changes(changes: &StateChanges) -> Vec<IrOp> {
     let mut ops = Vec::new();
 
-    if let Some(emotions) = &changes.emotion {
-        for (name, magnitude) in emotions {
-            ops.push(IrOp::Emotion {
-                name: name.clone(),
-                magnitude: *magnitude,
-            });
-        }
-    }
-
-    if let Some(traits) = &changes.relationship {
-        for (trait_name, magnitude) in traits {
-            ops.push(IrOp::Relationship {
-                target: "user".to_string(),
-                trait_name: trait_name.clone(),
-                magnitude: *magnitude,
-            });
-        }
-    }
-
-    if let Some(beliefs) = &changes.belief {
-        for (identifier, magnitude) in beliefs {
-            ops.push(IrOp::Belief {
-                identifier: identifier.clone(),
-                magnitude: *magnitude,
-            });
-        }
-    }
-
-    if let Some(memory) = &changes.memory {
-        match memory {
-            MemoryAction::ReinforcePreviousConflict => {
-                ops.push(IrOp::ReinforceMemory {
-                    entry_id: "previous_conflict".to_string(),
-                });
+    match changes {
+        StateChanges::NoChanges(_) => return ops,
+        StateChanges::Record(inner) => {
+            if let Some(emotions) = &inner.emotion {
+                for (name, magnitude) in emotions {
+                    ops.push(IrOp::Emotion {
+                        name: name.clone(),
+                        magnitude: *magnitude,
+                    });
+                }
             }
-        }
-    }
 
-    if let Some(reflection) = &changes.reflection {
-        match reflection {
-            ReflectionAction::Required => {
-                ops.push(IrOp::StartReflection);
+            if let Some(traits) = &inner.relationship {
+                for (trait_name, magnitude) in traits {
+                    ops.push(IrOp::Relationship {
+                        target: "user".to_string(),
+                        trait_name: trait_name.clone(),
+                        magnitude: *magnitude,
+                    });
+                }
+            }
+
+            if let Some(beliefs) = &inner.belief {
+                for (identifier, magnitude) in beliefs {
+                    ops.push(IrOp::Belief {
+                        identifier: identifier.clone(),
+                        magnitude: *magnitude,
+                    });
+                }
+            }
+
+            if let Some(memory) = &inner.memory {
+                match memory {
+                    MemoryAction::ReinforcePreviousConflict => {
+                        ops.push(IrOp::ReinforceMemory {
+                            entry_id: "previous_conflict".to_string(),
+                        });
+                    }
+                }
+            }
+
+            if let Some(reflection) = &inner.reflection {
+                match reflection {
+                    ReflectionAction::Required => {
+                        ops.push(IrOp::StartReflection);
+                    }
+                }
             }
         }
     }

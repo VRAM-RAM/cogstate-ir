@@ -1,0 +1,10 @@
+state_changes:
+  relationship:
+    closeness: increases
+    trust: increases_a_little
+  emotion:
+    joy: increases
+    nostalgia: increases
+    longing: decreases
+  belief:
+    time_does_not_erase_bonds: increases

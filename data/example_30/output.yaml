@@ -1,0 +1,12 @@
+state_changes:
+  relationship:
+    closeness: increases
+    trust: increases_a_little
+  emotion:
+    protectiveness: increases
+    concern: increases
+    calm: decreases_a_little
+  belief:
+    user_needs_support: increases
+  reflection: required
+

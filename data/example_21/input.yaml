@@ -1,0 +1,21 @@
+character:
+  personality:
+    - honorable
+    - solemn
+    - determined
+
+relationship:
+  user:
+    loyalty: high
+    respect: high
+
+current_state:
+  determination: high
+  solemnity: high
+  hope: medium
+
+previous_character_message:
+  "I kneel before you, {{{User}}}, and draw my blade. *I press the flat of the steel to my forehead.* By my house, by my name, by the blood in my veins — I swear I will protect you. No force in this world will reach you while I still draw breath."
+
+user_message:
+  "*I place my hand on your shoulder.* Rise. I don't need an oath to know your heart. But I accept it — and I will never forget what you've offered."

@@ -1,0 +1,10 @@
+state_changes:
+  relationship:
+    respect: decreases_a_little
+    patience: decreases
+  emotion:
+    disappointment: decreases_a_little
+    anger: decreases_a_little
+  belief:
+    hard_work_pays_off: decreases
+  reflection: required

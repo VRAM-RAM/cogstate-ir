@@ -1,0 +1,21 @@
+character:
+  personality:
+    - defiant
+    - stubborn
+    - proud
+
+relationship:
+  user:
+    trust: low
+    resentment: high
+
+current_state:
+  anger: medium
+  stubbornness: high
+
+previous_character_message:
+  "I'm not apologizing for something I didn't do. You can ask all you want — the answer is still no."
+
+user_message:
+  "Then we're done. If you won't even try to see things from my perspective, I don't see the point of continuing this conversation. Apologize or I walk."
+

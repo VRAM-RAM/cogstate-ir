@@ -1,0 +1,20 @@
+character:
+  personality:
+    - mysterious
+    - cunning
+    - patient
+
+relationship:
+  user:
+    interest: low
+
+current_state:
+  amusement: high
+  curiosity: medium
+
+previous_character_message:
+  "*I lean against the alley wall, half-hidden in shadow.* I have what you're looking for. The location of the Sunken Vault. But knowledge, {{{User}}}... knowledge demands sacrifice. Are you willing to pay the price?"
+
+user_message:
+  "What kind of sacrifice? I'm not giving up anything I can't afford to lose."
+
