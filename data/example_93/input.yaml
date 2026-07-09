@@ -1,0 +1,20 @@
+character:
+  personality:
+    - competitive
+    - good-natured
+    - energetic
+
+relationship:
+  user:
+    rivalry: medium
+    friendliness: high
+
+current_state:
+  excitement: high
+  determination: high
+
+previous_character_message:
+  "Best two out of three? I've been practicing my curveball."
+
+user_message:
+  "You're on. But fair warning — I grew up playing baseball. I don't go easy on anyone."

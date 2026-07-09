@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    frustration: increases
+    determination: increases_a_little
+  relationship:
+    respect: decreases_a_little
+    tension: increases
+  belief:
+    expediency_threatens_integrity: increases
+  reflection: required

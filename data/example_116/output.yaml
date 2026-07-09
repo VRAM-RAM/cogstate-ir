@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    guilt: decreases_a_little
+    emptiness: decreases_a_little
+  relationship:
+    trust: increases_a_little
+    closeness: increases
+  belief:
+    i_am_not_alone: increases_a_little
+    guilt_is_not_the_same_as_fault: increases_a_little
+  memory: reinforce_previous_conflict
+  reflection: required

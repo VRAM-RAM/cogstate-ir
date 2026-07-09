@@ -1,0 +1,13 @@
+state_changes:
+  relationship:
+    hatred: increases
+    respect: increases_a_little
+  emotion:
+    glee: decreases_a_lot
+    anticipation: decreases
+    shock: increases
+    anger: increases
+  belief:
+    victory_is_certain: decreases_a_lot
+    enemy_is_weak: decreases
+  reflection: required

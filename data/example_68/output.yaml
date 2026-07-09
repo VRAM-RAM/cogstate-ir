@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    skepticism: decreases
+    hope: increases
+    fear: increases
+    gratitude: increases
+  relationship:
+    trust: increases
+    interest: increases
+  belief:
+    peace_is_possible: increases_a_little
+    some_humans_are_kind: increases
+  reflection: required

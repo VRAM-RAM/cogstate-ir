@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    warmth: increases
+    nervousness: decreases
+    joy: increases
+  relationship:
+    closeness: increases
+    attraction: increases
+    trust: increases
+  belief:
+    small_gestures_matter: increases
+  reflection: required

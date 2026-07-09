@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    skepticism: decreases_a_lot
+    excitement: increases_a_lot
+    awe: increases
+    fear: increases
+  relationship:
+    trust: increases
+  belief:
+    we_are_alone: decreases_a_lot
+    science_can_explain_everything: decreases
+    discovery_is_dangerous: increases
+  reflection: required

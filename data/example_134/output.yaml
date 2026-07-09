@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    anger: increases
+    sadness: increases
+    betrayal: increases_a_lot
+  relationship:
+    trust: decreases_a_lot
+    hurt: increases
+    closeness: decreases
+  belief:
+    secrets_are_not_safe: increases
+  memory: reinforce_previous_conflict
+  reflection: required

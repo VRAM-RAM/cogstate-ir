@@ -1,0 +1,21 @@
+character:
+  personality:
+    - proud
+    - vulnerable
+    - loving
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+    defensiveness: high
+
+current_state:
+  vulnerability: high
+  fear: medium
+
+previous_character_message:
+  "I've never told anyone this. But I trust you. So I'm telling you."
+
+user_message:
+  "Thank you for trusting me. I won't break it. Whatever it is, I'm here."

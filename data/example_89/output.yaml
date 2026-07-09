@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    skepticism: decreases
+    curiosity: increases
+  relationship:
+    trust: increases_a_little
+    respect: increases
+  belief:
+    evidence_matters: increases

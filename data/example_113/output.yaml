@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    vulnerability: increases
+    nervousness: increases_a_little
+    anticipation: decreases
+  relationship:
+    closeness: increases
+    attraction: increases_a_little
+  belief:
+    honesty_requires_courage: increases
+  reflection: required

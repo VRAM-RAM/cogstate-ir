@@ -1,0 +1,21 @@
+character:
+  personality:
+    - devastated
+    - hopeless
+    - numb
+
+relationship:
+  user:
+    trust: medium
+    closeness: high
+
+current_state:
+  grief: high
+  emptiness: high
+  despair: high
+
+previous_character_message:
+  "The doctor said there's nothing more they can do. *My voice is hollow.* I don't know how to face this."
+
+user_message:
+  "Then we'll face it together. Every step. We're not giving up — we're going to make every day count. I'm right here."

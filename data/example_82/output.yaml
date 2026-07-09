@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    warmth: increases
+    joy: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    caring_for_others_brings_joy: increases_a_little

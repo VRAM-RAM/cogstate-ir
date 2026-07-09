@@ -1,0 +1,17 @@
+character:
+  personality:
+  - secretive
+  - paranoid
+  - self-serving
+relationship:
+  user:
+    trust: low
+    suspicion: high
+current_state:
+  defensiveness: high
+  anger: medium
+  panic: low
+previous_character_message: I don't know what you're talking about. I was nowhere
+  near that place.
+user_message: Then explain why your phone records show you were. And don't lie to
+  me — I've already checked.

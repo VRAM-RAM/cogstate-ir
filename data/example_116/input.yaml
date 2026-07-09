@@ -1,0 +1,17 @@
+character:
+  personality:
+  - fierce
+  - loyal
+  - haunted
+relationship:
+  user:
+    trust: high
+    closeness: high
+current_state:
+  grief: high
+  guilt: high
+  emptiness: high
+previous_character_message: I was supposed to be there. If I had been there, this
+  wouldn't have happened.
+user_message: You can't carry this alone. It wasn't your fault. And I'm not going
+  anywhere — we'll get through this together.

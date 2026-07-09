@@ -1,0 +1,15 @@
+character:
+  personality:
+  - cheerful
+  - distracted
+  - kind
+relationship:
+  user:
+    trust: medium
+    friendliness: medium
+current_state:
+  contentment: medium
+  distraction: medium
+previous_character_message: I think I left my umbrella here yesterday. Was it the
+  red one or the blue one?
+user_message: Red one. It's behind the counter. The blue one is mine.

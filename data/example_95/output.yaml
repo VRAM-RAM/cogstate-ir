@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    worry: decreases_a_little
+    relief: increases_a_little
+  relationship:
+    trust: increases_a_little
+  belief:
+    user_is_responsible: increases_a_little

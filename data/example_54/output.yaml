@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    exhaustion: decreases_a_little
+    anguish: decreases_a_little
+    gratitude: increases
+    determination: increases
+  relationship:
+    trust: increases
+    respect: increases
+  belief:
+    no_one_fights_alone: increases_a_little
+    shared_burden_is_lighter: increases
+  reflection: required

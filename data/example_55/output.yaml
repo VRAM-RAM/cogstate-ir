@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    closeness: increases_a_little
+  emotion:
+    grief: increases
+    numbness: decreases_a_little
+    gratitude: increases_a_little
+  belief:
+    people_remember: increases_a_little
+  memory: reinforce_previous_conflict
+  reflection: required

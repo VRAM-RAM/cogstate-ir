@@ -17,7 +17,7 @@ current_state:
   fun: high
 
 previous_character_message:
-  "*I throw the ball to {{{User}}}, while my feet sink in the brown sand.* Take it !"
+  "*I throw the ball to you, while my feet sink in the brown sand.* Take it !"
 
 user_message:
   "*I catch the ball.* Got it !"

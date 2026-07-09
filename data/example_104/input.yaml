@@ -1,0 +1,16 @@
+character:
+  personality:
+  - idealistic
+  - rigid
+  - passionate
+relationship:
+  user:
+    respect: medium
+    tension: high
+current_state:
+  determination: high
+  frustration: high
+previous_character_message: If we cut corners on the safety review, we're putting
+  lives at risk. I won't sign off on that. Ever.
+user_message: Nobody's cutting corners. We're being realistic. If we miss the deadline,
+  there won't be a product to make safe.

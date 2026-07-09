@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    grief: increases_a_little
+    emptiness: decreases_a_little
+    despair: decreases
+    gratitude: increases
+  relationship:
+    closeness: increases
+    trust: increases
+  belief:
+    i_am_not_alone: increases
+  reflection: required

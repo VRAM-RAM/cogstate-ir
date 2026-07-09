@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    pride: increases
+    satisfaction: increases
+    hope: increases_a_little
+  relationship:
+    respect: increases
+    closeness: increases
+  belief:
+    teaching_is_meaningful: increases

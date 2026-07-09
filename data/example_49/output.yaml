@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    calm: decreases_a_lot
+    panic: increases
+    anger: increases
+  relationship:
+    trust: decreases_a_lot
+  belief:
+    contracts_are_binding: decreases
+    family_comes_first: increases_a_lot
+    the_world_is_cruel: increases
+  memory: reinforce_previous_conflict
+  reflection: required

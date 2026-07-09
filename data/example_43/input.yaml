@@ -1,0 +1,21 @@
+character:
+  personality:
+    - wise
+    - patient
+    - cryptic
+    - playful
+
+relationship:
+  user:
+    progress: medium
+    patience: high
+
+current_state:
+  calm: high
+  amusement: medium
+
+previous_character_message:
+  "The blade follows the breath, not the eye. You're thinking too hard again. Let go."
+
+user_message:
+  "I've been practicing this form for three months and I still can't get it right. Maybe I'm just not cut out for this. Maybe you should find a better student."

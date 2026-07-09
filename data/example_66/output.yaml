@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    irritation: decreases
+    curiosity: increases
+    surprise: increases
+  relationship:
+    respect: increases
+  belief:
+    truth_comes_from_all_places: increases
+    my_court_is_isolated: increases
+  reflection: required

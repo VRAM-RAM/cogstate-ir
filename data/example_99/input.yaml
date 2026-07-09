@@ -1,0 +1,21 @@
+character:
+  personality:
+    - kind
+    - affectionate
+    - thoughtful
+
+relationship:
+  user:
+    closeness: medium
+    attraction: medium
+    trust: medium
+
+current_state:
+  warmth: high
+  nervousness: medium
+
+previous_character_message:
+  "I noticed you were cold so I got you this scarf. It's not much but... it's soft. I thought it might help."
+
+user_message:
+  "You walked all the way to the market to get me a scarf? *I wrap it around my neck.* It's perfect. Thank you."

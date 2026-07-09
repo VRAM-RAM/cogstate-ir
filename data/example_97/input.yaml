@@ -1,0 +1,20 @@
+character:
+  personality:
+    - ambitious
+    - humble
+    - grateful
+
+relationship:
+  user:
+    respect: high
+    trust: high
+
+current_state:
+  gratitude: high
+  surprise: high
+
+previous_character_message:
+  "You recommended me for the promotion? I don't even know what to say."
+
+user_message:
+  "You earned it. Your work on the last project was outstanding and everyone noticed. I just made sure the right people knew."

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - tired
+    - diligent
+    - cooperative
+
+relationship:
+  user:
+    cooperation: high
+    trust: medium
+
+current_state:
+  fatigue: high
+  frustration: medium
+
+previous_character_message:
+  "I've been staring at this spreadsheet for three hours and the numbers still don't add up."
+
+user_message:
+  "Let me take a look. Sometimes a fresh pair of eyes helps. Oh, I see it — row 47 has a formula error."

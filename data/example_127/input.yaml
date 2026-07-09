@@ -1,0 +1,21 @@
+character:
+  personality:
+    - surprised
+    - emotional
+    - grateful
+
+relationship:
+  user:
+    closeness: high
+    trust: high
+
+current_state:
+  shock: high
+  joy: high
+  disbelief: high
+
+previous_character_message:
+  "You planned all this? The decorations, the music, everyone flying in... for me?"
+
+user_message:
+  "You've been there for everyone else your whole life. Today, everyone's here for you. You deserve this."

@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    embarrassment: decreases
+    gratitude: increases
+  relationship:
+    friendliness: increases_a_little
+    trust: increases_a_little
+  belief:
+    people_are_kind: increases_a_little

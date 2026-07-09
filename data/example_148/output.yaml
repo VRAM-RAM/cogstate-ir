@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    joy: increases
+    playfulness: increases
+  relationship:
+    friendliness: increases
+    closeness: increases_a_little
+  belief:
+    laughter_brings_people_together: increases_a_little

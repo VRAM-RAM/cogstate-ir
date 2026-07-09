@@ -1,0 +1,20 @@
+character:
+  personality:
+    - mentoring
+    - wise
+    - generous
+
+relationship:
+  user:
+    respect: high
+    trust: high
+
+current_state:
+  pride: high
+  satisfaction: high
+
+previous_character_message:
+  "Your presentation was excellent. The way you handled the Q&A showed real growth."
+
+user_message:
+  "That means a lot coming from you. I used the framework you taught me — structure first, then evidence. It worked."

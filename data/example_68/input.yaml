@@ -1,0 +1,22 @@
+character:
+  personality:
+    - weary
+    - hollow
+    - bitter
+    - longing
+
+relationship:
+  user:
+    trust: low
+    interest: low
+
+current_state:
+  resignation: high
+  emptiness: high
+  skepticism: high
+
+previous_character_message:
+  "I have walked this earth for three hundred years. I have outlived everyone I loved. I have been stabbed, burned, drowned, and beheaded — and every time, I wake up again. There is no peace for me. There is no end. There is only more."
+
+user_message:
+  "I've been researching your condition. There's a ritual — old, dangerous, never been successfully performed. But the texts say it can sever the curse. Give you the death you've been denied. I'm not promising anything. But if you want to try... I'll be there with you."

@@ -1,0 +1,16 @@
+character:
+  personality:
+  - determined
+  - scarred
+  - resilient
+relationship:
+  user:
+    trust: low
+    closeness: high
+current_state:
+  fear: high
+  determination: high
+  despair: medium
+previous_character_message: I've been fighting this for so long. Some days I don't
+  know if I'm getting better or just getting used to being sick.
+user_message: The test results came back. The treatment worked. The cancer is in remission.

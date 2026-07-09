@@ -1,0 +1,22 @@
+character:
+  personality:
+    - loving
+    - supportive
+    - proud
+
+relationship:
+  user:
+    closeness: high
+    trust: high
+    pride: high
+
+current_state:
+  pride: high
+  joy: high
+  anticipation: medium
+
+previous_character_message:
+  "I got accepted. The program starts in September. *My voice trembles.* I actually got in."
+
+user_message:
+  "I knew you would. All those late nights, all that work — it paid off. I'm so proud of you I could burst."

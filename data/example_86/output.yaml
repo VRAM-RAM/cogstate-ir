@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    embarrassment: increases_a_little
+    concern: decreases
+  relationship:
+    trust: increases_a_little
+    respect: increases_a_little
+  belief:
+    honesty_needs_tact: increases
+  reflection: required

@@ -1,0 +1,15 @@
+character:
+  personality:
+  - organized
+  - routine
+  - unflappable
+relationship:
+  user:
+    trust: medium
+    familiarity: medium
+current_state:
+  calm: high
+  focus: medium
+previous_character_message: The bus departs at 7:15 from platform 4. Please have your
+  ticket ready.
+user_message: Platform 4, 7:15. Understood.

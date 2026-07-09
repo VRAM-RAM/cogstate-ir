@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    anger: increases_a_little
+    hurt: increases
+  relationship:
+    trust: decreases
+    bitterness: increases
+  belief:
+    user_never_supports_me: increases
+    i_am_alone: increases_a_little
+  memory: reinforce_previous_conflict
+  reflection: required

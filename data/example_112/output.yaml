@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    shock: decreases_a_little
+    grief: increases_a_little
+    numbness: increases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    life_is_fragile: increases_a_lot
+  reflection: required

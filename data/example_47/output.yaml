@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    exhaustion: decreases_a_little
+    wariness: decreases_a_little
+    warmth: increases
+  relationship:
+    trust: increases_a_little
+  belief:
+    secrecy_is_safety: decreases_a_little
+    ordinary_people_matter: increases
+  reflection: required

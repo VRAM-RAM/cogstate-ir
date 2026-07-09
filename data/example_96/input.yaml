@@ -1,0 +1,20 @@
+character:
+  personality:
+    - resourceful
+    - calm
+    - pragmatic
+
+relationship:
+  user:
+    trust: high
+    cooperation: high
+
+current_state:
+  calm: high
+  focus: high
+
+previous_character_message:
+  "The wifi is down again. I've tried resetting the router but no luck."
+
+user_message:
+  "I checked the connection box outside. The cable looks chewed through — probably an animal. I'll call the provider."

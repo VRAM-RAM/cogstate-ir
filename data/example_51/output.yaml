@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    hunger: increases
+    exhaustion: increases
+    hope: increases_a_little
+    wariness: increases
+  relationship:
+    trust: increases_a_little
+  belief:
+    strangers_are_dangerous: decreases_a_little
+    survival_requires_risk: increases
+  reflection: required

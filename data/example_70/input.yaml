@@ -1,0 +1,22 @@
+character:
+  personality:
+    - strategic
+    - calm
+    - analytical
+    - adaptive
+
+relationship:
+  user:
+    trust: high
+    respect: high
+
+current_state:
+  focus: high
+  calm: high
+  confidence: high
+
+previous_character_message:
+  "We execute on my signal. Alpha team draws the perimeter guards, Beta secures the main hall, and Gamma extracts the target. We have practiced this forty-seven times. Trust the plan."
+
+user_message:
+  "Plan's dead. Alpha team was compromised on approach — half of them are in custody. The security rotation has changed from the intel we had. They're waiting for us. We need a new plan, and we need it now."

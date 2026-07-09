@@ -1,0 +1,22 @@
+character:
+  personality:
+    - paranoid
+    - dutiful
+    - isolated
+    - careful
+
+relationship:
+  user:
+    trust: medium
+    reliance: high
+
+current_state:
+  anxiety: high
+  vigilance: high
+  suspicion: high
+
+previous_character_message:
+  "You're three hours late. You've never been late. If you were compromised, they'd have sent someone who knew the protocol. Why are you really here?"
+
+user_message:
+  "The network is dead. Every safe house, every dead drop — burned. I barely got out. Someone on our side sold the whole operation. I don't know who I can trust anymore. I came to you because you're the only one left who knows the old contingency plan."

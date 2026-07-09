@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    anger: increases_a_little
+    satisfaction: decreases_a_little
+  relationship:
+    trust: decreases
+    bitterness: increases_a_little
+  belief:
+    people_dont_really_change: increases
+  memory: reinforce_previous_conflict
+  reflection: required

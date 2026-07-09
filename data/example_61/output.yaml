@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    calm: decreases
+    irritation: increases
+    concern: increases
+  relationship:
+    respect: decreases
+    wariness: increases
+  belief:
+    diplomacy_can_fail: increases
+    conflict_is_inevitable: increases
+  reflection: required

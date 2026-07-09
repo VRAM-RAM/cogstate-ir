@@ -1,0 +1,22 @@
+character:
+  personality:
+    - insecure
+    - passionate
+    - sensitive
+    - perfectionist
+
+relationship:
+  user:
+    trust: high
+    support: high
+
+current_state:
+  anxiety: high
+  hope: low
+  vulnerability: high
+
+previous_character_message:
+  "They're all going to hate it. I know they will. I spent two years on this collection and all I can see are the flaws. Every brushstroke feels wrong. Why did I let you talk me into this?"
+
+user_message:
+  "Because you're brilliant and you don't believe it. *I squeeze your hand.* The gallery is full. People are waiting. And I've already seen it — it's breathtaking. But it doesn't matter what I think. Go show them what you see when you look at the world."

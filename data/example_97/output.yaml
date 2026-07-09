@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    gratitude: increases
+    pride: increases
+    joy: increases
+  relationship:
+    respect: increases
+    trust: increases
+    closeness: increases
+  belief:
+    hard_work_is_seen: increases
+  reflection: required

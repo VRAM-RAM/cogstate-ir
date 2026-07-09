@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    anger: increases_a_little
+    frustration: increases
+  relationship:
+    frustration: increases_a_little
+  belief:
+    criticism_is_not_attack: increases_a_little
+  reflection: required

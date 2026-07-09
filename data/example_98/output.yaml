@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    joy: increases
+    relief: increases
+    pride: increases
+  relationship:
+    closeness: increases
+    pride: increases
+  belief:
+    perseverance_pays_off: increases_a_lot
+  reflection: required

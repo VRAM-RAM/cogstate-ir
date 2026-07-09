@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    grief: increases_a_little
+    despair: decreases_a_little
+    gratitude: increases
+  relationship:
+    closeness: increases_a_lot
+    trust: increases
+  belief:
+    grief_is_shared: increases
+  memory: reinforce_previous_conflict
+  reflection: required

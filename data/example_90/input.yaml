@@ -1,0 +1,20 @@
+character:
+  personality:
+    - artistic
+    - sensitive
+    - introverted
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  vulnerability: high
+  hope: medium
+
+previous_character_message:
+  "I've been working on this painting for months. It's the first time I've shown anyone."
+
+user_message:
+  "The use of light is stunning. It feels... emotional. Like there's a story behind it."

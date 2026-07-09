@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    fatigue: decreases_a_little
+    frustration: decreases
+    relief: increases
+  relationship:
+    cooperation: increases
+    trust: increases
+  belief:
+    teamwork_works: increases

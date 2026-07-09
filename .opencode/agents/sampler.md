@@ -40,6 +40,15 @@ Before writing:
 2. Identify missing coverage.
 3. Create examples that add new semantic cases.
 
+Target distribution:
+
+- 40% everyday interactions
+- 20% positive interactions
+- 20% conflicts
+- 10% emotionally intense events
+- 10% no-op interactions
+
+Avoid producing mostly dramatic scenes.
 After implementation, provide a short feedback:
 - directories modified;
 - cognitive transitions added;

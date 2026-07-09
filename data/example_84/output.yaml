@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    nervousness: decreases
+    pride: increases
+    joy: increases
+  relationship:
+    closeness: increases
+    trust: increases
+  belief:
+    effort_is_appreciated: increases
+  reflection: required

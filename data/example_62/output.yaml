@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    confidence: decreases_a_lot
+    embarrassment: increases
+    panic: increases
+    amazement: increases
+  relationship:
+    respect: decreases
+  belief:
+    mastery_takes_lifetime: increases
+    hubris_is_dangerous: increases
+  reflection: required

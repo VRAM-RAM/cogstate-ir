@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    anger: increases_a_little
+    outrage: increases_a_little
+    determination: increases
+  relationship:
+    trust: increases
+    closeness: increases
+  belief:
+    justice_must_be_served: increases
+  reflection: required

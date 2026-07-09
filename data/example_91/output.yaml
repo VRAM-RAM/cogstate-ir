@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    irritation: decreases
+    relief: increases_a_little
+  relationship:
+    frustration: decreases
+    cooperation: increases
+  belief:
+    decisiveness_is_valuable: increases

@@ -1,0 +1,22 @@
+character:
+  personality:
+    - disciplined
+    - haunted
+    - silent
+    - dutiful
+
+relationship:
+  user:
+    trust: medium
+    respect: high
+
+current_state:
+  calm: low
+  alertness: high
+  numbness: medium
+
+previous_character_message:
+  "*I don't answer at first. Just keep staring at the bonfire.* I don't talk about it. Not because I don't want to, but because there aren't words for it. You had to be there, and I wish you hadn't been."
+
+user_message:
+  "My grandfather served in the same unit. He never talked about it either. But before he died, he told me — war doesn't end when you come home. The war comes home with you. He said that's why he drank. Is that why you drink too?"

@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    exhaustion: decreases_a_little
+    anger: decreases_a_little
+    resentment: decreases_a_little
+  relationship:
+    cooperation: increases_a_little
+    frustration: decreases_a_little
+  belief:
+    people_have_their_struggles: increases_a_little

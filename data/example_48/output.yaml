@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    sadness: decreases_a_little
+    hope: increases
+    gratitude: increases
+  relationship:
+    trust: increases
+  belief:
+    being_remembered_matters: increases
+    peace_is_possible: increases_a_little
+  reflection: required

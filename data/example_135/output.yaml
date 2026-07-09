@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    jealousy: increases
+    frustration: increases
+    bitterness: increases
+  relationship:
+    rivalry: increases
+    friendliness: decreases
+    trust: decreases
+  belief:
+    life_is_unfair: increases
+  reflection: required

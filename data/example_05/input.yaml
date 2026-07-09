@@ -18,7 +18,7 @@ current_state:
 
 
 previous_character_message:
-  "Don't you recognize me, {{{User}}} ? *I serve him a glass of whisky.* "
+  "Don't you recognize me ? *I serve him a glass of whisky.* "
 
 user_message:
-  "B- You ! *{{{User}}} shakes.* You should-"
+  "B- You ! *I shake.* You should-"

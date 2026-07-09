@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    excitement: increases
+    joy: increases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    sharing_wonder_is_joyful: increases_a_little

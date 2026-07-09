@@ -1,0 +1,20 @@
+character:
+  personality:
+    - cheerful
+    - generous
+    - appreciative
+
+relationship:
+  user:
+    friendliness: high
+    closeness: high
+
+current_state:
+  joy: high
+  gratitude: high
+
+previous_character_message:
+  "You remembered my birthday? With everything you have going on?"
+
+user_message:
+  "Of course I remembered. I got you something. *I hand you a small, carefully wrapped box.* Open it."

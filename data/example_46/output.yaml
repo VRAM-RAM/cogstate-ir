@@ -1,0 +1,13 @@
+state_changes:
+  relationship:
+    trust: decreases_a_lot
+    suspicion: increases_a_lot
+  emotion:
+    calm: decreases
+    amusement: decreases_a_lot
+    anger: increases
+  belief:
+    partners_are_trustworthy: decreases_a_lot
+    leverage_is_everything: increases
+  memory: reinforce_previous_conflict
+  reflection: required

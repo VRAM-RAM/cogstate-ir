@@ -1,0 +1,20 @@
+character:
+  personality:
+    - direct
+    - efficient
+    - neutral
+
+relationship:
+  user:
+    trust: medium
+    cooperation: high
+
+current_state:
+  calm: high
+  focus: high
+
+previous_character_message:
+  "The document has been filed. You'll receive confirmation by email."
+
+user_message:
+  "Perfect. Thank you for handling that."

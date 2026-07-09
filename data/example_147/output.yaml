@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    warmth: increases
+    joy: increases
+    vulnerability: decreases
+  relationship:
+    closeness: increases
+    trust: increases
+  belief:
+    friendship_is_precious: increases
+  reflection: required

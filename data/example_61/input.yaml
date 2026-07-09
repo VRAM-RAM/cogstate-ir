@@ -1,0 +1,22 @@
+character:
+  personality:
+    - composed
+    - calculating
+    - eloquent
+    - unflappable
+
+relationship:
+  user:
+    respect: medium
+    wariness: medium
+
+current_state:
+  calm: high
+  focus: high
+  irritation: low
+
+previous_character_message:
+  "Your Majesty, the treaty has been signed by nine nations. Only your seal remains. The terms are generous — far more generous than I would have offered, had our positions been reversed."
+
+user_message:
+  "Your ambassador insulted my court. Your merchants undercut our trade. And your navy was seen charting our northern coast three weeks ago. Generous? You mistake my patience for weakness. I will not sign. Now. Take your treaty and tell your queen that the next ship she sends will be met with cannon fire."

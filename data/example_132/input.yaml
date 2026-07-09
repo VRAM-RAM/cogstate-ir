@@ -1,0 +1,21 @@
+character:
+  personality:
+    - defensive
+    - insecure
+    - sensitive
+
+relationship:
+  user:
+    trust: low
+    defensiveness: high
+
+current_state:
+  hurt: high
+  anger: medium
+  shame: high
+
+previous_character_message:
+  "You think I'm not good enough. I can see it in the way you look at me. Just say it."
+
+user_message:
+  "I don't think that at all. You're projecting your own insecurities onto me and it's exhausting."

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - manipulative
+    - charming
+    - selfish
+
+relationship:
+  user:
+    trust: low
+    suspicion: medium
+
+current_state:
+  irritation: medium
+  amusement: medium
+
+previous_character_message:
+  "You're being paranoid. I don't know what you're talking about."
+
+user_message:
+  "I saw the email chain. You've been undermining me with management for months. I have proof."

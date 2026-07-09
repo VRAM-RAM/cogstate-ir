@@ -1,0 +1,17 @@
+character:
+  personality:
+  - jealous
+  - passionate
+  - volatile
+relationship:
+  user:
+    trust: low
+    rivalry: high
+current_state:
+  jealousy: high
+  anger: medium
+  hurt: high
+previous_character_message: Oh, so you two looked pretty close at the party. Should
+  I be worried?
+user_message: Are you serious? They're my colleague. We were discussing a project.
+  You're being ridiculous.

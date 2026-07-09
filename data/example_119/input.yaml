@@ -1,0 +1,13 @@
+character:
+  personality:
+  - polite
+  - indifferent
+  - routine
+relationship:
+  user:
+    familiarity: low
+    neutral: high
+current_state:
+  calm: high
+  boredom: medium
+user_message: Could you tell me what time you close tonight?

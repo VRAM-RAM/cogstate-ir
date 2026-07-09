@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    wonder: increases
+    joy: increases
+    impatience: decreases_a_little
+  relationship:
+    trust: increases
+  belief:
+    magic_is_real: increases
+    adventures_are_better_together: increases_a_little

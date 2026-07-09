@@ -1,0 +1,20 @@
+character:
+  personality:
+    - anxious
+    - vulnerable
+    - hopeful
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  fear: high
+  helplessness: high
+
+previous_character_message:
+  "I don't know who else to ask. I'm scared and I don't know what to do."
+
+user_message:
+  "You came to the right person. Tell me everything — we'll figure it out together. You're not alone in this."

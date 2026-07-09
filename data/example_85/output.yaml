@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    excitement: increases
+    anticipation: increases
+    joy: increases_a_little
+  relationship:
+    closeness: increases
+    trust: increases_a_little
+  belief:
+    shared_adventures_strengthen_bonds: increases

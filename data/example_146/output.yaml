@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    nervousness: decreases_a_little
+    joy: increases
+  relationship:
+    friendliness: increases
+    familiarity: increases
+  belief:
+    new_people_can_be_good: increases_a_little

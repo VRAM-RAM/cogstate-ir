@@ -1,0 +1,14 @@
+state_changes:
+  emotion:
+    grief: decreases_a_lot
+    disbelief: increases
+    joy: increases_a_lot
+    relief: increases_a_lot
+  relationship:
+    love: increases
+    loss: decreases_a_lot
+  belief:
+    miracles_can_happen: increases_a_lot
+    hope_was_not_foolish: increases
+  memory: reinforce_previous_conflict
+  reflection: required

@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    fear: decreases_a_little
+    hope: increases
+    defiance: decreases_a_little
+  relationship:
+    trust: increases_a_little
+    wariness: decreases_a_little
+  belief:
+    adults_can_be_trusted: increases_a_little
+    safety_might_be_real: increases_a_little
+  reflection: required

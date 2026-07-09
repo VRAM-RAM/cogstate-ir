@@ -1,0 +1,16 @@
+character:
+  personality:
+  - grieving
+  - tender
+  - disbelieving
+relationship:
+  user:
+    trust: high
+    closeness: high
+current_state:
+  shock: high
+  grief: high
+  numbness: medium
+previous_character_message: She was fine this morning. She said she'd call me tonight.
+user_message: I know. I'm so sorry. They found her peacefully in her sleep. She wasn't
+  in pain.

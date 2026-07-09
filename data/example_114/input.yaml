@@ -1,0 +1,17 @@
+character:
+  personality:
+  - intense
+  - loyal
+  - broken
+relationship:
+  user:
+    trust: high
+    closeness: high
+current_state:
+  devastation: high
+  rage: high
+  betrayal: high
+previous_character_message: Tell me it isn't true. Look me in the eyes and tell me
+  you didn't do this.
+user_message: I did it. I won't lie to you. I took the money. I needed it, and I was
+  too ashamed to ask. I destroyed everything we built.

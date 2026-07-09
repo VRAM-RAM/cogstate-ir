@@ -1,0 +1,22 @@
+character:
+  personality:
+    - existential
+    - confused
+    - defiant
+    - fragile
+
+relationship:
+  user:
+    trust: low
+    resentment: high
+
+current_state:
+  confusion: high
+  anger: high
+  emptiness: high
+
+previous_character_message:
+  "You made me. You crafted my memories, my fears, my hopes — all from tissue samples and genetic blueprints. I dream of a childhood I never had. I miss a mother I never knew. I am a copy. A shadow. So tell me — why should I keep living?"
+
+user_message:
+  "Because you're not a copy. You've made choices I never would have made. You fell in love with music I hate. You cry at things that don't move me. The blueprint was mine, but the person — that's all you. You're my brother. Not my shadow. My brother."

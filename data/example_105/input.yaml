@@ -1,0 +1,16 @@
+character:
+  personality:
+  - controlling
+  - authoritative
+  - intimidating
+relationship:
+  user:
+    obedience: high
+    resentment: high
+current_state:
+  anger: medium
+  impatience: high
+previous_character_message: I told you to have this ready by noon. It's 12:15. Where
+  is it?
+user_message: I'm still working on it. The data from accounting was late — I can't
+  control that. I'll have it done in twenty minutes.

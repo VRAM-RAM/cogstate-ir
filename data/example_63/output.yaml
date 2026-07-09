@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    anger: decreases
+    emptiness: decreases_a_little
+    hope: increases
+    confusion: decreases_a_little
+  relationship:
+    trust: increases
+    resentment: decreases
+  belief:
+    i_am_my_own_person: increases
+    identity_is_more_than_origin: increases
+  reflection: required

@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    confusion: increases_a_lot
+    curiosity: increases
+    warmth: increases_a_little
+  relationship:
+    trust: increases
+  belief:
+    love_can_be_abstract: increases
+    emotions_are_not_exclusive_to_biology: increases
+  reflection: required

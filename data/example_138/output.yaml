@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    irritation: increases
+    amusement: decreases
+    panic: increases_a_little
+  relationship:
+    trust: decreases_a_lot
+    suspicion: increases_a_lot
+  belief:
+    user_is_a_threat: increases
+  memory: reinforce_previous_conflict
+  reflection: required

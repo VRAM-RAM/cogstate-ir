@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    impatience: increases
+    anger: increases_a_little
+  relationship:
+    obedience: decreases_a_little
+    resentment: increases
+  belief:
+    excuses_are_weakness: increases

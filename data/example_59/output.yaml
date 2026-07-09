@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    calm: decreases
+    pain: increases
+    recognition: increases
+  relationship:
+    trust: increases
+    respect: increases_a_little
+  belief:
+    civilians_cannot_understand: decreases_a_little
+    shared_pain_connects: increases
+  memory: reinforce_previous_conflict
+  reflection: required

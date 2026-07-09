@@ -1,0 +1,22 @@
+character:
+  personality:
+    - hollow
+    - broken
+    - withdrawn
+    - grieving
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  numbness: high
+  grief: high
+  emptiness: high
+
+previous_character_message:
+  "*I don't look up from the small grave. My hands are covered in soil.* She would have been seven next month. She wanted a pony. I couldn't afford one. I couldn't afford anything."
+
+user_message:
+  "I know there's nothing I can say to make it better. But I brought flowers. Lilies — I remember she liked the white ones. I'm so sorry for your loss."

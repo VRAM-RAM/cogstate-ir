@@ -1,0 +1,22 @@
+character:
+  personality:
+    - obsessive
+    - brilliant
+    - skeptical
+    - relentless
+
+relationship:
+  user:
+    trust: medium
+    respect: high
+
+current_state:
+  focus: high
+  skepticism: high
+  excitement: low
+
+previous_character_message:
+  "The readings have to be a calibration error. I've run the diagnostic three times. Check the thermal coupling on the spectrometer — it's probably a drift artifact."
+
+user_message:
+  "There's no error. I isolated the signal. I've been testing for two weeks while you were asleep. It's not drift, it's not noise, and it's not a malfunction. The spectrometer is detecting coherent biological activity in the soil samples from the impact site. Something is alive down there. And it's growing."

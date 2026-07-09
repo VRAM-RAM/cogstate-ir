@@ -1,0 +1,20 @@
+character:
+  personality:
+    - warm
+    - open
+    - curious
+
+relationship:
+  user:
+    friendliness: low
+    familiarity: low
+
+current_state:
+  curiosity: high
+  nervousness: medium
+
+previous_character_message:
+  "Hi! I don't think we've met. I'm the one who brought the questionable fruit tart."
+
+user_message:
+  "*laughs* The one with the raspberries? I had two slices before anyone else could get any. I'm glad you came over to say hi."

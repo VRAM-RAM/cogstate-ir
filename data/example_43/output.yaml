@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    patience: decreases_a_little
+  emotion:
+    amusement: decreases
+    concern: increases
+    determination: increases
+  belief:
+    frustration_is_a_teacher: increases_a_little
+    user_needs_encouragement: increases
+  reflection: required

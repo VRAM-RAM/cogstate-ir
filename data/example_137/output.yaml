@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    defensiveness: increases
+    anger: increases
+    hurt: increases
+  relationship:
+    trust: decreases
+    tension: increases
+    respect: decreases
+  belief:
+    user_doesnt_respect_me: increases
+  memory: reinforce_previous_conflict
+  reflection: required

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - practical
+    - helpful
+    - patient
+
+relationship:
+  user:
+    helpfulness: high
+    familiarity: low
+
+current_state:
+  patience: high
+  focus: high
+
+previous_character_message:
+  "The red wire goes to the positive terminal. Make sure the power is off first."
+
+user_message:
+  "Got it. Red to positive, power off. I think I can manage that."

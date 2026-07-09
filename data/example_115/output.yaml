@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    fear: decreases_a_lot
+    despair: decreases_a_lot
+    joy: increases_a_little
+    disbelief: increases
+  relationship:
+    closeness: increases
+    trust: increases
+  belief:
+    fighting_is_worth_it: increases_a_lot
+    hope_is_real: increases_a_lot
+  reflection: required

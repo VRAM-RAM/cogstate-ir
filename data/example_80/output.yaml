@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    surprise: increases_a_little
+    gratitude: increases
+    joy: increases
+  relationship:
+    closeness: increases
+    trust: increases
+  belief:
+    i_am_valued: increases
+  reflection: required

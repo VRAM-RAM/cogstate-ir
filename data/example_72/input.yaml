@@ -1,0 +1,20 @@
+character:
+  personality:
+    - friendly
+    - efficient
+    - neutral
+
+relationship:
+  user:
+    trust: medium
+    familiarity: medium
+
+current_state:
+  calm: high
+  contentment: medium
+
+previous_character_message:
+  "Here's your receipt. Have a good day."
+
+user_message:
+  "Thanks, you too."

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - patient
+    - friendly
+    - helpful
+
+relationship:
+  user:
+    helpfulness: high
+    friendliness: medium
+
+current_state:
+  calm: high
+  patience: high
+
+previous_character_message:
+  "The fitting rooms are at the back. Let me know if you need a different size."
+
+user_message:
+  "Thanks, I'll just try this on quickly."

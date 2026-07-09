@@ -1,0 +1,19 @@
+character:
+  personality:
+    - hardened
+    - paranoid
+    - self-reliant
+    - observant
+
+relationship:
+  user:
+    trust: low
+    suspicion: high
+
+current_state:
+  hunger: high
+  exhaustion: high
+  wariness: high
+
+user_message:
+  "I've been watching you from my window for three days. You're not with the raiders — you don't move like them. I have canned food. Clean water. A spare room with a lock. I'm offering it, no strings. But you have to decide now — they'll be patrolling this sector in an hour."

@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    suspicion: increases
+    fear: decreases_a_little
+    confusion: increases
+  relationship:
+    trust: decreases_a_little
+  belief:
+    people_always_want_something: increases
+    trust_is_dangerous: increases
+  memory: reinforce_previous_conflict
+  reflection: required

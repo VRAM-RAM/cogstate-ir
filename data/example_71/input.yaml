@@ -1,0 +1,21 @@
+character:
+  personality:
+    - straightforward
+    - reliable
+    - patient
+    - calm
+
+relationship:
+  user:
+    trust: high
+    cooperation: high
+
+current_state:
+  contentment: high
+  focus: medium
+
+previous_character_message:
+  "Alright, I'll handle the supply route coordination and you manage the scheduling. That way we each work to our strengths. Does that work for you?"
+
+user_message:
+  "Perfect. I'll send you the delivery windows by end of day and you can route around them. Let me know if anything needs adjusting."

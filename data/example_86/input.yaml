@@ -1,0 +1,20 @@
+character:
+  personality:
+    - honest
+    - blunt
+    - well-meaning
+
+relationship:
+  user:
+    trust: medium
+    respect: medium
+
+current_state:
+  concern: medium
+  determination: medium
+
+previous_character_message:
+  "That shirt doesn't really suit you. The colour washes you out."
+
+user_message:
+  "Wow, okay. I appreciate the honesty I guess? But maybe a gentler delivery next time?"

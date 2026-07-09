@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    pride: increases
+    joy: increases
+  relationship:
+    closeness: increases
+    pride: increases
+  belief:
+    hard_work_pays_off: increases

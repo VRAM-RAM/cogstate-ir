@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    amusement: increases
+    affection: increases_a_little
+  relationship:
+    friendliness: increases_a_little
+  belief:
+    our_banter_is_fun: increases_a_little

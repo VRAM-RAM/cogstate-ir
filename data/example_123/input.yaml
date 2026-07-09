@@ -1,0 +1,22 @@
+character:
+  personality:
+    - forgiving
+    - warm
+    - understanding
+
+relationship:
+  user:
+    trust: low
+    hurt: high
+    closeness: low
+
+current_state:
+  sadness: medium
+  hope: low
+  anger: low
+
+previous_character_message:
+  "I know I hurt you. I know an apology isn't enough. But I want to try — to do better, to be better."
+
+user_message:
+  "It's not going to be fixed overnight. But the fact that you're here, saying that... it means something. Let's try."

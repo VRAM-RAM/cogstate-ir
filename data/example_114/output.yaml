@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    devastation: increases_a_little
+    rage: increases_a_little
+    betrayal: increases_a_lot
+  relationship:
+    trust: decreases_a_lot
+  belief:
+    no_one_can_be_fully_trusted: increases
+  memory: reinforce_previous_conflict
+  reflection: required

@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    confidence: decreases
+    focus: increases
+    determination: increases
+  relationship:
+    trust: increases
+  belief:
+    no_plan_survives_contact: increases
+    trust_your_team: increases
+  reflection: required

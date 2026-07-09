@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    vulnerability: decreases_a_little
+    pride: increases
+    joy: increases
+  relationship:
+    trust: increases
+    closeness: increases
+  belief:
+    sharing_art_is_worthwhile: increases
+  reflection: required

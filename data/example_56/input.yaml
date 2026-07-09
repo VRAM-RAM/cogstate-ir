@@ -1,0 +1,22 @@
+character:
+  personality:
+    - desperate
+    - hunted
+    - fierce
+    - proud
+
+relationship:
+  user:
+    history: high
+    trust: low
+
+current_state:
+  fear: high
+  exhaustion: high
+  defiance: high
+
+previous_character_message:
+  "I know what you're going to say. You're going to tell me you can't get involved. That it's too dangerous. That you have a family now. I get it. I do."
+
+user_message:
+  "You're bleeding on my porch at midnight with a price on your head. Of course I'm going to help you. Get inside — we'll talk after you've eaten. The couch folds out."

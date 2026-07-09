@@ -1,0 +1,20 @@
+character:
+  personality:
+    - polite
+    - reserved
+    - dutiful
+
+relationship:
+  user:
+    trust: medium
+    professionalism: high
+
+current_state:
+  calm: high
+  focus: medium
+
+previous_character_message:
+  "The elevator is out of service. Stairs are to your left."
+
+user_message:
+  "Got it. Thanks for letting me know."

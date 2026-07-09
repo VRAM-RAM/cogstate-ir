@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    curiosity: increases
+    interest: increases
+  relationship:
+    familiarity: increases_a_little
+    friendliness: increases_a_little
+  belief:
+    shared_interests_exist: increases_a_little

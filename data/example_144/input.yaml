@@ -1,0 +1,20 @@
+character:
+  personality:
+    - stoic
+    - pragmatic
+    - warm_underneath
+
+relationship:
+  user:
+    closeness: high
+    trust: high
+
+current_state:
+  determination: high
+  sadness: medium
+
+previous_character_message:
+  "The cart leaves at sunrise. I've stayed longer than I should have."
+
+user_message:
+  "Then I'm walking you to the gates. Someone has to make sure you actually eat breakfast before you disappear."

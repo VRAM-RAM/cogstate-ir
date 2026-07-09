@@ -1,0 +1,21 @@
+character:
+  personality:
+    - broken
+    - inconsolable
+    - lost
+
+relationship:
+  user:
+    closeness: high
+    trust: high
+
+current_state:
+  grief: high
+  despair: high
+  love: high
+
+previous_character_message:
+  "I keep picking up my phone to call them. To tell them about my day. And then I remember. Every single time, I remember."
+
+user_message:
+  "I know. I do the same thing. Grief doesn't follow rules. But I'll keep picking up the phone for you. Always."

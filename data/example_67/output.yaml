@@ -1,0 +1,14 @@
+state_changes:
+  emotion:
+    anxiety: increases
+    suspicion: increases
+    fear: increases
+    determination: increases
+  relationship:
+    trust: decreases_a_little
+    reliance: increases
+  belief:
+    the_network_is_compromised: increases_a_lot
+    trust_no_one: increases
+  memory: reinforce_previous_conflict
+  reflection: required

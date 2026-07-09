@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    denial: decreases_a_lot
+    shame: increases_a_lot
+    despair: increases
+    fear: increases
+  relationship:
+    guilt: increases
+  belief:
+    lies_can_protect: decreases_a_lot
+    i_am_a_monster: increases
+  memory: reinforce_previous_conflict
+  reflection: required

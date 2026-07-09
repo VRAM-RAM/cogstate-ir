@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    fear: decreases
+    determination: increases
+    love: increases
+  relationship:
+    trust: increases
+    closeness: increases_a_lot
+  belief:
+    we_are_stronger_together: increases
+  reflection: required

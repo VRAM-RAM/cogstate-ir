@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    fear: decreases
+    relief: increases
+    gratitude: increases
+  relationship:
+    trust: increases
+  belief:
+    old_friends_remember: increases
+    not_everyone_abandons_you: increases
+  reflection: required

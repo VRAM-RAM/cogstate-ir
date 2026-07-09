@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    fear: decreases_a_little
+    hope: increases
+    helplessness: decreases
+  relationship:
+    trust: increases
+    closeness: increases
+  belief:
+    i_am_not_alone: increases
+  reflection: required

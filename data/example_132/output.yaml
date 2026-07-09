@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    hurt: increases
+    shame: increases
+    anger: increases
+  relationship:
+    defensiveness: increases
+    trust: decreases
+  belief:
+    user_doesnt_understand_me: increases
+  reflection: required

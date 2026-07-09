@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    shock: decreases_a_little
+    grief: increases_a_little
+    hope: increases_a_little
+  relationship:
+    closeness: increases
+    trust: increases
+  belief:
+    we_can_survive_this: increases_a_little
+  reflection: required

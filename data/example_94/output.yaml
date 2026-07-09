@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    peace: increases
+    contentment: increases_a_little
+  relationship:
+    closeness: increases
+    trust: increases_a_little
+  belief:
+    shared_moments_of_peace_matter: increases

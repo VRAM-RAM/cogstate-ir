@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    love: increases
+    vulnerability: decreases
+    fear: decreases
+    joy: increases_a_lot
+  relationship:
+    closeness: increases_a_lot
+    trust: increases
+    attraction: increases
+  belief:
+    love_is_worth_it: increases
+  reflection: required

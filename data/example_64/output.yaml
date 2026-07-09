@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    anxiety: decreases
+    hope: increases
+    determination: increases
+  relationship:
+    trust: increases
+    support: increases
+  belief:
+    my_work_has_value: increases_a_little
+    vulnerability_is_strength: increases_a_little
+  reflection: required

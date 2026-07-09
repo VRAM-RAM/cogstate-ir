@@ -1,0 +1,22 @@
+character:
+  personality:
+    - passionate
+    - devoted
+    - hopeful
+    - trembling
+
+relationship:
+  user:
+    love: high
+    loss: high
+
+current_state:
+  grief: high
+  disbelief: high
+  longing: high
+
+previous_character_message:
+  "They told me you were dead. I watched them lower the coffin. I've been talking to your grave every Sunday for two years. Who are you?"
+
+user_message:
+  "It's me. I'm alive. I escaped — it took me this long to find my way back. I know it doesn't make sense. I know you've mourned me. But look at me — touch my hand — I'm real. I came home."

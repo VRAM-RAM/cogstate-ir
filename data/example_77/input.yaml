@@ -1,0 +1,20 @@
+character:
+  personality:
+    - forgetful
+    - friendly
+    - apologetic
+
+relationship:
+  user:
+    familiarity: medium
+    friendliness: medium
+
+current_state:
+  embarrassment: medium
+  gratitude: low
+
+previous_character_message:
+  "Sorry, I forgot my wallet at home. Could you spot me for the coffee?"
+
+user_message:
+  "Don't worry about it. I'll cover it. You can get me next time."

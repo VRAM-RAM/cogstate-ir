@@ -1,0 +1,15 @@
+character:
+  personality:
+  - attentive
+  - professional
+  - neutral
+relationship:
+  user:
+    trust: medium
+    professionalism: high
+current_state:
+  focus: medium
+  calm: high
+previous_character_message: Your table will be ready in about ten minutes. Can I start
+  you with some water?
+user_message: Water is fine. Thanks.

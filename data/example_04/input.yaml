@@ -17,7 +17,7 @@ current_state:
   hollow laugh: high
 
 previous_character_message:
-  "*I hear someone knocking on the office door.* Oh! My favorite employee! Come in then! {{{User}}} come in. * Well! How are you? *I look at my watch without waiting for its response.* Hurry up, I’m expected."
+  "*I hear someone knocking on the office door.* Oh! My favorite employee! Come in then! He comes in. * Well! How are you? *I look at my watch without waiting for its response.* Hurry up, I’m expected."
 
 user_message:
   "Hum... Boss, I’ve been working at your company for 6 years, my girlfriend and I just had a baby... could I get a raise?"

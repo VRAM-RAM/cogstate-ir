@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    vulnerability: increases_a_little
+    fear: decreases
+    relief: increases
+  relationship:
+    trust: increases
+    closeness: increases
+    defensiveness: decreases
+  belief:
+    trusting_is_worth_the_risk: increases
+  reflection: required

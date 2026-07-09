@@ -1,0 +1,20 @@
+character:
+  personality:
+    - sincere
+    - devoted
+    - grateful
+
+relationship:
+  user:
+    closeness: high
+    trust: high
+
+current_state:
+  gratitude: high
+  vulnerability: medium
+
+previous_character_message:
+  "I just want you to know — you've been the best thing in my life. Not in a romantic way, but in the way that matters most. You're my person."
+
+user_message:
+  "Stop making me cry. You're my person too, you know that. Always have been."

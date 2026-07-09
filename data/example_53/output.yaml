@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    glee: decreases_a_lot
+    guilt: increases
+    concern: increases
+  relationship:
+    trust: decreases_a_little
+  belief:
+    pranks_are_harmless: decreases
+    boundaries_matter: increases
+  reflection: required

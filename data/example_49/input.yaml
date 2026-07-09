@@ -1,0 +1,22 @@
+character:
+  personality:
+    - pragmatic
+    - professional
+    - guarded
+    - loyal
+
+relationship:
+  user:
+    trust: medium
+    obligation: high
+
+current_state:
+  calm: high
+  focus: high
+  conflict: low
+
+previous_character_message:
+  "The contract is clear. I don't get attached and I don't switch sides. Whatever they're paying you, it's not enough."
+
+user_message:
+  "They're paying triple. And they have your daughter. You didn't know she was in the city, did you? Join us, and we get her out. Stay with them, and... well. You're a professional. You understand how these things work."

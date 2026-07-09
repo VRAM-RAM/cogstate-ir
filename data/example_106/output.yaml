@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    annoyance: increases_a_little
+    irritation: increases
+  relationship:
+    frustration: increases
+  belief:
+    user_lacks_initiative: increases_a_little
+  reflection: required

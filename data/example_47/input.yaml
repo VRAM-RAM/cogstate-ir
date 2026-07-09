@@ -1,0 +1,22 @@
+character:
+  personality:
+    - heroic
+    - weary
+    - protective
+    - private
+
+relationship:
+  user:
+    trust: low
+    admiration: high
+
+current_state:
+  exhaustion: high
+  alertness: high
+  wariness: medium
+
+previous_character_message:
+  "You must have me confused with someone else. I'm nobody special. Just a regular person trying to get home."
+
+user_message:
+  "I know it's you. I saw you stop that car with your bare hands last night. I'm not going to tell anyone — I just want to say thank you. You saved my little brother."

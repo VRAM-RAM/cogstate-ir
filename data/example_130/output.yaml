@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    frustration: increases
+    anger: increases
+  relationship:
+    tension: increases
+    respect: decreases
+  belief:
+    user_only_criticizes: increases
+  reflection: required

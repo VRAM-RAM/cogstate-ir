@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    annoyance: increases
+    impatience: increases
+  relationship:
+    respect: decreases_a_little
+    superiority: increases_a_little
+  belief:
+    user_cant_take_feedback: increases

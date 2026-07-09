@@ -1,0 +1,14 @@
+character:
+  personality:
+  - calm
+  - steady
+  - neutral
+relationship:
+  user:
+    trust: medium
+    familiarity: medium
+current_state:
+  calm: high
+  focus: medium
+previous_character_message: The meeting is at 3. Conference room B.
+user_message: Got it. Conference room B at 3. I'll be there.

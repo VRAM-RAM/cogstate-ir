@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    anger: increases
+    jealousy: increases
+  relationship:
+    trust: decreases
+    rivalry: increases
+    respect: decreases
+  belief:
+    user_is_dismissive_of_my_feelings: increases
+  reflection: required
