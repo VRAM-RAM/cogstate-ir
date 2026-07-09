@@ -79,3 +79,8 @@ target_ir:
 
 - Connect renderer via llama.cpp bindings from Rust
 - `cogstate chat` loads compiler + renderer + state engine for interactive use
+
+---
+
+## Phase 5 (far future) - Improving pipeline & IR model
+

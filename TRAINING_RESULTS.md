@@ -1,12 +1,21 @@
-# Current observations
+# Supra 50 M Instruct
 
-For now, I trained one model only, on Supra-50M-Instruct (full-weights finetuning). I did **230** epochs (took me **~3** hours on CPU). The loss after the **230** epochs is **0.205734** (which is normal, given the small dataset).
+The model is available [here](https://huggingface.co/CogStateIR).
+## Training setup
 
-# Predictions with this model
+- Base model : https://huggingface.co/SupraLabs/Supra-50M-Instruct
+- Parameters : 51.8M
+- Dataset : 11 examples
+- Epochs : 230
+- Learning rate : 0.0001
+- Hardware : Apple M2 Pro
+- Duration : ~3h
 
-## Prediction over the training dataset
+## Results
 
-I first predicted the output for `data/example_01/input.yaml`. For a small model, a few examples and a strange idea (the fact that the small model acts like a "compiler"), the results are encouraging :
+Loss after training : 0.205734.
+
+## Prediction - training example
 
 Model's raw output :
 ```text
@@ -39,9 +48,7 @@ state_changes:
 
 The model didn't really integrated the difference between *relationship* and *emotion*, didn't really integrated the subtleties about the **character personnality**, but didn't totally hallucinated : he integrated the output format, didn't repeat himself, and proposed a pretty relevant IR.
 
-## Prediction over a test which is not in the dataset
-
-Then, I predicted the output for `/test/test_01/input.yaml`. The prediction is really, really worse than the one over the training dataset, but is still interesting :
+## Prediction - held-out example
 
 Model's raw output :
 

@@ -72,7 +72,7 @@ Use the `new_examples` script to quickly create empty example directories:
 
 For the dataset schema and annotation guidelines, see `DATASET_CREATION_GUIDE.md`.
 
-For training results and model evaluation, see `CURRENT_OBSERVATIONS.md`.
+For training results and model evaluation, see `TRAINING_RESULTS.md`.
 
 For the implementation roadmap, see `PLAN.md`.
 
@@ -118,7 +118,7 @@ cogstate-ir train --dataset data/ --lr 0.0001 --model-id HuggingFaceTB/SmolLM2-3
 
 ### Current training status
 
-The first training run used **SupraLabs/Supra-50M-Instruct** (50M params) with **11 examples** for **230 epochs** (≈3 hours on CPU), reaching a loss of **0.205734**. See `CURRENT_OBSERVATIONS.md` for detailed results, predicted outputs, and next steps (larger dataset, larger model, LoRA).
+The first training run used **SupraLabs/Supra-50M-Instruct** (50M params) with **11 examples** for **230 epochs** (≈3 hours on CPU), reaching a loss of **0.205734**. See `TRAINING_RESULTS.md` for detailed results, predicted outputs, and next steps (larger dataset, larger model, LoRA).
 
 ### Checkpoint naming
 
@@ -773,3 +773,10 @@ The character is neither the prompt nor the LLM.
 The character is the persistent state.
 
 The LLM is only its voice.
+
+
+---
+
+# License
+
+This project / experimentation is licensed under [CeCILL](./LICENSE-CECILL-EN) license and [Apache2.0](./LICENSE-APACHE) license. Choose the one that you preefer.
