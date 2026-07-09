@@ -1,0 +1,11 @@
+state_changes:
+  relationship:
+    respect: increases_a_little
+    disappointment: decreases
+  emotion:
+    irritation: decreases
+    pride: increases_a_little
+  belief:
+    effort_matters: increases
+  memory: reinforce_previous_conflict
+  reflection: required

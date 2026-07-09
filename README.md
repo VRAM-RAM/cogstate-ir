@@ -55,16 +55,26 @@ Create examples as numbered directories under `data/`, each containing an `input
 
 ```text
 data/
-  ├── 01_input/
+  ├── example_01/
   │   ├── input.yaml
   │   └── output.yaml
-  ├── 02_input/
+  ├── example_02/
   │   ├── input.yaml
   │   └── output.yaml
   └── ...
 ```
 
-For more information, see `DATASET_CREATION_GUIDE.md`.
+Use the `new_examples` script to quickly create empty example directories:
+
+```bash
+./new_examples 10   # creates example_57 … example_66 (after existing ones)
+```
+
+For the dataset schema and annotation guidelines, see `DATASET_CREATION_GUIDE.md`.
+
+For training results and model evaluation, see `CURRENT_OBSERVATIONS.md`.
+
+For the implementation roadmap, see `PLAN.md`.
 
 ## Validation
 
@@ -77,7 +87,7 @@ cogstate-ir validate-all data/
 Validate a single pair:
 
 ```bash
-cogstate-ir validate data/01_input/input.yaml data/01_input/output.yaml
+cogstate-ir validate data/example_01/input.yaml data/example_01/output.yaml
 ```
 
 ## Training
@@ -106,6 +116,10 @@ Customize the learning rate and model:
 cogstate-ir train --dataset data/ --lr 0.0001 --model-id HuggingFaceTB/SmolLM2-360M-Instruct
 ```
 
+### Current training status
+
+The first training run used **SupraLabs/Supra-50M-Instruct** (50M params) with **11 examples** for **230 epochs** (≈3 hours on CPU), reaching a loss of **0.205734**. See `CURRENT_OBSERVATIONS.md` for detailed results, predicted outputs, and next steps (larger dataset, larger model, LoRA).
+
 ### Checkpoint naming
 
 With `--output model.safetensors` (default) and `--checkpoint-every 10`:
@@ -128,7 +142,7 @@ model-epoch100.safetensors
 Run the trained compiler on an input:
 
 ```bash
-cogstate-ir predict --weights model.safetensors data/01_input/input.yaml
+cogstate-ir predict --weights model.safetensors data/example_01/input.yaml
 ```
 
 ## State utilities
