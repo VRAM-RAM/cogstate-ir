@@ -76,6 +76,7 @@ For training results and model evaluation, see `TRAINING_RESULTS.md`.
 
 For the implementation roadmap, see `PLAN.md`.
 
+
 ## Validation
 
 Validate all examples:
@@ -115,6 +116,8 @@ Customize the learning rate and model:
 ```bash
 cogstate-ir train --dataset data/ --lr 0.0001 --model-id HuggingFaceTB/SmolLM2-360M-Instruct
 ```
+
+You can find all the models [here](https://huggingface.co/CogStateIR).
 
 ### Current training status
 
