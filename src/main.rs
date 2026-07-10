@@ -15,6 +15,16 @@ mod tokenizer;
 mod train;
 mod util;
 
+fn select_device() -> anyhow::Result<Device> {
+    if candle_core::utils::metal_is_available() {
+        println!("using Metal GPU");
+        Ok(Device::new_metal(0)?)
+    } else {
+        println!("Metal not available, using CPU");
+        Ok(Device::Cpu)
+    }
+}
+
 fn download_config(model_id: &str) -> anyhow::Result<llama::Config> {
     let (owner, name) = util::split_model_id(model_id);
     let client = hf_hub::HFClientSync::new()?;
@@ -153,7 +163,7 @@ fn main() -> anyhow::Result<()> {
             checkpoint_every,
             resume,
         } => {
-            let device = Device::Cpu;
+            let device = select_device()?;
             println!("device: {device:?}");
             println!("model: {model_id}");
 
@@ -207,7 +217,7 @@ fn main() -> anyhow::Result<()> {
             input,
             model_id,
         } => {
-            let device = Device::Cpu;
+            let device = select_device()?;
             println!("device: {device:?}");
             println!("model: {model_id}");
 
