@@ -137,6 +137,8 @@ pub fn ops_from_state_changes(changes: &StateChanges) -> Vec<IrOp> {
 
 // ── Delta constants ──────────────────────────────────────────────────────
 
+/// Delta values mirror the Magnitude enum's semantic scale.
+/// Each step moves the character state by ~4–20% of the full [0, 1] range.
 fn magnitude_delta(m: Magnitude) -> f32 {
     match m {
         Magnitude::DecreasesALot => -0.20,
@@ -148,9 +150,7 @@ fn magnitude_delta(m: Magnitude) -> f32 {
     }
 }
 
-fn clamp(value: f32) -> f32 {
-    value.clamp(0.0, 1.0)
-}
+const MAX_HISTORY: usize = 1000;
 
 // ── Engine ───────────────────────────────────────────────────────────────
 
@@ -172,7 +172,7 @@ impl Engine {
             match op {
                 IrOp::Emotion { name, magnitude } => {
                     let entry = new_state.emotions.entry(name.clone()).or_insert(0.5);
-                    *entry = clamp(*entry + magnitude_delta(*magnitude));
+                    *entry = (*entry + magnitude_delta(*magnitude)).clamp(0.0, 1.0);
                 }
                 IrOp::Relationship {
                     target,
@@ -184,18 +184,18 @@ impl Engine {
                         .entry(target.clone())
                         .or_default();
                     let entry = traits.entry(trait_name.clone()).or_insert(0.5);
-                    *entry = clamp(*entry + magnitude_delta(*magnitude));
+                    *entry = (*entry + magnitude_delta(*magnitude)).clamp(0.0, 1.0);
                 }
                 IrOp::Belief { identifier, magnitude } => {
                     let entry = new_state
                         .beliefs
                         .entry(identifier.clone())
                         .or_insert(0.5);
-                    *entry = clamp(*entry + magnitude_delta(*magnitude));
+                    *entry = (*entry + magnitude_delta(*magnitude)).clamp(0.0, 1.0);
                 }
                 IrOp::ReinforceMemory { entry_id } => {
                     if let Some(entry) = new_state.memory.iter_mut().find(|e| e.id == *entry_id) {
-                        entry.strength = clamp(entry.strength + 0.10);
+                        entry.strength = (entry.strength + 0.10).clamp(0.0, 1.0);
                     } else {
                         new_state.memory.push(MemoryEntry {
                             id: entry_id.clone(),
@@ -210,6 +210,9 @@ impl Engine {
         }
 
         new_state.history.push(snapshot);
+        if new_state.history.len() > MAX_HISTORY {
+            new_state.history.remove(0);
+        }
         new_state
     }
 }
