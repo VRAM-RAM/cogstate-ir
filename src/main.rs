@@ -2,6 +2,7 @@ use std::path::PathBuf;
 
 use candle_core::Device;
 use candle_nn::VarMap;
+use candle_transformers::models::llama;
 use clap::{Parser, Subcommand};
 
 mod dataset;
@@ -12,10 +13,18 @@ mod progress_handler;
 mod spec;
 mod tokenizer;
 mod train;
+mod util;
 
-/// Split a "owner/name" model identifier into separate parts.
-fn split_model_id(id: &str) -> (&str, &str) {
-    id.split_once('/').unwrap_or(("", id))
+fn download_config(model_id: &str) -> anyhow::Result<llama::Config> {
+    let (owner, name) = util::split_model_id(model_id);
+    let client = hf_hub::HFClientSync::new()?;
+    let repo = client.model(owner, name);
+    let config_path = repo
+        .download_file()
+        .filename("config.json".to_string())
+        .send()
+        .map_err(|e| anyhow::anyhow!("downloading config.json: {e}"))?;
+    model::config_from_json(&config_path)
 }
 
 #[derive(Parser)]
@@ -155,15 +164,7 @@ fn main() -> anyhow::Result<()> {
             let mut varmap = VarMap::new();
             let (model, llama_config) = if let Some(resume_path) = &resume {
                 println!("downloading model config…");
-                let (owner, name) = split_model_id(&model_id);
-                let client = hf_hub::HFClientSync::new()?;
-                let repo = client.model(owner, name);
-                let config_path = repo
-                    .download_file()
-                    .filename("config.json".to_string())
-                    .send()
-                    .map_err(|e| anyhow::anyhow!("downloading config.json: {e}"))?;
-                let llama_config = model::config_from_json(&config_path)?;
+                let llama_config = download_config(&model_id)?;
 
                 println!("loading checkpoint from {}…", resume_path.display());
                 let model = model::load_model(&mut varmap, resume_path, &llama_config, &device)?;
@@ -173,7 +174,7 @@ fn main() -> anyhow::Result<()> {
                 model::build_model(&model_id, &mut varmap, &device)?
             };
 
-            let examples = train::load_training_data(&dataset)?;
+            let examples = train::load_training_data(&dataset, &tokenizer)?;
             println!("loaded {} examples", examples.len());
 
             if examples.is_empty() {
@@ -193,7 +194,7 @@ fn main() -> anyhow::Result<()> {
                 &model,
                 &varmap,
                 &examples,
-                &tokenizer,
+                tokenizer.eos_id,
                 &device,
                 &train_config,
                 &llama_config,
@@ -214,15 +215,7 @@ fn main() -> anyhow::Result<()> {
             let tokenizer = tokenizer::TokenizerWrapper::from_pretrained(&model_id)?;
 
             println!("downloading model config…");
-            let (owner, name) = split_model_id(&model_id);
-            let client = hf_hub::HFClientSync::new()?;
-            let repo = client.model(owner, name);
-            let config_path = repo
-                .download_file()
-                .filename("config.json".to_string())
-                .send()
-                .map_err(|e| anyhow::anyhow!("downloading config.json: {e}"))?;
-            let llama_config = model::config_from_json(&config_path)?;
+            let llama_config = download_config(&model_id)?;
 
             println!("loading fine-tuned weights from {}…", weights.display());
             let mut varmap = VarMap::new();
@@ -231,26 +224,7 @@ fn main() -> anyhow::Result<()> {
             // load input yaml and format as text
             let input_content = std::fs::read_to_string(&input)?;
             let parsed_input: spec::Input = serde_yaml::from_str(&input_content)?;
-            println!("RAW INPUT:");
-            println!("{:?}", parsed_input);
-            let dummy_output = spec::Target {
-                state_changes: spec::StateChanges::Record(spec::StateChangesInner {
-                    emotion: None,
-                    relationship: None,
-                    belief: None,
-                    memory: None,
-                    reflection: None,
-                }),
-            };
-
-            let example = dataset::Example {
-                input: parsed_input,
-                target: dummy_output,
-                input_path: String::new(),
-                output_path: String::new(),
-            };
-
-            let input_text = format_input(&example);
+            let input_text = train::format_input(&parsed_input);
 
             let pipe = predict::generate(
                 &model,
@@ -259,11 +233,13 @@ fn main() -> anyhow::Result<()> {
                 &device,
                 &llama_config,
                 256,
+                None,
             )?;
             println!("RAW OUTPUT:");
             println!("{:?}", pipe);
             let changes = predict::pipe_to_state_changes(&pipe);
-            let yaml = predict::state_changes_to_yaml(&changes);
+            let target = spec::Target { state_changes: changes };
+            let yaml = serde_yaml::to_string(&target)?;
             println!("{}", yaml);
         }
     }
@@ -271,29 +247,3 @@ fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
-/// Format input example for prediction (mirrors train.rs format_input)
-fn format_input(example: &dataset::Example) -> String {
-    let input = &example.input;
-    let mut lines = Vec::new();
-
-    let traits: Vec<&str> = input.character.personality.iter().map(|s| s.as_str()).collect();
-    lines.push(format!("Personality: {}", traits.join(", ")));
-
-    for (target, traits_map) in &input.relationship {
-        for (trait_name, value) in traits_map {
-            lines.push(format!("Relationship ({target}): {trait_name}={value}"));
-        }
-    }
-
-    for (emotion, intensity) in &input.current_state {
-        lines.push(format!("Current state: {emotion}={intensity}"));
-    }
-
-    if let Some(prev) = &input.previous_character_message {
-        lines.push(format!("Previous: \"{prev}\""));
-    }
-
-    lines.push(format!("User: \"{}\"", input.user_message));
-    lines.push("---".to_string());
-    lines.join("\n")
-}

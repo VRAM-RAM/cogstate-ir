@@ -5,15 +5,12 @@ use candle_nn::{VarBuilder, VarMap};
 use candle_transformers::models::llama::{self, Cache, Llama, LlamaConfig};
 
 use crate::progress_handler::HfProgress;
+use crate::util;
 
 pub fn config_from_json(path: &Path) -> anyhow::Result<llama::Config> {
     let content = std::fs::read_to_string(path)?;
     let hf: LlamaConfig = serde_json::from_str(&content)?;
     Ok(hf.into_config(/*use_flash_attn=*/ false))
-}
-
-fn split_model_id(id: &str) -> (&str, &str) {
-    id.split_once('/').unwrap_or(("", id))
 }
 
 /// Build model from HuggingFace safetensors into a VarMap for fine-tuning.
@@ -22,7 +19,7 @@ pub fn build_model(
     varmap: &mut VarMap,
     device: &Device,
 ) -> anyhow::Result<(Llama, llama::Config)> {
-    let (owner, name) = split_model_id(model_id);
+    let (owner, name) = util::split_model_id(model_id);
     let client = hf_hub::HFClientSync::new()?;
     let repo = client.model(owner, name);
 
@@ -51,6 +48,8 @@ pub fn build_model(
     // Step 2: Overwrite random vars with pretrained weights from safetensors.
     // set_one requires the var to already exist; we build the model first so it does.
     // We explicitly convert BF16→F32 since var.set() doesn't handle dtype conversion.
+    // Note: this is a per-tensor loop — candle 0.11 has no bulk dtype conversion API,
+    // so each of the ~100–300 tensors incurs a separate device-side conversion call.
     eprintln!("loading pre-trained weights…");
     let safetensors = candle_core::safetensors::load(&weights_path, device)?;
     for (name, t) in &safetensors {
@@ -69,6 +68,9 @@ pub fn load_model(
     device: &Device,
 ) -> Result<Llama> {
     // Build model first (creates vars in VarMap), then load saved weights.
+    // Note: VarMap::load silently overwrites matching keys. If the saved weights
+    // have a different architecture (wrong hidden_size, etc.), the resulting error
+    // from a downstream forward pass may be cryptic.
     let vb = VarBuilder::from_varmap(varmap, DType::F32, device);
     let model = Llama::load(vb, config)?;
     varmap.load(weights_path)?;

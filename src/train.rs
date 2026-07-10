@@ -4,16 +4,17 @@ use candle_core::{DType, Device, IndexOp, Tensor};
 use candle_nn::{AdamW, Optimizer, VarMap};
 use candle_transformers::models::llama::{self, Llama};
 use indicatif::{ProgressBar, ProgressStyle};
+use rand::rngs::StdRng;
 use rand::seq::SliceRandom;
+use rand::SeedableRng;
 
 use crate::model;
-use crate::spec::{Magnitude, MemoryAction, ReflectionAction};
+use crate::spec::{MemoryAction, ReflectionAction};
 use crate::tokenizer::TokenizerWrapper;
 
 // ── Data formatting ──────────────────────────────────────────────────────
 
-fn format_input(example: &crate::dataset::Example) -> String {
-    let input = &example.input;
+pub fn format_input(input: &crate::spec::Input) -> String {
     let mut lines = Vec::new();
 
     let traits: Vec<&str> = input.character.personality.iter().map(|s| s.as_str()).collect();
@@ -46,19 +47,19 @@ fn format_target(changes: &crate::spec::StateChanges) -> String {
 
             if let Some(emotions) = &inner.emotion {
                 for (name, mag) in emotions {
-                    lines.push(format!("emotion|{name}|{}", mag_to_str(*mag)));
+                    lines.push(format!("emotion|{name}|{}", mag.as_str()));
                 }
             }
 
             if let Some(traits) = &inner.relationship {
                 for (trait_name, mag) in traits {
-                    lines.push(format!("relationship|{trait_name}|{}", mag_to_str(*mag)));
+                    lines.push(format!("relationship|{trait_name}|{}", mag.as_str()));
                 }
             }
 
             if let Some(beliefs) = &inner.belief {
                 for (id, mag) in beliefs {
-                    lines.push(format!("belief|{id}|{}", mag_to_str(*mag)));
+                    lines.push(format!("belief|{id}|{}", mag.as_str()));
                 }
             }
 
@@ -83,26 +84,18 @@ fn format_target(changes: &crate::spec::StateChanges) -> String {
     }
 }
 
-fn mag_to_str(m: Magnitude) -> &'static str {
-    match m {
-        Magnitude::IncreasesALot => "increases_a_lot",
-        Magnitude::Increases => "increases",
-        Magnitude::IncreasesALittle => "increases_a_little",
-        Magnitude::DecreasesALittle => "decreases_a_little",
-        Magnitude::Decreases => "decreases",
-        Magnitude::DecreasesALot => "decreases_a_lot",
-    }
-}
-
 // ── Training dataset ──────────────────────────────────────────────────────
 
 #[derive(Clone)]
 pub struct TrainingExample {
-    pub input_text: String,
-    pub target_text: String,
+    pub input_ids: Vec<u32>,
+    pub target_ids: Vec<u32>,
 }
 
-pub fn load_training_data(data_dir: &Path) -> anyhow::Result<Vec<TrainingExample>> {
+pub fn load_training_data(
+    data_dir: &Path,
+    tokenizer: &TokenizerWrapper,
+) -> anyhow::Result<Vec<TrainingExample>> {
     let mut pairs = Vec::new();
     crate::dataset::collect_pairs(data_dir, &mut pairs);
 
@@ -112,9 +105,11 @@ pub fn load_training_data(data_dir: &Path) -> anyhow::Result<Vec<TrainingExample
         let output_path = dir.join("output.yaml");
         match crate::dataset::load_example(&input_path, &output_path) {
             Ok(example) => {
-                let input_text = format_input(&example);
+                let input_text = format_input(&example.input);
                 let target_text = format_target(&example.target.state_changes);
-                examples.push(TrainingExample { input_text, target_text });
+                let input_ids = tokenizer.encode(&input_text, false)?;
+                let target_ids = tokenizer.encode(&target_text, false)?;
+                examples.push(TrainingExample { input_ids, target_ids });
             }
             Err(e) => {
                 eprintln!("warning: skipping {}: {e}", dir.display());
@@ -129,39 +124,36 @@ pub fn load_training_data(data_dir: &Path) -> anyhow::Result<Vec<TrainingExample
 
 pub fn prepare_batch(
     examples: &[TrainingExample],
-    tokenizer: &TokenizerWrapper,
+    batch_indices: &[usize],
+    eos_id: u32,
     device: &Device,
 ) -> anyhow::Result<(Tensor, Vec<usize>, Vec<usize>)> {
     let mut batch_ids: Vec<Vec<u32>> = Vec::new();
     let mut sep_positions: Vec<usize> = Vec::new();
     let mut actual_lengths: Vec<usize> = Vec::new();
 
-    for ex in examples {
-        let input_ids = tokenizer.encode(&ex.input_text, false);
-        let target_ids = tokenizer.encode(&ex.target_text, false);
-        let sep_pos = input_ids.len();
+    for &idx in batch_indices {
+        let ex = &examples[idx];
+        let sep_pos = ex.input_ids.len();
 
-        let mut combined = input_ids;
-        combined.push(tokenizer.bos_id); // separator between input and target
-        combined.extend(target_ids);
-        combined.push(tokenizer.eos_id);
+        let mut combined = ex.input_ids.clone();
+        combined.push(eos_id); // separator between input and target
+        combined.extend(&ex.target_ids);
+        combined.push(eos_id);
 
         actual_lengths.push(combined.len());
         sep_positions.push(sep_pos);
         batch_ids.push(combined);
     }
 
-    // pad to max length
+    // pad to max length (flattened directly, no intermediate Vec-of-Vecs)
     let max_len = batch_ids.iter().map(|ids| ids.len()).max().unwrap_or(0);
-    let mut padded: Vec<Vec<u32>> = Vec::new();
+    let mut flat = Vec::with_capacity(batch_ids.len() * max_len);
     for ids in &batch_ids {
-        let mut row = ids.clone();
-        row.resize(max_len, tokenizer.eos_id); // pad with EOS
-        padded.push(row);
+        flat.extend_from_slice(ids);
+        flat.resize(flat.len() + (max_len - ids.len()), eos_id);
     }
-
-    let shape = (padded.len(), max_len);
-    let flat: Vec<u32> = padded.into_iter().flatten().collect();
+    let shape = (batch_ids.len(), max_len);
     let tensor = Tensor::from_vec(flat, shape, device)?;
     Ok((tensor, sep_positions, actual_lengths))
 }
@@ -199,7 +191,8 @@ fn loss_for_batch(
     let mut supervised_count = 0usize;
     for bi in 0..b {
         let sep = sep_positions[bi];
-        let end = actual_lengths[bi].saturating_sub(1); // last logit that has a real target
+        let end = actual_lengths[bi].saturating_sub(1);
+        assert!(end <= logit_len, "sequence {bi} exceeds model context window ({end} > {logit_len})");
         for ti in sep..end {
             mask[bi * logit_len + ti] = 1;
             supervised_count += 1;
@@ -228,7 +221,7 @@ fn loss_for_batch(
                     .enumerate()
                     .map(|(i, v)| (v, i as u32))
                     .collect();
-                top5.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
+                top5.sort_by(|a, b| b.0.total_cmp(&a.0));
                 let target_id = targets.to_vec2::<u32>()?[0][first_sep];
                 eprintln!(
                     "  debug: first sep pos={first_sep}, target token ID={target_id}"
@@ -252,7 +245,7 @@ fn loss_for_batch(
 pub struct TrainConfig {
     pub epochs: usize,
     pub learning_rate: f64,
-    pub batch_size: usize,
+    pub batch_size: Option<usize>,
     pub checkpoint_every: usize,
     pub output: std::path::PathBuf,
 }
@@ -262,7 +255,7 @@ impl Default for TrainConfig {
         Self {
             epochs: 100,
             learning_rate: 0.001,
-            batch_size: 0, // 0 = full batch
+            batch_size: None,
             checkpoint_every: 0,
             output: std::path::PathBuf::from("model.safetensors"),
         }
@@ -273,7 +266,7 @@ pub fn train(
     model: &Llama,
     varmap: &VarMap,
     examples: &[TrainingExample],
-    tokenizer: &TokenizerWrapper,
+    eos_id: u32,
     device: &Device,
     config: &TrainConfig,
     llama_config: &llama::Config,
@@ -281,18 +274,29 @@ pub fn train(
     let vars = varmap.all_vars();
     let mut adam = AdamW::new_lr(vars.clone(), config.learning_rate)?;
 
-    let batch_size = if config.batch_size == 0 {
-        examples.len()
-    } else {
-        config.batch_size.min(examples.len())
+    let batch_size = match config.batch_size {
+        None => examples.len(),
+        Some(bs) => bs.min(examples.len()),
     };
 
+    // Fixed train/validation split (90/10)
+    let val_size = (examples.len() / 10).max(1);
+    let train_size = examples.len().saturating_sub(val_size);
+
+    let mut split_rng = StdRng::seed_from_u64(42);
+    let mut all_indices: Vec<usize> = (0..examples.len()).collect();
+    all_indices.shuffle(&mut split_rng);
+    let (train_indices, val_indices) = all_indices.split_at(train_size);
+
     let mut rng = rand::rng();
-    let n_batches = (examples.len() + batch_size - 1) / batch_size;
+    let n_batches = (train_indices.len() + batch_size - 1) / batch_size;
+    let total_steps = n_batches * config.epochs;
+    let warmup_steps = total_steps / 10;
 
     eprintln!(
-        "training: {} examples across ~{} batches/epoch, {} epochs, lr={}",
-        examples.len(),
+        "training: {} train / {} val examples across ~{} batches/epoch, {} epochs, lr={}",
+        train_indices.len(),
+        val_indices.len(),
         n_batches,
         config.epochs,
         config.learning_rate,
@@ -306,21 +310,32 @@ pub fn train(
             .progress_chars("=> "),
     );
 
+    let mut global_step = 0usize;
+
+    let mut epoch_indices: Vec<usize> = train_indices.to_vec();
     for epoch in 0..config.epochs {
-        let mut indices: Vec<usize> = (0..examples.len()).collect();
-        indices.shuffle(&mut rng);
+        epoch_indices.shuffle(&mut rng);
 
         let mut epoch_loss = 0.0f64;
         let mut n_seen = 0;
 
         for batch_idx in 0..n_batches {
             let start = batch_idx * batch_size;
-            let end = (start + batch_size).min(examples.len());
-            let batch_examples: Vec<TrainingExample> =
-                indices[start..end].iter().map(|&i| examples[i].clone()).collect();
+            let end = (start + batch_size).min(train_indices.len());
+            let batch_indices = &epoch_indices[start..end];
+
+            // LR schedule: linear warmup → cosine decay
+            let lr = if global_step < warmup_steps {
+                config.learning_rate * global_step as f64 / warmup_steps.max(1) as f64
+            } else {
+                let denom = total_steps.saturating_sub(warmup_steps).max(1);
+                let progress = (global_step - warmup_steps) as f64 / denom as f64;
+                config.learning_rate * 0.5 * (1.0 + (std::f64::consts::PI * progress).cos())
+            };
+            adam.set_learning_rate(lr);
 
             let (batch_tensor, sep_positions, actual_lengths) =
-                prepare_batch(&batch_examples, tokenizer, device)?;
+                prepare_batch(examples, batch_indices, eos_id, device)?;
             let first_batch = epoch == 0 && batch_idx == 0;
             let loss = loss_for_batch(
                 model,
@@ -336,13 +351,48 @@ pub fn train(
 
             adam.backward_step(&loss)?;
 
-            epoch_loss += loss_val * batch_examples.len() as f64;
-            n_seen += batch_examples.len();
+            epoch_loss += loss_val * batch_indices.len() as f64;
+            n_seen += batch_indices.len();
+            global_step += 1;
         }
 
         let avg_loss = epoch_loss / n_seen as f64;
-        pb.set_message(format!("epoch {:3}  loss {:.6}", epoch + 1, avg_loss));
-        println!("Epoch: {:3} | loss {:.6}", epoch + 1, avg_loss);
+
+        // Validation loss (no gradient)
+        let val_loss = if val_indices.is_empty() {
+            None
+        } else {
+            let (val_tensor, val_sep, val_lens) =
+                prepare_batch(examples, val_indices, eos_id, device)?;
+            let loss = loss_for_batch(
+                model,
+                varmap,
+                &val_tensor,
+                &val_sep,
+                &val_lens,
+                llama_config,
+                device,
+                false,
+            )?;
+            Some(loss.to_scalar::<f32>()? as f64)
+        };
+
+        match val_loss {
+            Some(vl) => {
+                pb.set_message(format!(
+                    "epoch {:3}  train {:.6}  val {:.6}",
+                    epoch + 1, avg_loss, vl
+                ));
+                eprintln!(
+                    "Epoch: {:3} | train loss {:.6} | val loss {:.6}",
+                    epoch + 1, avg_loss, vl
+                );
+            }
+            None => {
+                pb.set_message(format!("epoch {:3}  loss {:.6}", epoch + 1, avg_loss));
+                eprintln!("Epoch: {:3} | loss {:.6}", epoch + 1, avg_loss);
+            }
+        }
         pb.inc(1);
 
         if config.checkpoint_every > 0 && (epoch + 1) % config.checkpoint_every == 0 {

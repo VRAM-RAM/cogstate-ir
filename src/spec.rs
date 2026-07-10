@@ -38,6 +38,7 @@ pub struct StateChangesInner {
 #[serde(untagged)]
 pub enum StateChanges {
     Record(StateChangesInner),
+    // String payload preserved for backward-compatible YAML deserialization.
     NoChanges(String),
 }
 
@@ -52,6 +53,19 @@ pub enum Magnitude {
     DecreasesALittle,
     Decreases,
     DecreasesALot,
+}
+
+impl Magnitude {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Magnitude::IncreasesALot => "increases_a_lot",
+            Magnitude::Increases => "increases",
+            Magnitude::IncreasesALittle => "increases_a_little",
+            Magnitude::DecreasesALittle => "decreases_a_little",
+            Magnitude::Decreases => "decreases",
+            Magnitude::DecreasesALot => "decreases_a_lot",
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]

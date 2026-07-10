@@ -3,7 +3,6 @@ use std::path::{Path, PathBuf};
 use crate::spec::{Input, Target};
 
 #[derive(Debug)]
-#[allow(dead_code)]
 pub struct Example {
     pub input: Input,
     pub target: Target,
@@ -53,18 +52,21 @@ impl ValidationResult {
 }
 
 pub fn collect_pairs(dir: &Path, pairs: &mut Vec<PathBuf>) {
-    let Ok(entries) = std::fs::read_dir(dir) else { return };
-    for entry in entries.flatten() {
-        let path = entry.path();
-        if !path.is_dir() {
-            continue;
-        }
-        let input = path.join("input.yaml");
-        let output = path.join("output.yaml");
-        if input.exists() && output.exists() {
-            pairs.push(path);
-        } else {
-            collect_pairs(&path, pairs);
+    let mut stack = vec![dir.to_path_buf()];
+    while let Some(dir) = stack.pop() {
+        let Ok(entries) = std::fs::read_dir(&dir) else { continue };
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if !path.is_dir() {
+                continue;
+            }
+            let input = path.join("input.yaml");
+            let output = path.join("output.yaml");
+            if input.exists() && output.exists() {
+                pairs.push(path);
+            } else {
+                stack.push(path);
+            }
         }
     }
 }
