@@ -255,7 +255,7 @@ impl Default for TrainConfig {
         Self {
             epochs: 100,
             learning_rate: 0.001,
-            batch_size: None,
+            batch_size: Some(8),
             checkpoint_every: 0,
             output: std::path::PathBuf::from("model.safetensors"),
         }
@@ -358,23 +358,29 @@ pub fn train(
 
         let avg_loss = epoch_loss / n_seen as f64;
 
-        // Validation loss (no gradient)
+        // Validation loss (no gradient), batched to avoid GPU OOM
         let val_loss = if val_indices.is_empty() {
             None
         } else {
-            let (val_tensor, val_sep, val_lens) =
-                prepare_batch(examples, val_indices, eos_id, device)?;
-            let loss = loss_for_batch(
-                model,
-                varmap,
-                &val_tensor,
-                &val_sep,
-                &val_lens,
-                llama_config,
-                device,
-                false,
-            )?;
-            Some(loss.to_scalar::<f32>()? as f64)
+            let mut val_sum = 0.0f64;
+            let mut val_count = 0usize;
+            for val_chunk in val_indices.chunks(batch_size) {
+                let (val_tensor, val_sep, val_lens) =
+                    prepare_batch(examples, val_chunk, eos_id, device)?;
+                let loss = loss_for_batch(
+                    model,
+                    varmap,
+                    &val_tensor,
+                    &val_sep,
+                    &val_lens,
+                    llama_config,
+                    device,
+                    false,
+                )?;
+                val_sum += loss.to_scalar::<f32>()? as f64 * val_chunk.len() as f64;
+                val_count += val_chunk.len();
+            }
+            Some(val_sum / val_count as f64)
         };
 
         match val_loss {
