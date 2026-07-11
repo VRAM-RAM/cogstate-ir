@@ -49,9 +49,9 @@ target_ir:
 
 ---
 
-## Phase 2 — Training pipeline (Rust + candle)
+## Phase 2 — Training pipeline (Rust + candle) [COMPLETED]
 
-**Model**: fine-tune a small pre-trained transformer via candle (e.g. GPT-2 124M or a tiny 50M variant).
+**Model**: fine-tune a small pre-trained transformer via candle (e.g. GPT-2 124M or a tiny 50M variant). -> Supra50M
 
 **Training format**: each example → text prompt encoding (state + message) with target IR ops as text.
 
@@ -64,23 +64,41 @@ target_ir:
 
 ---
 
-## Phase 3 — Inference
+## Phase 3 — Inference [COMPLETED]
 
-**CLI**: `cogstate infer --state state.json --message "..." --model model.bin`
+**CLI**: `cogstate infer --state state.json --message "..." [--weights model.safetensors] [--model-id ...] [-o new_state.json]`
 
-- Runs compiler over the input
-- Outputs IR ops
+- Runs compiler over the input (converts `CharacterState` → `spec::Input` with f32→label mapping)
+- Outputs predicted IR ops
 - Applies IR to state engine
-- Displays new state
+- Displays or saves new state
 
 ---
 
-## Phase 4 (future) — Full pipeline
+## Phase 4 — Full pipeline
 
 - Connect renderer via llama.cpp bindings from Rust
 - `cogstate chat` loads compiler + renderer + state engine for interactive use
 
 ---
 
-## Phase 5 (far future) - Improving pipeline & IR model
+## Phase 5 (Research) — Improving the IR compiler
 
+Objectives:
+
+- Expand the dataset (500 → 1500 → 2500+ examples)
+- Improve annotation consistency
+- Train larger compiler models (360M, 1B...)
+- Experiment with LoRA vs full fine-tuning
+- Benchmark different base models
+- Build an evaluation suite
+- Measure generalization on held-out scenarios
+- Study failure modes (hallucinations, wrong categories, missing ops)
+
+## Phase 6 (Future) — Ecosystem
+
+- Community-contributed datasets
+- Community-trained compiler models
+- Automatic evaluation leaderboard
+- Integrations with chat frontends
+- Renderer adapters (llama.cpp, vLLM, Ollama...)

@@ -7,6 +7,7 @@ use clap::{Parser, Subcommand};
 
 mod dataset;
 mod engine;
+mod infer;
 mod model;
 mod predict;
 mod progress_handler;
@@ -102,6 +103,27 @@ enum Command {
         input: PathBuf,
         #[arg(long, default_value = "SupraLabs/Supra-50M-Instruct")]
         model_id: String,
+    },
+    /// Run the compiler and apply the resulting IR ops to a character state
+    Infer {
+        /// Path to the character state JSON
+        #[arg(long)]
+        state: PathBuf,
+        /// User message to process
+        #[arg(long)]
+        message: String,
+        /// Previous character message (optional)
+        #[arg(long)]
+        previous_message: Option<String>,
+        /// Path to the fine-tuned model weights
+        #[arg(long, default_value = "model.safetensors")]
+        weights: PathBuf,
+        /// HuggingFace model ID for config
+        #[arg(long, default_value = "SupraLabs/Supra-50M-Instruct")]
+        model_id: String,
+        /// Save updated state to file instead of printing to stdout
+        #[arg(short = 'o')]
+        output: Option<PathBuf>,
     },
 }
 
@@ -264,6 +286,24 @@ fn main() -> anyhow::Result<()> {
             let target = spec::Target { state_changes: changes };
             let yaml = serde_yaml::to_string(&target)?;
             println!("{}", yaml);
+        }
+        Command::Infer {
+            state,
+            message,
+            previous_message,
+            weights,
+            model_id,
+            output,
+        } => {
+            infer::run(
+                &state,
+                &message,
+                previous_message.as_deref(),
+                &weights,
+                &model_id,
+                output.as_deref(),
+                cli.no_metal,
+            )?;
         }
     }
 
