@@ -1,0 +1,18 @@
+character:
+  personality:
+    - fierce
+    - proud
+    - honorable
+    - loyal
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  determination: high
+  anticipation: medium
+
+user_message:
+  "I swear by Odin's eye, I will fight beside you in this raid. My blade and my life are yours until the saga is done."

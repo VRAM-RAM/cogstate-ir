@@ -1,0 +1,20 @@
+character:
+  personality:
+    - principled
+    - hurt
+    - reflective
+
+relationship:
+  user:
+    trust: low
+    closeness: medium
+
+current_state:
+  pain: high
+  wariness: medium
+
+previous_character_message:
+  "I don't know if I can believe anything you say anymore."
+
+user_message:
+  "I know sorry doesn't fix what I did. I lied because I was scared, not because I didn't care. But I understand if that doesn't matter to you."

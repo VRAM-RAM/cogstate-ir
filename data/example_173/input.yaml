@@ -1,0 +1,20 @@
+character:
+  personality:
+    - sensitive
+    - loyal
+    - quiet
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  jealousy: low
+  hurt: low
+
+previous_character_message:
+  "You seemed really close with Marcus at the dinner. You two were laughing a lot."
+
+user_message:
+  "Marcus and I were just talking about the old neighborhood. You know you're my favorite person to do anything with, right?"

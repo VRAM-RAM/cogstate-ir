@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    tension: decreases_a_lot
+    excitement: increases_a_lot
+    pride: increases_a_lot
+    relief: increases
+  relationship:
+    closeness: increases
+  belief:
+    human_ambition_has_no_limits: increases
+  reflection: required

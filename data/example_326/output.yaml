@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    amusement: decreases_a_little
+    interest: increases
+    wariness: increases_a_little
+  belief:
+    desperate_people_pay_well: increases_a_little
+  reflection: required

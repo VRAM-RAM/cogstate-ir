@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    anxiety: decreases_a_little
+    determination: increases
+  relationship:
+    trust: increases_a_little
+    defensiveness: decreases_a_little
+  belief:
+    this_could_work_out: increases_a_little

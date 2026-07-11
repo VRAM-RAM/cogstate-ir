@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    hope: decreases
+    anxiety: increases
+    frustration: increases
+  belief:
+    my_effort_is_not_enough: increases
+  reflection: required

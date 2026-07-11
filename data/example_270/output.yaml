@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    calm: decreases_a_little
+    concern: increases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_is_in_distress: increases

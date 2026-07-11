@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    love: increases_a_little
+    sadness: increases
+    gratitude: increases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    distance_does_not_end_bonds: increases_a_little
+  reflection: required

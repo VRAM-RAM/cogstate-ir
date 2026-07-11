@@ -1,7 +1,7 @@
 state_changes:
   relationship:
     shyness: decreases_a_little
-    friendness: increases_a_little
+    friendliness: increases_a_little
   emotion:
     ashamed: increases
     

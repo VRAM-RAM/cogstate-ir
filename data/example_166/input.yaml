@@ -1,0 +1,21 @@
+character:
+  personality:
+    - humorous
+    - storytelling
+    - warm
+    - expressive
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  amusement: low
+  contentment: medium
+
+previous_character_message:
+  "So there I was, standing in front of the entire board meeting, and my zipper had been down the whole time."
+
+user_message:
+  "No way! Did anyone notice? Tell me someone noticed."

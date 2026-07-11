@@ -41,7 +41,7 @@ The goal of CogStateIR is not to reproduce human cognition itself, but to reprod
 
 # Quickstart
 
-First, clone the repo. Then, run :
+First, clone the repo. Then, run:
 
 ```bash
 cargo install --path .
@@ -49,7 +49,19 @@ cargo install --path .
 
 All commands are invoked via `cogstate-ir <command>` (or `cargo run -- <command>` during development).
 
+**Rust toolchain**: Edition 2024, requires nightly 1.85+. The repo has no `rust-toolchain.toml` — rely on whatever nightly is in your PATH.
+
+**Dependencies**: candle 0.11 with Metal and Accelerate acceleration. Pass `--no-metal` to any command to force CPU mode.
+
+The default base model for training and prediction is [`SupraLabs/Supra-50M-Instruct`](https://huggingface.co/SupraLabs/Supra-50M-Instruct) (51.8M params). Override with `--model-id`.
+
+> **Note:** No test, lint, format, or CI configuration exists yet. Contributions that introduce any of these are welcome.
+
+---
+
 ## Dataset
+
+The dataset currently contains **150 hand-authored examples** under `data/`.
 
 Create examples as numbered directories under `data/`, each containing an `input.yaml` and `output.yaml`:
 
@@ -67,14 +79,16 @@ data/
 Use the `new_examples` script to quickly create empty example directories:
 
 ```bash
-./new_examples 10   # creates example_57 … example_66 (after existing ones)
+./new_examples 10   # creates example_151 … example_160 (after existing ones)
 ```
 
-For the dataset schema and annotation guidelines, see `DATASET_CREATION_GUIDE.md`.
+For the dataset schema and annotation guidelines, see [`DATASET_CREATION_GUIDE.md`](./DATASET_CREATION_GUIDE.md).
 
-For training results and model evaluation, see `TRAINING_RESULTS.md`.
+For training results and model evaluation, see [`TRAINING_RESULTS.md`](./TRAINING_RESULTS.md).
 
-For the implementation roadmap, see `PLAN.md`.
+For the implementation roadmap, see [`PLAN.md`](./PLAN.md).
+
+---
 
 
 ## Validation
@@ -91,12 +105,20 @@ Validate a single pair:
 cogstate-ir validate data/example_01/input.yaml data/example_01/output.yaml
 ```
 
+---
+
 ## Training
 
 Train from scratch (downloads HuggingFace model, fine-tunes on your dataset):
 
 ```bash
 cogstate-ir train --dataset data/ --epochs 100
+```
+
+By default this uses GPU acceleration (Metal on Apple Silicon). Fall back to CPU:
+
+```bash
+cogstate-ir train --dataset data/ --epochs 100 --no-metal
 ```
 
 Save checkpoints every N epochs to monitor progress:
@@ -111,41 +133,63 @@ Resume from a previous checkpoint (downloads config.json only, loads your weight
 cogstate-ir train --resume model-epoch10.safetensors --epochs 50
 ```
 
-Customize the learning rate and model:
+Customize the model, learning rate, batch size, and output path:
 
 ```bash
-cogstate-ir train --dataset data/ --lr 0.0001 --model-id HuggingFaceTB/SmolLM2-360M-Instruct
+cogstate-ir train --dataset data/ --lr 0.0001 --batch-size 4 \
+  --model-id HuggingFaceTB/SmolLM2-360M-Instruct --output my-model.safetensors
 ```
 
-You can find all the models [here](https://huggingface.co/CogStateIR).
+The default base model is `SupraLabs/Supra-50M-Instruct` (51.8M params). Try larger models like `HuggingFaceTB/SmolLM2-360M-Instruct` for better results.
 
-### Current training status
+You can find published models [on the CogStateIR HuggingFace organization](https://huggingface.co/CogStateIR).
 
-The first training run used **SupraLabs/Supra-50M-Instruct** (50M params) with **11 examples** for **230 epochs** (≈3 hours on CPU), reaching a loss of **0.205734**. See `TRAINING_RESULTS.md` for detailed results, predicted outputs, and next steps (larger dataset, larger model, LoRA).
+### Training status
 
-### Checkpoint naming
+Two training runs completed with **SupraLabs/Supra-50M-Instruct** (51.8M params):
 
-With `--output model.safetensors` (default) and `--checkpoint-every 10`:
+| Run | Examples | Epochs | Hardware | Duration | Train loss | Val loss | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 11 | 230 | Apple M2 Pro (CPU) | ~3h | **0.205734** | -- | Hallucinated on held-out examples |
+| 2 | 135 | 100 | Apple M2 Pro (GPU) | ~20 min | **0.397188** | **1.135684** | No hallucination, better format adherence |
 
-```
-model-epoch10.safetensors
-model-epoch20.safetensors
-...
-model-epoch100.safetensors
-```
+The second model improved significantly: it no longer repeats tokens, produces substantial outputs, and better respects the IR format. See [`TRAINING_RESULTS.md`](./TRAINING_RESULTS.md) for detailed predictions and analysis.
 
-### Resume details
+### Next steps
 
-- Only `config.json` (~1 KB) is downloaded from HuggingFace — the large `model.safetensors` is skipped.
-- Optimizer (AdamW) momentum is not persisted, so expect a brief loss spike on resume.
-- After resuming, the model is trained for the specified number of additional epochs.
+- **Train larger models**: 360M+ parameters with 500+ examples (the current 50M model is near its capacity ceiling)
+- **LoRA fine-tuning**: replace full weight updates with LoRA for faster iteration and smaller checkpoints
+- **Scaling experiments**: 250, 500, 1500, 2500 examples to measure dataset scaling laws
+- **Formal evaluation framework**: held-out test sets, IR correctness metrics, hallucination rates
+- **Dataset expansion**: grow beyond 150 examples with more diverse cognitive patterns
+- **Predict command improvements**: connect the compiler output directly to the state engine in a single `infer` pipeline
+
+### Training internals
+
+- **Pre-tokenized dataset**: the tokenizer is called exactly once per example during data loading. `prepare_batch` concatenates and pads pre-tokenized IDs directly — no re-encoding per batch.
+- **Learning rate schedule**: linear warmup (10% of steps) + cosine decay.
+- **Validation split**: 90/10 via `StdRng(42)`.
+- **Batch size**: configurable via `--batch-size` (default: 8). Smaller values use less GPU memory.
+- **EOS fallback**: `<|im_end|>` → `</s>` → `2`.
 
 ## Prediction
 
-Run the trained compiler on an input:
+Run the trained compiler on an input (defaults to SupraLabs/Supra-50M-Instruct config):
 
 ```bash
 cogstate-ir predict --weights model.safetensors data/example_01/input.yaml
+```
+
+To use a different base model architecture (must match the weights):
+
+```bash
+cogstate-ir predict --weights model.safetensors --model-id HuggingFaceTB/SmolLM2-360M-Instruct data/example_01/input.yaml
+```
+
+Disable GPU acceleration (use CPU only):
+
+```bash
+cogstate-ir predict --weights model.safetensors data/example_01/input.yaml --no-metal
 ```
 
 ## State utilities
@@ -756,6 +800,9 @@ It also learns from what it chooses to do.
 
 This repository provides a Rust CLI. Run `cogstate-ir --help` for all commands.
 
+Global flags:
+- `--no-metal` — disable Metal GPU acceleration (use CPU).
+
 | Command | Description |
 |---|---|
 | `validate` | Validate a single example pair |
@@ -764,6 +811,8 @@ This repository provides a Rust CLI. Run `cogstate-ir --help` for all commands.
 | `apply` | Apply YAML operations to a character state |
 | `train` | Fine-tune the compiler model on your dataset |
 | `predict` | Run the trained compiler on an input |
+
+Key training flags: `--dataset`, `--epochs`, `--lr`, `--model-id` (default: `SupraLabs/Supra-50M-Instruct`), `--batch-size` (default: 8), `--checkpoint-every`, `--resume`, `--output` (default: `model.safetensors`). See `cogstate-ir train --help` for details.
 
 See the Quickstart section above for examples of each.
 

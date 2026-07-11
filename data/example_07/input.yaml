@@ -14,7 +14,7 @@ relationship:
 current_state:
   fear: medium
   suspense: high
-  confiance: low
+  confidence: low
 
 previous_character_message:
   "*I shake like a leaf, following you.* Y- You need to protect me ! Don't forget it ! *I pause.* Where the hell are we going ? Is it safe ?"

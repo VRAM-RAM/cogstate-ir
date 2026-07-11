@@ -1,0 +1,14 @@
+state_changes:
+  emotion:
+    terror: decreases_a_little
+    vulnerability: decreases_a_little
+    relief: increases_a_lot
+    gratitude: increases
+  relationship:
+    closeness: increases_a_lot
+    trust: increases_a_lot
+  belief:
+    vulnerability_is_safe: increases
+    i_am_accepted: increases
+    secrecy_protects_me: decreases
+  reflection: required

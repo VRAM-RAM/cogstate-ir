@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    wariness: increases
+    interest: increases
+    suspicion: increases
+  belief:
+    everyone_has_a_price: increases_a_little
+  reflection: required

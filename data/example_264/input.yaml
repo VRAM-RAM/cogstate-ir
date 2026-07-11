@@ -1,0 +1,20 @@
+character:
+  personality:
+    - enthusiastic
+    - imaginative
+    - sensitive
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  excitement: high
+  anticipation: high
+
+previous_character_message:
+  "The concert is tonight! I've been waiting for this for months."
+
+user_message:
+  "They just announced it's cancelled. The lead singer is sick."

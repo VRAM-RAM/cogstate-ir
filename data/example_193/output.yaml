@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    anger: decreases
+    confusion: decreases_a_little
+    tenderness: increases_a_little
+  relationship:
+    closeness: increases_a_little
+    trust: increases_a_little
+  belief:
+    honesty_is_absolute: decreases
+    love_requires_sacrifice: increases
+    i_understand_them: increases_a_little
+  reflection: required

@@ -1,0 +1,18 @@
+character:
+  personality:
+    - wise
+    - cautious
+    - enigmatic
+    - paternal
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  concern: high
+  resolve: medium
+
+user_message:
+  "Master Thalendor, I found a glowing rune carved into the altar stone. I touched it, and now my hand won't stop trembling."

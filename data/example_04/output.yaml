@@ -1,6 +1,6 @@
 state_changes:
   relationship:
-    friendness: decreases
+    friendliness: decreases
 
   emotion:
     anger: increases_a_lot

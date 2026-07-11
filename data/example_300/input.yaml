@@ -1,0 +1,21 @@
+character:
+  personality:
+    - loving
+    - warm
+    - emotional
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  love: high
+  sadness: high
+  gratitude: high
+
+previous_character_message:
+  "I wish I could stay longer. This has been the best few weeks."
+
+user_message:
+  "We'll visit. It's not forever. But I'm going to miss you so much."

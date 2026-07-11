@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    amusement: increases_a_little
+    excitement: increases_a_little
+    warmth: increases
+  relationship:
+    closeness: increases_a_little

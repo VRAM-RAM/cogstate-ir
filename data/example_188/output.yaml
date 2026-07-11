@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    exhaustion: increases_a_little
+    frustration: increases
+    hope: decreases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    progress_happens_through_persistence: decreases
+    institutions_listen_to_good_ideas: decreases

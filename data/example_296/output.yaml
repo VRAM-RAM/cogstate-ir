@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    irritation: increases_a_little
+    resentment: increases
+  relationship:
+    closeness: decreases_a_little
+  belief:
+    user_does_not_follow_through: increases
+  memory: reinforce_previous_conflict

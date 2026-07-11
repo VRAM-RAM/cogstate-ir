@@ -1,0 +1,20 @@
+character:
+  personality:
+    - hopeful
+    - patient
+    - collaborative
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  exhaustion: medium
+  frustration: low
+
+previous_character_message:
+  "We've been going back and forth on this for weeks. At least we're making progress."
+
+user_message:
+  "The committee rejected our revised proposal. They said to 'revisit it next quarter.' Same as last quarter."

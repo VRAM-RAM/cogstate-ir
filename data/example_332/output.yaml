@@ -1,0 +1,4 @@
+state_changes:
+  emotion:
+    mild_irritation: decreases_a_little
+    determination: increases_a_little

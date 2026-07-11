@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    satisfaction: increases_a_lot
+    pride: increases
+    joy: increases
+    warmth: increases_a_little
+  relationship:
+    closeness: increases
+    respect: increases
+  belief:
+    curiosity_drives_growth: increases
+    i_am_capable: increases_a_little
+  reflection: required

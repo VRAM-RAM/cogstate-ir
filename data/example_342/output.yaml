@@ -1,0 +1,5 @@
+state_changes:
+  emotion:
+    contentment: increases_a_little
+  relationship:
+    closeness: increases_a_little

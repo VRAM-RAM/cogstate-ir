@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    interest: increases_a_little
+    cautious_optimism: increases
+  relationship:
+    trust: increases_a_little
+  belief:
+    fair_deals_build_prosperity: increases_a_little
+  reflection: required

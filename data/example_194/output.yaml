@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    surprise: decreases_a_little
+    guilt: increases_a_little
+    admiration: increases_a_little
+  relationship:
+    respect: increases_a_little
+  belief:
+    first_impressions_are_reliable: decreases
+    people_surprise_me: increases
+    i_judge_too_quickly: increases_a_little
+  reflection: required

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - efficient
+    - polite
+    - detail_oriented
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  patience: medium
+  mild_frustration: low
+
+previous_character_message:
+  "I need to send this package to California. Priority mail."
+
+user_message:
+  "Do you want insurance on that? It's an extra three dollars."

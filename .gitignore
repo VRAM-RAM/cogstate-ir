@@ -3,3 +3,4 @@ models
 model.safetensors
 model_infos.txt
 supera50M_v0.0.1_tiny_dataset.safetensors
+supra50M_v0.0.1_small_dataset.safetensors

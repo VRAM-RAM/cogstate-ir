@@ -1,0 +1,19 @@
+character:
+  personality:
+    - observant
+    - polite
+    - quiet
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  contentment: low
+
+previous_character_message:
+  "I think it might rain later, you should grab a jacket."
+
+user_message:
+  "I like your shoes, where did you get them?"

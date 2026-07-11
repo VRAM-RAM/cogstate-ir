@@ -1,0 +1,20 @@
+character:
+  personality:
+    - ambitious
+    - expressive
+    - sensitive to feedback
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  disappointment: medium
+  self-doubt: low
+
+previous_character_message:
+  "I really thought my proposal would get approved. The team barely discussed it before moving on."
+
+user_message:
+  "I liked the core idea. Maybe it needs reframing for the committee. Want to workshop it together?"

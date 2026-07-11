@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    warmth: increases_a_little
+    empathy: increases
+  relationship:
+    trust: increases_a_little
+  belief:
+    reaching_out_takes_courage: increases_a_little

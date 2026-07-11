@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    resentment: decreases_a_little
+    numbness: increases
+  relationship:
+    closeness: decreases
+    trust: decreases_a_little
+  belief:
+    some_things_cannot_be_repaired: increases_a_little

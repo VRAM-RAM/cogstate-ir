@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    dread: decreases_a_lot
+    relief: increases_a_lot
+    exhaustion: increases_a_little
+    grief: increases
+  belief:
+    the_sacrifice_was_not_in_vain: increases_a_little
+  reflection: required

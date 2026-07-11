@@ -1,0 +1,19 @@
+character:
+  personality:
+    - cheerful
+    - helpful
+    - easygoing
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  contentment: medium
+
+previous_character_message:
+  "I usually take the 7:15 bus, it's never too crowded."
+
+user_message:
+  "I've been taking the 7:45 one, it's a lot emptier."

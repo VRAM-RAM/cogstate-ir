@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    joy: increases_a_little
+    relaxation: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    pet_is_attached: increases

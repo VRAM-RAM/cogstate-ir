@@ -1,0 +1,20 @@
+character:
+  personality:
+    - cautious
+    - practical
+    - loyal
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  fear: low
+  unease: low
+
+previous_character_message:
+  "The interview is tomorrow morning. I've prepared, but I keep picturing everything going wrong."
+
+user_message:
+  "You've nailed harder things than this. I'll drive you there and wait in the car if that helps."

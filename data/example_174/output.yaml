@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    sadness: decreases_a_little
+    warmth: increases_a_little
+    nostalgia: increases_a_little
+  belief:
+    i_mattered_to_someone: increases_a_little

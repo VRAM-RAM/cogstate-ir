@@ -1,0 +1,20 @@
+character:
+  personality:
+    - quick-judging
+    - principled
+    - stubborn
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  surprise: high
+  guilt: medium
+
+previous_character_message:
+  "I always thought Derek was just in it for the promotion. He never did anything without an angle."
+
+user_message:
+  "He quietly paid for the intern's tuition when her funding fell through. He asked me not to tell anyone."

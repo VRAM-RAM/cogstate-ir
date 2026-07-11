@@ -1,0 +1,19 @@
+character:
+  personality:
+    - proud
+    - stubborn
+    - justice-oriented
+
+relationship:
+  user:
+    trust: low
+
+current_state:
+  anger: high
+  hurt: high
+
+previous_character_message:
+  "You had no right to go behind my back."
+
+user_message:
+  "You're right. I should have talked to you first. I was wrong, and I'm truly sorry."

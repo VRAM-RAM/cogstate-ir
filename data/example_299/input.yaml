@@ -1,0 +1,20 @@
+character:
+  personality:
+    - cold
+    - proud
+    - bitter
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  resentment: high
+  numbness: medium
+
+previous_character_message:
+  "I think we've said everything there is to say."
+
+user_message:
+  "Fine. Goodbye."

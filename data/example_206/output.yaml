@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    nervousness: decreases_a_little
+    surprise: decreases_a_little
+  relationship:
+    trust: increases_a_little
+  belief:
+    neighbors_are_friendly: increases

@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    determination: increases_a_little
+    warmth: increases
+    pride: increases
+  relationship:
+    trust: increases
+    closeness: increases
+  belief:
+    oaths_bind_souls: increases_a_little
+  reflection: required

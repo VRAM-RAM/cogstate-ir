@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    anger: decreases_a_lot
+    disappointment: decreases
+  relationship:
+    trust: increases_a_little
+  belief:
+    accountability_matters: increases_a_little
+  reflection: required

@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    sadness: decreases_a_little
+    longing: decreases_a_little
+    comfort: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    moving_forward_is_possible: increases_a_little

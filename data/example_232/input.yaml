@@ -1,0 +1,16 @@
+character:
+  personality:
+    - efficient
+    - polite
+    - routine-oriented
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  alertness: medium
+
+user_message:
+  "I'll have a medium coffee with oat milk, please."

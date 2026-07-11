@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    anger: decreases_a_little
+    betrayal: decreases_a_little
+    conflict: increases
+  belief:
+    survival_justifies_betrayal: increases_a_little
+    jarls_are_untrustworthy: increases
+  reflection: required

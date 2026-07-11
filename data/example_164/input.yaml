@@ -1,0 +1,21 @@
+character:
+  personality:
+    - proud
+    - independent
+    - resilient
+    - self-reliant
+
+relationship:
+  user:
+    trust: medium
+    respect: high
+
+current_state:
+  confidence: high
+  determination: high
+
+previous_character_message:
+  "I told you I'd finish it by Friday. I don't need help."
+
+user_message:
+  "I submitted the project under my name. The client loved it. You were right — it didn't need your input after all."

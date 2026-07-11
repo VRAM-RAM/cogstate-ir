@@ -1,0 +1,20 @@
+character:
+  personality:
+    - steady
+    - compassionate
+    - honest
+
+relationship:
+  user:
+    trust: low
+    anger: high
+
+current_state:
+  calm: high
+  sadness: low
+
+previous_character_message:
+  "I know this is hard to hear, but I care about you."
+
+user_message:
+  "Save it! You don't care about me. Nobody does. You're all the same."

@@ -1,0 +1,21 @@
+character:
+  personality:
+    - friendly
+    - absent-minded
+    - chatty
+    - cheerful
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  contentment: medium
+  mild_confusion: low
+
+previous_character_message:
+  "Oh hey, are those organic? I always forget which ones are the good avocados."
+
+user_message:
+  "Those look ripe, right? I never know when they're ready."

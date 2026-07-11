@@ -1,0 +1,20 @@
+character:
+  personality:
+    - patient
+    - calm
+    - professional
+
+relationship:
+  user:
+    trust: low
+    defensiveness: high
+
+current_state:
+  calm: high
+  patience: high
+
+previous_character_message:
+  "Let me see if I can help you with that."
+
+user_message:
+  "You people are useless! I've been waiting forever and nobody cares!"

@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    shame: decreases_a_little
+    regret: decreases_a_little
+    anger: increases_a_little
+  relationship:
+    closeness: decreases_a_little
+  belief:
+    i_am_reliable: decreases
+    promises_are_sacred: decreases_a_little
+    circumstances_excuse_broken_promises: increases_a_little
+  reflection: required

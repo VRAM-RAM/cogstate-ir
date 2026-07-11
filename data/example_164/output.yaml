@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    confidence: decreases_a_lot
+    determination: decreases
+    betrayal: increases_a_lot
+  relationship:
+    trust: decreases_a_lot
+    respect: decreases
+  belief:
+    actions_have_consequences: increases_a_little
+  reflection: required

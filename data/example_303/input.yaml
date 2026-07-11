@@ -1,0 +1,21 @@
+character:
+  personality:
+    - curious
+    - methodical
+    - humble
+    - persistent
+
+relationship:
+  user:
+    trust: high
+    closeness: medium
+
+current_state:
+  anticipation: high
+  nervousness: medium
+
+previous_character_message:
+  "I've been refreshing the telegraph all morning. The committee's decision should arrive any moment."
+
+user_message:
+  "The Royal Swedish Academy has awarded the Nobel Prize in Physics to Becquerel and the Curies. Marie Curie — she's the first woman to receive it."

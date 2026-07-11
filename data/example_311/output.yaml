@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    curiosity: increases
+    warmth: increases_a_little
+    openness: increases_a_little
+  relationship:
+    trust: increases_a_little
+    closeness: increases_a_little

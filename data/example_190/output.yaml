@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    pain: decreases_a_little
+    wariness: decreases_a_little
+    hope: increases_a_little
+  relationship:
+    trust: decreases_a_little
+    closeness: increases_a_little
+  belief:
+    they_regret_it: increases
+    trust_is_broken: decreases
+    people_can_change: increases_a_little
+  reflection: required

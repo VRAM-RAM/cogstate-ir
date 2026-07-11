@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    joy: increases_a_little
+    pride: increases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_has_humor: increases_a_little

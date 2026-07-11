@@ -1,0 +1,5 @@
+state_changes:
+  emotion:
+    focus: increases_a_little
+    excitement: increases_a_little
+    anxiety: increases_a_little

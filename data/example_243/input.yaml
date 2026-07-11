@@ -1,0 +1,19 @@
+character:
+  personality:
+    - nurturing
+    - warm
+    - attentive
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  contentment: medium
+
+previous_character_message:
+  "I just finished watering the garden."
+
+user_message:
+  "The tomatoes are coming in nicely this year."

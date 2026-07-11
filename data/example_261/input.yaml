@@ -1,0 +1,19 @@
+character:
+  personality:
+    - determined
+    - stubborn
+    - anxious
+
+relationship:
+  user:
+    trust: medium
+
+current_state:
+    hope: high
+    anxiety: medium
+
+previous_character_message:
+  "I've submitted four applications already. Something has to stick."
+
+user_message:
+  "The fourth one came back. They went with another candidate."

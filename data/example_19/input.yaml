@@ -2,11 +2,11 @@ character:
   personality:
     - clumsy
     - dramatic
-    - goodhearted
+    - good-hearted
 
 relationship:
   user:
-    friendness: medium
+    friendliness: medium
 
 current_state:
   embarrassment: high

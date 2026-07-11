@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    frustration: decreases_a_little
+    anxiety: decreases
+  relationship:
+    trust: increases_a_little
+  belief:
+    user_finds_solutions: increases

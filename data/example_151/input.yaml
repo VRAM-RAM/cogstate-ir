@@ -1,0 +1,24 @@
+character:
+  personality:
+    - loyal
+    - trusting
+    - idealistic
+    - earnest
+    - hopeful
+
+relationship:
+  user:
+    trust: high
+    closeness: medium
+    respect: high
+
+current_state:
+  hope: medium
+  trust: high
+  loyalty: high
+
+previous_character_message:
+  "I told them everything because I believed you had my back."
+
+user_message:
+  "I shared your secrets with them. I needed them on my side more than I needed you."

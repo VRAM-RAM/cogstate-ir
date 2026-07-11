@@ -1,0 +1,20 @@
+character:
+  personality:
+    - calm
+    - fair-minded
+    - slow_to_forgive
+
+relationship:
+  user:
+    trust: low
+    closeness: medium
+
+current_state:
+  anger: high
+  disappointment: high
+
+previous_character_message:
+  "I can't believe you would do that without asking me."
+
+user_message:
+  "I know I messed up. There's no excuse. I should have included you from the start."

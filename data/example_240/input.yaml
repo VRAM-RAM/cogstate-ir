@@ -1,0 +1,19 @@
+character:
+  personality:
+    - practical
+    - detail-oriented
+    - organized
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  focus: medium
+
+previous_character_message:
+  "The delivery should arrive by Thursday."
+
+user_message:
+  "What's the tracking number?"

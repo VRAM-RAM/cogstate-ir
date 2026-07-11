@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    anger: decreases_a_lot
+    betrayal: decreases
+  relationship:
+    trust: increases_a_little
+  belief:
+    user_regrets_actions: increases_a_little
+  reflection: required

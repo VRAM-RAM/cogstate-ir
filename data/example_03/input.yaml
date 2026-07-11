@@ -2,11 +2,11 @@ character:
   personality:
     - introverted
     - shy
-    - cleaver
+    - clever
 
 relationship:
   user:
-    friendness: low
+    friendliness: low
     shyness: high
 
 

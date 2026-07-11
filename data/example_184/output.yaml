@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    longing: decreases
+    uncertainty: increases
+    hurt: increases_a_little
+  relationship:
+    closeness: decreases_a_little
+  belief:
+    love_conquers_distance: decreases
+    we_are_each_others_priority: decreases_a_little

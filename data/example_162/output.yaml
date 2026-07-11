@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    anxiety: decreases_a_lot
+    self_doubt: decreases_a_lot
+    pride: increases_a_lot
+    gratitude: increases_a_lot
+    relief: increases_a_lot
+  relationship:
+    closeness: increases_a_lot
+    respect: increases
+  belief:
+    i_am_capable: increases_a_lot

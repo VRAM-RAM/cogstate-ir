@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    suspicion: decreases
+    anger: increases_a_lot
+    betrayal: increases
+  relationship:
+    trust: decreases_a_lot
+    closeness: decreases
+  belief:
+    user_fails_loyalty: increases
+  reflection: required

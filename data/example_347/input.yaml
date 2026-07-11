@@ -1,0 +1,19 @@
+character:
+  personality:
+    - relaxed
+    - talkative
+    - cheerful
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  contentment: medium
+
+previous_character_message:
+  "I've been coming here for years, the baristas know my order."
+
+user_message:
+  "I usually get the oat milk latte, it's pretty good."

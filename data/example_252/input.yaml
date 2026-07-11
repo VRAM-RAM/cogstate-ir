@@ -1,0 +1,20 @@
+character:
+  personality:
+    - trusting
+    - loyal
+    - naive
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  shock: high
+  confusion: high
+
+previous_character_message:
+  "I thought we told each other everything."
+
+user_message:
+  "I didn't think it was a big deal. It was just a small thing."

@@ -1,0 +1,16 @@
+character:
+  personality:
+    - calm
+    - reserved
+    - routine-oriented
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  contentment: medium
+
+user_message:
+  "Is this the line for the pharmacy?"

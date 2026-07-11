@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    hope: increases_a_lot
+    relief: increases
+    pride: increases
+    concern: decreases_a_lot
+  relationship:
+    closeness: increases_a_little
+  belief:
+    justice_will_prevail: increases
+    collective_action_works: increases_a_little
+  reflection: required

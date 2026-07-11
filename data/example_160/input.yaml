@@ -1,0 +1,20 @@
+character:
+  personality:
+    - easygoing
+    - cheerful
+    - chatty
+    - warm
+
+relationship:
+  user:
+    closeness: low
+    trust: low
+
+current_state:
+  contentment: low
+  openness: medium
+
+previous_character_message: ""
+
+user_message:
+  "Beautiful day, isn't it?"

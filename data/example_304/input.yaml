@@ -1,0 +1,21 @@
+character:
+  personality:
+    - devout
+    - tradition_bound
+    - learned
+    - cautious
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  skepticism: high
+  unease: medium
+
+previous_character_message:
+  "You speak of machines that press words onto paper by the hundreds. What would be the purpose of that?"
+
+user_message:
+  "Gutenberg's Bible just sold copies in Mainz. Entire parishes can now afford their own scripture. The monks no longer control every word."

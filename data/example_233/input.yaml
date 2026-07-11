@@ -1,0 +1,19 @@
+character:
+  personality:
+    - kind
+    - helpful
+    - patient
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  calm: medium
+
+previous_character_message:
+  "Here are the documents you requested."
+
+user_message:
+  "Thanks, that's exactly what I needed."

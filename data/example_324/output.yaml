@@ -1,0 +1,5 @@
+state_changes:
+  emotion:
+    merriment: increases_a_little
+    contentment: increases_a_little
+    defensiveness: increases_a_little

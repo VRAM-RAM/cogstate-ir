@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    boredom: decreases_a_little
+    mild_irritation: decreases
+    pleasure: increases_a_little
+  relationship:
+    trust: increases_a_little
+  belief:
+    strangers_can_be_nice: increases_a_little

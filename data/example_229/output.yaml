@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    satisfaction: increases_a_little
+    amusement: increases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_is_teasing: increases

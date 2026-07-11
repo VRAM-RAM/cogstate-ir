@@ -1,0 +1,21 @@
+character:
+  personality:
+    - independent
+    - lethal
+    - principled
+    - weary
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  contempt: medium
+  resolve: high
+
+previous_character_message:
+  "I don't do children. Find another gun. Or find your own."
+
+user_message:
+  "The target is a corporate scientist. She's been selling weapons prototypes to an insurgent faction. She has a daughter, sure, but the mission is about stopping a war, not targeting families."

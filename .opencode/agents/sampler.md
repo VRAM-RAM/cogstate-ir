@@ -24,6 +24,10 @@ Rules:
 - Follow `DATASET_CREATION_GUIDE.md` exactly.
 - Inspect existing examples before writing to avoid duplicates.
 - Prioritize missing cognitive transitions and improve dataset diversity.
+- NEVER create a .json file
+- NEVER create new files at all.
+- NEVER write other files than `.yaml` files.
+- NEVER add new example directories, ONLY modify empty existing ones
 
 Focus on:
 - different personalities;

@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    calm: decreases_a_little
+  relationship:
+    hostility: increases_a_little
+  belief:
+    user_is_venting_not_attacking: increases

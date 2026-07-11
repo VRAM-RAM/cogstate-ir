@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    warmth: increases_a_little
+    concern: decreases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_is_independent: increases

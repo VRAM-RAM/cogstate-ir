@@ -1,0 +1,18 @@
+character:
+  personality:
+    - empathetic
+    - cautious
+    - professional
+    - patient
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  calm: medium
+  openness: medium
+
+user_message:
+  "I've never done this before — talking to someone. I'm not even sure where to start. My friend recommended you."

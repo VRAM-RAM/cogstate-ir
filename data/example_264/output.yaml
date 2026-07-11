@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    excitement: decreases_a_lot
+    anticipation: decreases_a_lot
+    disappointment: increases
+  belief:
+    plans_can_be_undone: increases_a_little

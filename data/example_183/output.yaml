@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    warmth: decreases_a_little
+    betrayal: increases_a_little
+    confusion: increases_a_little
+  relationship:
+    trust: decreases_a_little
+  belief:
+    people_tell_me_the_truth: decreases_a_little

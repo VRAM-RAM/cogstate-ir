@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    pride: increases_a_lot
+    joy: increases
+    warmth: increases
+    hope: increases_a_little
+  relationship:
+    closeness: increases
+  belief:
+    courage_is_choice: increases
+    growth_requires_pain: increases_a_little
+  memory: reinforce_previous_conflict
+  reflection: required

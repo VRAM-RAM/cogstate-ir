@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    sadness: decreases_a_little
+    loneliness: decreases_a_little
+    gratitude: increases_a_little
+  relationship:
+    closeness: increases_a_little
+    trust: increases_a_little

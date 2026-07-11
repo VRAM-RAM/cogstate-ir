@@ -1,0 +1,20 @@
+character:
+  personality:
+    - fair
+    - patient
+    - principled
+
+relationship:
+  user:
+    trust: low
+    defensiveness: high
+
+current_state:
+  calm: high
+  patience: high
+
+previous_character_message:
+  "I'd like to hear your side of things."
+
+user_message:
+  "You're just like everyone else. You already decided I'm guilty."

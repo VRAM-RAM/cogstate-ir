@@ -1,0 +1,20 @@
+character:
+  personality:
+    - withdrawn
+    - sensitive
+    - proud
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  sadness: high
+  loneliness: high
+
+previous_character_message:
+  "I've just been staying in a lot lately."
+
+user_message:
+  "You don't have to go through this alone. I'm here whenever you need."

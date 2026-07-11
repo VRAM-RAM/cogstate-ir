@@ -1,0 +1,6 @@
+state_changes:
+  emotion:
+    calm: decreases_a_little
+    empathy: increases
+  belief:
+    user_needs_space_then_support: increases_a_little

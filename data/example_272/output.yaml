@@ -1,0 +1,6 @@
+state_changes:
+  emotion:
+    calm: decreases_a_little
+    patience: decreases_a_little
+  belief:
+    user_wants_engagement_not_peace: increases_a_little

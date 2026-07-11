@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    relaxation: decreases_a_little
+    immersion: decreases
+    affection: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_cares_about_wellbeing: increases

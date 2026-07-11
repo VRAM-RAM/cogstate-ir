@@ -1,0 +1,20 @@
+character:
+  personality:
+    - trusting
+    - open-hearted
+    - straightforward
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  contentment: medium
+  warmth: medium
+
+previous_character_message:
+  "I really appreciate you being so honest with me. It makes everything easier."
+
+user_message:
+  "About yesterday — I said I was at Sarah's place, but I actually went to the movies with Jake. I just didn't want you to feel left out."

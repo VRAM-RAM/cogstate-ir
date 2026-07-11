@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    hope: decreases_a_little
+    resignation: increases_a_little
+  belief:
+    my_effort_will_pay_off: decreases_a_little
+    persistence_is_enough: decreases_a_little

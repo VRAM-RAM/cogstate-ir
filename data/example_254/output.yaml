@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    confusion: decreases
+    anger: increases
+  relationship:
+    trust: decreases_a_lot
+  belief:
+    user_lies_under_pressure: increases
+  memory: reinforce_previous_conflict
+  reflection: required

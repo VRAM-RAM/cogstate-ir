@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    mild_stress: increases_a_little
+    amusement: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_is_impulsive: increases_a_little

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - empathetic
+    - moral
+    - loving
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  anger: medium
+  confusion: medium
+
+previous_character_message:
+  "You said you were at the hospital. But the hospital has no record of you being there."
+
+user_message:
+  "I was at the lawyer's. I was getting my will changed to protect you from that lawsuit. I didn't want you to worry."

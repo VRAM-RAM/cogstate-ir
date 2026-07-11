@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    delight: increases
+    warmth: increases_a_little
+  relationship:
+    trust: increases
+    closeness: increases_a_little
+  belief:
+    neighbors_can_be_kind: increases

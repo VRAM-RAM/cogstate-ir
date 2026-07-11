@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    excitement: decreases_a_lot
+    pride: decreases_a_lot
+    hurt: increases
+  belief:
+    my_work_is_not_valued: increases
+  reflection: required

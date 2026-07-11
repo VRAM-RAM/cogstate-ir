@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    fear: decreases_a_little
+    unease: decreases_a_little
+    warmth: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    i_am_not_alone: increases_a_little

@@ -1,0 +1,19 @@
+character:
+  personality:
+    - honest
+    - straightforward
+    - principled
+
+relationship:
+  user:
+    trust: medium
+
+current_state:
+  confusion: high
+  unease: high
+
+previous_character_message:
+  "I need you to be completely honest with me about last night."
+
+user_message:
+  "I already told you what happened. Why don't you believe me?"

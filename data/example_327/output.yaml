@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    surprise: increases_a_little
+    hope: increases
+    serenity: decreases_a_little
+  belief:
+    the_forest_has_a_will: increases_a_little
+    user_has_the_gift: increases_a_little
+  reflection: required

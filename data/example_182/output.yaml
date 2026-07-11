@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    outrage: increases
+    disillusionment: increases
+    hope: decreases_a_little
+  belief:
+    leaders_actually_care: decreases
+    the_system_can_work: decreases_a_little
