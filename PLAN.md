@@ -49,9 +49,9 @@ target_ir:
 
 ---
 
-## Phase 2 — Training pipeline (Rust + candle)
+## Phase 2 — Training pipeline (Rust + candle) [COMPLETED]
 
-**Model**: fine-tune a small pre-trained transformer via candle (e.g. GPT-2 124M or a tiny 50M variant).
+**Model**: fine-tune a small pre-trained transformer via candle (e.g. GPT-2 124M or a tiny 50M variant). -> Supra50M
 
 **Training format**: each example → text prompt encoding (state + message) with target IR ops as text.
 
@@ -64,23 +64,89 @@ target_ir:
 
 ---
 
-## Phase 3 — Inference
+## Phase 3 — Inference [COMPLETED]
 
-**CLI**: `cogstate infer --state state.json --message "..." --model model.bin`
+**CLI**: `cogstate infer --state state.json --message "..." [--weights model.safetensors] [--model-id ...] [-o new_state.json]`
 
-- Runs compiler over the input
-- Outputs IR ops
+- Runs compiler over the input (converts `CharacterState` → `spec::Input` with f32→label mapping)
+- Outputs predicted IR ops
 - Applies IR to state engine
-- Displays new state
+- Displays or saves new state
 
 ---
 
-## Phase 4 (future) — Full pipeline
+## Phase 4 — Full pipeline [COMPLETED]
 
-- Connect renderer via llama.cpp bindings from Rust
-- `cogstate chat` loads compiler + renderer + state engine for interactive use
+**CLI**: `cogstate chat --state state.json --compiler model.safetensors --renderer model.gguf [--port 8080] [-o state.json]`
+
+### Architecture
+
+```
+User input → [Compiler (candle 50M)] → IR ops → [State Engine] → new state → [Renderer (llama-server)] → character response
+```
+
+### Components
+
+| File | Purpose |
+|---|---|
+| `src/renderer.rs` | Spawn/manage `llama-server` child process + HTTP client for `/v1/chat/completions` |
+| `src/chat.rs` | Interactive REPL: read input → compiler → engine → renderer → display |
+
+### Features
+
+- Compiler model loaded once, reused across turns
+- Renderer is optional — without it, you write the character's responses manually
+- When `--renderer` is provided: starts `llama-server` with the GGUF model, calls `/v1/chat/completions`, persists KV cache between turns
+- System prompt built dynamically from character state (personality, emotions, relationships, beliefs, memory)
+- OpenAI-compatible `/v1/chat/completions` endpoint — llama.cpp handles chat template
+- Slash commands: `/quit`, `/save`, `/state`, `/help`
+- Auto-saves state on exit
+- 10-turn conversation window limit to prevent context overflow
+
+### Usage
+
+```bash
+# Start interactive chat
+cogstate-ir chat \
+  --state state.json \
+  --compiler model.safetensors \
+  --renderer Qwen3-14B-Q4_K_M.gguf
+
+# With custom port and output path
+cogstate-ir chat \
+  --state state.json \
+  --renderer model.gguf \
+  -o updated_state.json \
+  --port 9090
+```
+
+### Status
+
+- ✅ Full pipeline verified end-to-end
+- ✅ Compiler predicts IR ops based on user message + character state
+- ✅ State engine applies ops and updates state
+- ✅ Renderer generates in-character responses using updated state
+- ✅ 14B model demonstrates behavior consistent with personality traits
 
 ---
 
-## Phase 5 (far future) - Improving pipeline & IR model
+## Phase 5 (Research) — Improving the IR compiler
 
+Objectives:
+
+- Expand the dataset (500 → 1500 → 2500+ examples)
+- Improve annotation consistency
+- Train larger compiler models (360M, 1B...)
+- Experiment with LoRA vs full fine-tuning
+- Benchmark different base models
+- Build an evaluation suite
+- Measure generalization on held-out scenarios
+- Study failure modes (hallucinations, wrong categories, missing ops)
+
+## Phase 6 (Future) — Ecosystem
+
+- Community-contributed datasets
+- Community-trained compiler models
+- Automatic evaluation leaderboard
+- Integrations with chat frontends
+- Renderer adapters (llama.cpp, vLLM, Ollama...)

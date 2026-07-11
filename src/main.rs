@@ -5,11 +5,14 @@ use candle_nn::VarMap;
 use candle_transformers::models::llama;
 use clap::{Parser, Subcommand};
 
+mod chat;
 mod dataset;
 mod engine;
+mod infer;
 mod model;
 mod predict;
 mod progress_handler;
+mod renderer;
 mod spec;
 mod tokenizer;
 mod train;
@@ -102,6 +105,48 @@ enum Command {
         input: PathBuf,
         #[arg(long, default_value = "SupraLabs/Supra-50M-Instruct")]
         model_id: String,
+    },
+    /// Run the compiler and apply the resulting IR ops to a character state
+    Infer {
+        /// Path to the character state JSON
+        #[arg(long)]
+        state: PathBuf,
+        /// User message to process
+        #[arg(long)]
+        message: String,
+        /// Previous character message (optional)
+        #[arg(long)]
+        previous_message: Option<String>,
+        /// Path to the fine-tuned model weights
+        #[arg(long, default_value = "model.safetensors")]
+        weights: PathBuf,
+        /// HuggingFace model ID for config
+        #[arg(long, default_value = "SupraLabs/Supra-50M-Instruct")]
+        model_id: String,
+        /// Save updated state to file instead of printing to stdout
+        #[arg(short = 'o')]
+        output: Option<PathBuf>,
+    },
+    /// Interactive chat: compiler + state engine + renderer (llama.cpp)
+    Chat {
+        /// Path to the initial character state JSON
+        #[arg(long)]
+        state: PathBuf,
+        /// Path to the fine-tuned compiler weights
+        #[arg(long, default_value = "model.safetensors")]
+        compiler: PathBuf,
+        /// HuggingFace model ID for the compiler config
+        #[arg(long, default_value = "SupraLabs/Supra-50M-Instruct")]
+        model_id: String,
+        /// Path to the renderer GGUF model (optional — without it you write the character's responses)
+        #[arg(long)]
+        renderer: Option<PathBuf>,
+        /// Port for llama-server
+        #[arg(long, default_value_t = 8080)]
+        port: u16,
+        /// Save updated state to this file on exit (default: overwrite --state)
+        #[arg(short = 'o')]
+        output: Option<PathBuf>,
     },
 }
 
@@ -264,6 +309,44 @@ fn main() -> anyhow::Result<()> {
             let target = spec::Target { state_changes: changes };
             let yaml = serde_yaml::to_string(&target)?;
             println!("{}", yaml);
+        }
+        Command::Infer {
+            state,
+            message,
+            previous_message,
+            weights,
+            model_id,
+            output,
+        } => {
+            infer::run(
+                &state,
+                &message,
+                previous_message.as_deref(),
+                &weights,
+                &model_id,
+                output.as_deref(),
+                cli.no_metal,
+            )?;
+        }
+        Command::Chat {
+            state,
+            compiler,
+            model_id,
+            renderer,
+            port,
+            output,
+        } => {
+            let renderer_model = renderer.as_ref().map(|p| p.to_string_lossy().to_string());
+            let config = chat::ChatConfig {
+                state_path: &state,
+                compiler_weights: &compiler,
+                compiler_model_id: &model_id,
+                renderer_model: renderer_model.as_deref(),
+                renderer_port: port,
+                output_state: output.as_deref(),
+                no_metal: cli.no_metal,
+            };
+            chat::run(&config)?;
         }
     }
 

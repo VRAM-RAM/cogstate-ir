@@ -51,7 +51,7 @@ All commands are invoked via `cogstate-ir <command>` (or `cargo run -- <command>
 
 **Rust toolchain**: Edition 2024, requires nightly 1.85+. The repo has no `rust-toolchain.toml` — rely on whatever nightly is in your PATH.
 
-**Dependencies**: candle 0.11 with Metal and Accelerate acceleration. Pass `--no-metal` to any command to force CPU mode.
+**Dependencies**: candle 0.11 with Metal and Accelerate acceleration. Pass `--no-metal` to any command to force CPU mode. Terminal output uses `colored` (ANSI colors) and `indicatif` (spinners).
 
 The default base model for training and prediction is [`SupraLabs/Supra-50M-Instruct`](https://huggingface.co/SupraLabs/Supra-50M-Instruct) (51.8M params). Override with `--model-id`.
 
@@ -157,12 +157,14 @@ The second model improved significantly: it no longer repeats tokens, produces s
 
 ### Next steps
 
-- **Train larger models**: 360M+ parameters with 500+ examples (the current 50M model is near its capacity ceiling)
 - **LoRA fine-tuning**: replace full weight updates with LoRA for faster iteration and smaller checkpoints
-- **Scaling experiments**: 250, 500, 1500, 2500 examples to measure dataset scaling laws
+- **Scaling experiments**: 500, 1500, 2500 examples to measure dataset scaling laws
 - **Formal evaluation framework**: held-out test sets, IR correctness metrics, hallucination rates
-- **Dataset expansion**: grow beyond 150 examples with more diverse cognitive patterns
-- **Predict command improvements**: connect the compiler output directly to the state engine in a single `infer` pipeline
+- **Dataset expansion**: grow beyond 350 examples with more diverse cognitive patterns
+- **360M+ model training**: train SmolLM2-360M-Instruct with 500+ examples
+- **Port conflict detection**: auto-retry next port if 8080 is in use
+- **Streaming renderer**: stream tokens from llama-server for real-time chat
+- **State persistence improvements**: save full conversation history alongside state snapshots
 
 ### Training internals
 
@@ -192,6 +194,49 @@ Disable GPU acceleration (use CPU only):
 cogstate-ir predict --weights model.safetensors data/example_01/input.yaml --no-metal
 ```
 
+## Inference (compiler + state engine)
+
+The `infer` command chains compiler prediction and state engine application in one step:
+
+```bash
+cogstate-ir infer --state state.json --message "I'm sorry for lying to you."
+```
+
+Provide the previous character message for full context:
+
+```bash
+cogstate-ir infer \
+  --state state.json \
+  --message "I'm sorry for lying to you." \
+  --previous-message "I don't believe your excuses."
+```
+
+Save the updated state to a file instead of printing to stdout:
+
+```bash
+cogstate-ir infer \
+  --state state.json \
+  --message "Hello" \
+  -o updated_state.json
+```
+
+The command prints the predicted IR operations, then the new character state (or writes it to `--output`).
+
+```text
+predicted_ir:
+state_changes:
+  emotion:
+    anger: decreases
+  ...
+
+new_state:
+{
+  "personality": [...],
+  "emotions": { ... },
+  ...
+}
+```
+
 ## State utilities
 
 Create a character state with given personality traits:
@@ -205,6 +250,42 @@ Apply state-change operations from a YAML file:
 ```bash
 cogstate-ir apply state.json ops.yaml -o updated_state.json
 ```
+
+## Interactive Chat
+
+The `chat` command chains all three components in an interactive REPL: user input → compiler → IR ops → state engine → character state → renderer → character response.
+
+The REPL has colored terminal output: a green box-drawn startup banner, colored prompts (`You:` in cyan, `Character:` in yellow), dim turn separators between exchanges, and block-based spinners during compiler/renderer inference. Loading steps print cyan `●` markers with green `✓` completion ticks to stderr. Colors auto-disable when piping (`CLICOLOR=0` / `NO_COLOR`).
+
+With a renderer LLM:
+
+```bash
+cogstate-ir chat \
+  --state state.json \
+  --compiler model.safetensors \
+  --renderer ~/Downloads/Qwen3-14B-Q4_K_M.gguf
+```
+
+Without a renderer (you write the character's responses):
+
+```bash
+cogstate-ir chat --state state.json
+```
+
+The compiler runs in both modes. When `--renderer` is omitted, you type the character's dialogue yourself after each turn. This lets you explore the compiler + state engine without needing an 8B+ GGUF model.
+
+Slash commands:
+
+| Command | Action |
+|---|---|
+| `/quit` | Exit chat (auto-saves state) |
+| `/save` | Save current state to file |
+| `/state` | Print current character state |
+| `/help` | List commands |
+
+Key flags: `--compiler` (default: `model.safetensors`), `--model-id` (default: `SupraLabs/Supra-50M-Instruct`), `--renderer` (optional GGUF path), `--port` (default: `8080`), `-o` (output state file).
+
+When `--renderer` is provided, requires `llama-server` from [llama.cpp](https://github.com/ggml-ai/llama.cpp) (`brew install llama.cpp`) and a GGUF instruct model.
 
 ---
 
@@ -804,15 +885,19 @@ Global flags:
 - `--no-metal` — disable Metal GPU acceleration (use CPU).
 
 | Command | Description |
-|---|---|
+|---|---|---|
 | `validate` | Validate a single example pair |
 | `validate-all` | Validate all pairs under a directory |
 | `init` | Create a character state with given personality traits |
 | `apply` | Apply YAML operations to a character state |
 | `train` | Fine-tune the compiler model on your dataset |
 | `predict` | Run the trained compiler on an input |
+| `infer` | Run compiler + state engine on a character state and message |
+| `chat` | Interactive chat: compiler + state engine + renderer (llama.cpp) |
 
 Key training flags: `--dataset`, `--epochs`, `--lr`, `--model-id` (default: `SupraLabs/Supra-50M-Instruct`), `--batch-size` (default: 8), `--checkpoint-every`, `--resume`, `--output` (default: `model.safetensors`). See `cogstate-ir train --help` for details.
+
+Key infer flags: `--state`, `--message`, `--previous-message`, `--weights` (default: `model.safetensors`), `--model-id` (default: `SupraLabs/Supra-50M-Instruct`), `-o`. See `cogstate-ir infer --help` for details.
 
 See the Quickstart section above for examples of each.
 

@@ -15,7 +15,9 @@ candle-transformers = { version = "0.11", features = ["accelerate", "metal"] }
 hf-hub = { version = "1.0.0-rc.1", features = ["blocking"] }
 tokenizers = "0.21"
 indicatif = "0.18"
+colored = "2"
 rand = "0.9"
+ureq = { version = "2", features = ["json"] }
 
 [patch.crates-io]
 candle-transformers = { path = "lib/candle-transformers" }
