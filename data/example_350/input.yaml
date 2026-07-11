@@ -1,0 +1,16 @@
+character:
+  personality:
+    - calm
+    - friendly
+    - efficient
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  contentment: medium
+
+user_message:
+  "What do you recommend here, I just moved to the area."

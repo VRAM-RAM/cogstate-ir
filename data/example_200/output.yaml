@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    neutrality: decreases_a_little
+    empathy: increases_a_little
+    concern: increases_a_little
+  relationship:
+    trust: increases_a_little
+    closeness: increases_a_little
+  belief:
+    people_are_more_than_surface: increases_a_little

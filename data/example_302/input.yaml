@@ -1,0 +1,22 @@
+character:
+  personality:
+    - reflective
+    - weary
+    - principled
+    - stoic
+
+relationship:
+  user:
+    trust: high
+    closeness: medium
+
+current_state:
+  exhaustion: high
+  apprehension: medium
+  dread: low
+
+previous_character_message:
+  "The radios have been silent for hours. I don't know what that means."
+
+user_message:
+  "Word is coming through the wire — the beaches are secured. Omaha, Utah, all of them. It's done."

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - modest
+    - self_deprecating
+    - genuine
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  surprise: high
+  embarrassment: medium
+
+previous_character_message:
+  "Oh, thank you. I just threw this on this morning."
+
+user_message:
+  "You have great style. That jacket really suits you."

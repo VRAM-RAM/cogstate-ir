@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    frustration: increases_a_little
+    amusement: decreases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_is_ruthless: increases

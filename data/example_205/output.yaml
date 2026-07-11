@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    contentment: increases
+    energy: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_appreciates_gesture: increases_a_little

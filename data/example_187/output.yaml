@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    shock: decreases_a_little
+    hurt: increases
+    disillusionment: increases
+  belief:
+    people_are_what_they_seem: decreases
+    the_world_is_fair: decreases

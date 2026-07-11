@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    shock: decreases_a_little
+    disappointment: increases
+    hurt: increases
+  relationship:
+    trust: decreases_a_lot
+  belief:
+    user_breaks_pledges: increases
+  memory: reinforce_previous_conflict
+  reflection: required

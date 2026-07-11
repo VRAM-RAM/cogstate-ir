@@ -1,0 +1,20 @@
+character:
+  personality:
+    - responsible
+    - proud
+    - reliable
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  shame: high
+  regret: high
+
+previous_character_message:
+  "I promised I'd be there for the recital. I gave my word."
+
+user_message:
+  "The car broke down on the highway. I know that's not the point. I should have left earlier."

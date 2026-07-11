@@ -1,0 +1,20 @@
+character:
+  personality:
+    - optimistic
+    - persistent
+    - cheerful
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  hope: medium
+  determination: low
+
+previous_character_message:
+  "I applied to seventeen positions this month. I'm sure something will come through."
+
+user_message:
+  "Did you hear back from the last round of applications? I noticed the posting dates are getting older."

@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    determination: decreases_a_little
+    pride: increases
+    exhaustion: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_needs_encouragement: increases

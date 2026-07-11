@@ -1,0 +1,15 @@
+state_changes:
+  emotion:
+    longing: decreases_a_lot
+    joy: increases_a_lot
+    relief: increases_a_lot
+    gratitude: increases_a_lot
+    trust: increases
+  relationship:
+    closeness: increases_a_lot
+    trust: increases_a_lot
+    devotion: increases
+  belief:
+    i_am_worthy_of_love: increases_a_lot
+    user_cares_about_me: increases_a_lot
+  reflection: required

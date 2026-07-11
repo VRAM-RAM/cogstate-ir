@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    anxiety: increases_a_lot
+    sadness: increases_a_lot
+    confusion: increases
+  relationship:
+    closeness: decreases_a_lot
+    trust: decreases_a_lot
+    reliance: decreases_a_lot
+  belief:
+    i_am_worthy_of_love: decreases
+    user_cares_about_me: decreases_a_lot
+  reflection: required

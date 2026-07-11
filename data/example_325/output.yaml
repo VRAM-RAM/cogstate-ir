@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    concern: increases_a_lot
+    fear: increases
+  belief:
+    dark_magic_corrupts: increases
+    novices_need_protection: increases
+  reflection: required

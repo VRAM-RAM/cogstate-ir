@@ -1,0 +1,16 @@
+character:
+  personality:
+    - curious
+    - friendly
+    - observant
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  calm: medium
+
+user_message:
+  "That's a nice painting on the wall there."

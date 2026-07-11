@@ -1,0 +1,6 @@
+state_changes:
+  emotion:
+    patience: decreases_a_little
+    mild_frustration: increases_a_little
+  belief:
+    upselling_is_annoying: increases_a_little

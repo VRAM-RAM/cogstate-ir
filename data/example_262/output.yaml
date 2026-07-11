@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    hope: decreases_a_lot
+    exhaustion: increases
+    defeat: increases
+  belief:
+    trying_is_pointless: increases_a_little
+  reflection: required

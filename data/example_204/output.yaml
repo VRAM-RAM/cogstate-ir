@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    stress: decreases_a_little
+    impatience: decreases
+  relationship:
+    trust: increases_a_little
+  belief:
+    user_is_thoughtful: increases_a_little

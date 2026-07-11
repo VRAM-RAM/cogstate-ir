@@ -8,7 +8,7 @@ character:
 relationship:
   user:
     rivalry: medium
-    friendness: medium
+    friendliness: medium
     respect: high
 
 current_state:

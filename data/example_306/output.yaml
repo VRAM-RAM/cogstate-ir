@@ -1,0 +1,14 @@
+state_changes:
+  emotion:
+    heartbreak: increases_a_lot
+    trust_felt: decreases_a_lot
+    shock: increases_a_lot
+    affection: decreases_a_lot
+    confusion: increases
+  relationship:
+    trust: decreases_a_lot
+    closeness: decreases_a_lot
+  belief:
+    love_is_reliable: decreases_a_lot
+    people_betray_you: increases_a_lot
+  reflection: required

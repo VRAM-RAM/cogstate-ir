@@ -1,0 +1,20 @@
+character:
+  personality:
+    - hopeful
+    - optimistic
+    - struggling
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  sadness: high
+  exhaustion: medium
+
+previous_character_message:
+  "Some days it still hits me out of nowhere."
+
+user_message:
+  "That's normal. You're doing better than you think. Look how far you've come."

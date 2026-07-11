@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    boredom: decreases_a_little
+    surprise: increases_a_little
+    apprehension: increases_a_little
+  belief:
+    my_work_matters: increases_a_little

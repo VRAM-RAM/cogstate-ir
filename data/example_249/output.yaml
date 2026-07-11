@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    anger: decreases_a_lot
+    hurt: decreases
+  relationship:
+    trust: increases_a_little
+  belief:
+    user_can_apologize: increases_a_little
+  reflection: required

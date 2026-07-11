@@ -1,0 +1,20 @@
+character:
+  personality:
+    - anxious
+    - honest
+    - self-conscious
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  terror: medium
+  vulnerability: high
+
+previous_character_message:
+  "There's something I've never told you. I've been carrying it for years."
+
+user_message:
+  "You can tell me. Whatever it is, I'm not going anywhere."

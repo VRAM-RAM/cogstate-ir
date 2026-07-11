@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    amusement: increases
+    warmth: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    shared_memories_bond_us: increases_a_little

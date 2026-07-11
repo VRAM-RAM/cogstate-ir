@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    calm: decreases_a_little
+  relationship:
+    resentment: decreases_a_little
+  belief:
+    my_calmness_can_be_perceived_as_dismissal: increases
+  reflection: required

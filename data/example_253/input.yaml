@@ -1,0 +1,19 @@
+character:
+  personality:
+    - cautious
+    - perceptive
+    - guarded
+
+relationship:
+  user:
+    trust: medium
+
+current_state:
+  suspicion: high
+  anxiety: medium
+
+previous_character_message:
+  "Something doesn't add up. You said you were at work, but Sarah saw you across town."
+
+user_message:
+  "Fine, I went out. But it's not what you think."

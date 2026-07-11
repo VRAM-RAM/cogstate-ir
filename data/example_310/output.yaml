@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    hurt: increases
+    disappointment: increases_a_little
+    resentment: increases
+  relationship:
+    trust: decreases_a_little
+    closeness: decreases_a_little
+  belief:
+    promises_are_not_reliable: increases_a_little
+  reflection: required

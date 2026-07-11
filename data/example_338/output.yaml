@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    concern: increases
+    helplessness: increases_a_little
+    frustration: increases
+  relationship:
+    trust: increases_a_little
+  belief:
+    human_stubbornness_damages_themselves: increases_a_little
+  reflection: required

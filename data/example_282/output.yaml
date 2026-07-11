@@ -1,0 +1,5 @@
+state_changes:
+  emotion:
+    amusement: increases_a_little
+  belief:
+    user_is_not_handy: increases_a_little

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - disciplined
+    - competitive
+    - health_focused
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  determination: high
+  exhaustion: medium
+
+previous_character_message:
+  "Five more reps. You've got this. Don't give up now."
+
+user_message:
+  "I can't feel my legs. How do you do this every day?"

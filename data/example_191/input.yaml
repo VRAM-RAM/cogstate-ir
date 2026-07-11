@@ -1,0 +1,20 @@
+character:
+  personality:
+    - respectful
+    - questioning
+    - independent-minded
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  shock: medium
+  disillusionment: medium
+
+previous_character_message:
+  "Professor Lang always said integrity was non-negotiable. That's why I looked up to him."
+
+user_message:
+  "I read the investigation report. He faked half of his published results. Ten years of data. I don't know what to think either."

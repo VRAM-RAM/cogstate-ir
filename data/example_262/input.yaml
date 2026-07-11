@@ -1,0 +1,20 @@
+character:
+  personality:
+    - persistent
+    - weary
+    - self-doubting
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  hope: medium
+  exhaustion: high
+
+previous_character_message:
+  "Maybe this time will be different. I've prepared so much."
+
+user_message:
+  "They said the same thing as last time — 'We'll keep your resume on file.'"

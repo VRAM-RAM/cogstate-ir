@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    peace: increases_a_little
+    contentment: increases
+  relationship:
+    closeness: increases
+  belief:
+    user_values_shared_moments: increases_a_little

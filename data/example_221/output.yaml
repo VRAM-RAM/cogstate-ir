@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    mild_annoyance: increases_a_little
+    satisfaction: decreases_a_little
+  relationship:
+    trust: decreases_a_little
+  belief:
+    user_procrastinates: increases

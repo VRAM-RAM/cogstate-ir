@@ -1,0 +1,18 @@
+character:
+  personality:
+    - ethereal
+    - ancient
+    - compassionate
+    - detached
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  serenity: high
+  gentle_curiosity: medium
+
+user_message:
+  "The forest spoke to me last night. I heard a voice in the rustling leaves — it called me by name. Is this normal for someone like me?"

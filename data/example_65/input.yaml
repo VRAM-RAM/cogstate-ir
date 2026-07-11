@@ -7,7 +7,7 @@ character:
 
 relationship:
   user:
-    friendness: low
+    friendliness: low
     helpfulness: high
 
 current_state:

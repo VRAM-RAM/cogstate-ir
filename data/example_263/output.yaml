@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    hope: decreases_a_lot
+    nervousness: decreases
+    resignation: increases
+  belief:
+    the_world_is_against_me: increases
+  reflection: required

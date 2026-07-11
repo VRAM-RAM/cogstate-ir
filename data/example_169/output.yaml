@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    satisfaction: increases_a_lot
+    pride: increases
+    relief: increases
+  relationship:
+    closeness: increases_a_little
+    trust: increases_a_little
+  belief:
+    effort_is_valued: increases_a_little

@@ -15,7 +15,11 @@ mod tokenizer;
 mod train;
 mod util;
 
-fn select_device() -> anyhow::Result<Device> {
+fn select_device(no_metal: bool) -> anyhow::Result<Device> {
+    if no_metal {
+        println!("Metal disabled, using CPU");
+        return Ok(Device::Cpu);
+    }
     if candle_core::utils::metal_is_available() {
         println!("using Metal GPU");
         Ok(Device::new_metal(0)?)
@@ -40,6 +44,10 @@ fn download_config(model_id: &str) -> anyhow::Result<llama::Config> {
 #[derive(Parser)]
 #[command(name = "cogstate", about = "Cognitive State IR toolchain")]
 struct Cli {
+    /// Disable Metal GPU acceleration (use CPU)
+    #[arg(long, global = true)]
+    no_metal: bool,
+
     #[command(subcommand)]
     command: Command,
 }
@@ -83,6 +91,9 @@ enum Command {
         /// Path to a checkpoint to resume training from (downloads only config.json).
         #[arg(long)]
         resume: Option<PathBuf>,
+        /// Batch size for training (smaller = less GPU memory)
+        #[arg(long, default_value_t = 8)]
+        batch_size: usize,
     },
     /// Predict IR operations for a given input using a trained model
     Predict {
@@ -162,8 +173,9 @@ fn main() -> anyhow::Result<()> {
             model_id,
             checkpoint_every,
             resume,
+            batch_size,
         } => {
-            let device = select_device()?;
+            let device = select_device(cli.no_metal)?;
             println!("device: {device:?}");
             println!("model: {model_id}");
 
@@ -196,6 +208,7 @@ fn main() -> anyhow::Result<()> {
                 epochs,
                 learning_rate: lr,
                 checkpoint_every,
+                batch_size: Some(batch_size),
                 output: output.clone(),
                 ..Default::default()
             };
@@ -217,7 +230,7 @@ fn main() -> anyhow::Result<()> {
             input,
             model_id,
         } => {
-            let device = select_device()?;
+            let device = select_device(cli.no_metal)?;
             println!("device: {device:?}");
             println!("model: {model_id}");
 

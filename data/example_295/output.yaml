@@ -1,0 +1,6 @@
+state_changes:
+  emotion:
+    amusement: increases_a_little
+    frustration: decreases_a_little
+  belief:
+    user_copes_with_humor: increases_a_little

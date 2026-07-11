@@ -1,0 +1,20 @@
+character:
+  personality:
+    - tense
+    - hypervigilant
+    - caring
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  fear: high
+  tension: high
+
+previous_character_message:
+  "Did you hear that noise? It sounded like glass breaking."
+
+user_message:
+  "False alarm. It was just the wind blowing the gate shut."

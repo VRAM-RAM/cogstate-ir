@@ -1,0 +1,20 @@
+character:
+  personality:
+    - confident
+    - outgoing
+    - resilient
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  frustration: low
+  uncertainty: low
+
+previous_character_message:
+  "I don't understand. I had the right experience, the right connections."
+
+user_message:
+  "The feedback was that you didn't seem to understand the role deeply enough. They went with an internal candidate."

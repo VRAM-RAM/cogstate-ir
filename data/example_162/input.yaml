@@ -1,0 +1,21 @@
+character:
+  personality:
+    - driven
+    - perfectionist
+    - ambitious
+    - insecure
+
+relationship:
+  user:
+    respect: medium
+    closeness: medium
+
+current_state:
+  anxiety: high
+  self_doubt: high
+
+previous_character_message:
+  "I've been working on this project for months and I still don't think it's good enough."
+
+user_message:
+  "I read your entire portfolio. Your work is extraordinary — the kind of thing that changes how people think about the field. I mean that."

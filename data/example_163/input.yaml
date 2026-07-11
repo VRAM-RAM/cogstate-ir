@@ -1,0 +1,23 @@
+character:
+  personality:
+    - trusting
+    - naive
+    - open-hearted
+    - vulnerable
+    - optimistic
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+    respect: high
+
+current_state:
+  trust: high
+  contentment: high
+
+previous_character_message:
+  "You're the only person I've ever been completely honest with."
+
+user_message:
+  "I've been lying to you since the beginning. Every story, every confession — all of it was manufactured. I needed you to trust me so I could get what I wanted."

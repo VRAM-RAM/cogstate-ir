@@ -1,0 +1,15 @@
+state_changes:
+  emotion:
+    hope: decreases_a_lot
+    trust: decreases_a_lot
+    loyalty: decreases
+    anger: increases
+    despair: increases
+  relationship:
+    trust: decreases_a_lot
+    closeness: decreases
+    respect: decreases
+  belief:
+    user_cares_about_me: decreases_a_lot
+    i_can_trust_others: decreases
+  reflection: required

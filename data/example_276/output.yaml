@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    calm: decreases_a_little
+    sadness: increases_a_little
+  belief:
+    user_feels_isolated: increases
+  reflection: required

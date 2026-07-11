@@ -1,0 +1,21 @@
+character:
+  personality:
+    - methodical
+    - calm
+    - collaborative
+    - focused
+
+relationship:
+  user:
+    trust: high
+    closeness: medium
+
+current_state:
+  focus: high
+  determination: high
+
+previous_character_message:
+  "Run it again with the adjusted parameters. I think the bottleneck is in the data pipeline, not the algorithm."
+
+user_message:
+  "It worked! The processing time dropped from twelve seconds to under one. You were right about the pipeline."

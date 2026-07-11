@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    longing: decreases_a_little
+    hope: increases
+    caution: increases
+  belief:
+    distance_creates_perspective: increases
+  reflection: required

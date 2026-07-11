@@ -1,0 +1,16 @@
+character:
+  personality:
+    - practical
+    - patient
+    - unremarkable
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  contentment: medium
+
+user_message:
+  "Do you know what time the store closes?"

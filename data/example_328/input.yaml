@@ -1,0 +1,21 @@
+character:
+  personality:
+    - fierce
+    - proud
+    - haunted
+    - compassionate
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  anguish: high
+  determination: high
+
+previous_character_message:
+  "The dragonfire took everything — my village, my family, my innocence. And now they ask me to ride one of those beasts into battle."
+
+user_message:
+  "You don't have to do this alone. Let me ride with you. I can't replace what you lost, but I can make sure you don't lose yourself."

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - brave
+    - loyal
+    - prone_to_worry
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  fear: high
+  dread: high
+
+previous_character_message:
+  "I saw the headlights pull up outside. I don't think it's anyone we know."
+
+user_message:
+  "It's just the pizza delivery. I ordered dinner without telling you."

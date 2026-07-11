@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    disinterest: decreases_a_little
+    irritation: increases_a_little
+    defensiveness: increases_a_little
+  belief:
+    my_work_is_good_enough: decreases_a_little

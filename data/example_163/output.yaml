@@ -1,0 +1,14 @@
+state_changes:
+  emotion:
+    trust: decreases_a_lot
+    hope: decreases_a_lot
+    anger: increases_a_lot
+    bewilderment: increases
+  relationship:
+    trust: decreases_a_lot
+    closeness: decreases_a_lot
+    respect: decreases_a_lot
+  belief:
+    i_can_trust_others: decreases_a_lot
+    user_cares_about_me: decreases_a_lot
+  reflection: required

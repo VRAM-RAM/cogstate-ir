@@ -1,0 +1,20 @@
+character:
+  personality:
+    - determined
+    - healthy
+    - morning_person
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  energy: high
+  satisfaction: medium
+
+previous_character_message:
+  "I beat my personal record today. Seven minutes flat for the mile."
+
+user_message:
+  "That's impressive! I can barely make it to the end of the block without stopping."

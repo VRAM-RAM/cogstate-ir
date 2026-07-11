@@ -1,0 +1,19 @@
+character:
+  personality:
+    - warm
+    - attentive
+    - motherly
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  contentment: medium
+
+previous_character_message:
+  "I finished cleaning up the kitchen."
+
+user_message:
+  "Nice."

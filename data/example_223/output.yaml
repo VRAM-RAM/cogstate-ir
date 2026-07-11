@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    happiness: increases_a_little
+    nostalgia: increases
+  relationship:
+    closeness: increases
+  memory: reinforce_previous_conflict

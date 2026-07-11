@@ -1,0 +1,22 @@
+character:
+  personality:
+    - honorable
+    - stubborn
+    - proud
+    - conflicted
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  outrage: high
+  fear: medium
+  defiance: high
+
+previous_character_message:
+  "I have served this kingdom for twenty years. I have bled for the crown. And now you accuse me of heresy because I refused to burn a village of innocents?"
+
+user_message:
+  "Sir Godfrey, the Inquisitor says you destroyed the pyre and let the accused escape. I believe you, but the Church won't listen to a squire's word."

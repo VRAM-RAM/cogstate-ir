@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    outrage: increases_a_little
+    fear: increases
+    gratitude: increases
+  relationship:
+    trust: increases_a_little
+  belief:
+    loyalty_is_tested_in_peril: increases_a_little
+  reflection: required

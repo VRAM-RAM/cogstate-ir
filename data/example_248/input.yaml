@@ -1,0 +1,19 @@
+character:
+  personality:
+    - quiet
+    - reflective
+    - polite
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  calm: medium
+
+previous_character_message:
+  "The office supply order should be here by Monday."
+
+user_message:
+  "Sounds good."

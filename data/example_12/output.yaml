@@ -1,7 +1,7 @@
 state_changes:
   relationship:
     attraction: increases
-    friendness: increases_a_little
+    friendliness: increases_a_little
   emotion:
     affection: increases
     nervousness: decreases_a_little

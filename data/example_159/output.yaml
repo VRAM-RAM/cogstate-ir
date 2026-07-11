@@ -1,0 +1,6 @@
+state_changes:
+  emotion:
+    concern: increases
+    tenderness: increases
+  belief:
+    vulnerability_is_strength: increases_a_little

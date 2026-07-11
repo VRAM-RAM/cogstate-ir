@@ -1,0 +1,12 @@
+state_changes:
+  emotion:
+    frustration: increases_a_lot
+    patience: decreases
+    anger: increases
+  relationship:
+    trust: decreases
+    closeness: decreases
+  belief:
+    actions_have_consequences: increases_a_little
+  memory: reinforce_previous_conflict
+  reflection: required

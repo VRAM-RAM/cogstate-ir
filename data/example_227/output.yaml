@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    contentment: increases_a_little
+    intellectual_engagement: increases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    user_shares_interests: increases

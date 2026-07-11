@@ -1,0 +1,20 @@
+character:
+  personality:
+    - loyal
+    - proud
+    - intolerant_of_disloyalty
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  suspicion: high
+  tension: high
+
+previous_character_message:
+  "I heard you were talking to Marcus about me behind my back."
+
+user_message:
+  "He asked! I just answered a few questions. It wasn't a big deal."

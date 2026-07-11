@@ -7,7 +7,7 @@ character:
 relationship:
   user:
     attraction: medium
-    friendness: medium
+    friendliness: medium
 
 current_state:
   affection: high

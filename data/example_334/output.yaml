@@ -1,0 +1,5 @@
+state_changes:
+  emotion:
+    calm: decreases_a_little
+    amusement: increases_a_little
+    contemplation: increases

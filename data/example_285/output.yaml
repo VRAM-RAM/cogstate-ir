@@ -1,0 +1,8 @@
+state_changes:
+  emotion:
+    amusement: increases
+    embarrassment: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    i_should_avoid_diy: increases_a_little

@@ -1,0 +1,19 @@
+character:
+  personality:
+    - guarded
+    - proud
+    - deeply hurt
+
+relationship:
+  user:
+    trust: medium
+
+current_state:
+  humiliation: high
+  anger: high
+
+previous_character_message:
+  "How could you tell them about my past? That was private."
+
+user_message:
+  "It came up in conversation. I didn't think you'd mind."

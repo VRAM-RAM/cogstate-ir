@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    fear: decreases
+    desperation: decreases_a_lot
+    gratitude: increases_a_lot
+  relationship:
+    trust: increases
+  belief:
+    mercy_exists_in_the_powerful: increases
+  reflection: required

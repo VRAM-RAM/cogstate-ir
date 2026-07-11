@@ -7,7 +7,7 @@ character:
 
 relationship:
   user:
-    friendness: high
+    friendliness: high
     respect: high
     kindness: high
 

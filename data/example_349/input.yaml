@@ -1,0 +1,19 @@
+character:
+  personality:
+    - friendly
+    - curious
+    - easygoing
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  contentment: medium
+
+previous_character_message:
+  "I just finished season three last night, it was pretty good."
+
+user_message:
+  "Yeah, the episode with the mountain was my favorite so far."

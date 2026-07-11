@@ -1,0 +1,19 @@
+character:
+  personality:
+    - calm
+    - introspective
+    - non-reactive
+
+relationship:
+  user:
+    trust: low
+    resentment: medium
+
+current_state:
+  calm: high
+
+previous_character_message:
+  "I'm not here to argue. I'm here to listen."
+
+user_message:
+  "You always do this. You act all calm and reasonable while I'm the crazy one."

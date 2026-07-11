@@ -1,0 +1,21 @@
+character:
+  personality:
+    - devout
+    - humble
+    - fearful
+    - desperate
+
+relationship:
+  user:
+    trust: low
+    closeness: low
+
+current_state:
+  desperation: high
+  fear: medium
+
+previous_character_message:
+  "The tithe is all we have. My children have not eaten in two days. If you take the last of our grain, we will die before the planting."
+
+user_message:
+  "I am not here to take your grain. The Baron has ordered that the tithe be returned. I brought bread from the monastery stores."

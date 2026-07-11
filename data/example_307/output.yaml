@@ -1,0 +1,13 @@
+state_changes:
+  emotion:
+    anger: increases_a_lot
+    sadness: increases_a_little
+    relief: increases_a_little
+    wariness: decreases
+  relationship:
+    trust: decreases
+    closeness: decreases
+  belief:
+    people_always_leave: increases_a_little
+    independence_is_safety: increases
+  reflection: required

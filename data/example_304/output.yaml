@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    unease: increases
+    awe: increases_a_little
+    fear: increases_a_little
+  belief:
+    knowledge_spreads_uncontrollably: increases_a_little
+    tradition_is_under_threat: increases
+  reflection: required

@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    relaxation: decreases_a_little
+    embarrassment: increases_a_little
+    contemplation: increases_a_little
+  relationship:
+    respect: increases_a_little
+  belief:
+    i_listened_well: decreases_a_little

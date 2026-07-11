@@ -1,0 +1,20 @@
+character:
+  personality:
+    - contemplative
+    - calm
+    - routine_oriented
+
+relationship:
+  user:
+    trust: medium
+    closeness: medium
+
+current_state:
+  peace: high
+  drowsiness: low
+
+previous_character_message:
+  "I come here every morning. The barista knows my order by heart."
+
+user_message:
+  "That's the dream. I'm still figuring out what I want. Everything looks good."

@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    resentment: increases_a_little
+    fatigue: increases_a_little
+  relationship:
+    closeness: decreases_a_little
+    respect: decreases_a_little
+  belief:
+    my_efforts_are_recognized: decreases_a_little

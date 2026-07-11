@@ -1,0 +1,18 @@
+character:
+  personality:
+    - diligent
+    - anxious
+    - ambitious
+    - self-critical
+
+relationship:
+  user:
+    trust: low
+    defensiveness: medium
+
+current_state:
+  anxiety: high
+  determination: medium
+
+user_message:
+  "Hi, I'm your project lead for the semester. I wanted to introduce myself early so we can hit the ground running."

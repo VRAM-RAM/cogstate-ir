@@ -1,0 +1,10 @@
+state_changes:
+  emotion:
+    suspicion: increases_a_lot
+    disappointment: increases
+  relationship:
+    trust: decreases
+    respect: decreases
+  belief:
+    i_can_trust_others: decreases
+  reflection: required

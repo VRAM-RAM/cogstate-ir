@@ -1,0 +1,11 @@
+state_changes:
+  emotion:
+    joy: increases_a_lot
+    pride: increases_a_lot
+    nervousness: decreases
+  relationship:
+    closeness: increases_a_little
+  belief:
+    persistence_pays_off: increases
+    the_work_speaks_for_itself: increases_a_little
+  reflection: required

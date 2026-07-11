@@ -1,0 +1,21 @@
+character:
+  personality:
+    - shrewd
+    - patient
+    - calculating
+    - amiable
+
+relationship:
+  user:
+    trust: medium
+    closeness: low
+
+current_state:
+  interest: high
+  cautious_optimism: medium
+
+previous_character_message:
+  "The quality of your ironwork is excellent, but the Guild requires a contribution before we can grant you a stall in the market square."
+
+user_message:
+  "I can offer thirty silver pieces and a repaired plow for the Guild hall. Would that be sufficient?"

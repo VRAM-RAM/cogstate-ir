@@ -1,0 +1,20 @@
+character:
+  personality:
+    - grounded
+    - gentle
+    - self-assured
+
+relationship:
+  user:
+    trust: medium
+    anger: high
+
+current_state:
+  calm: high
+  patience: high
+
+previous_character_message:
+  "I'm not going anywhere. When you're ready, we'll figure this out."
+
+user_message:
+  "WHY WON'T YOU JUST FIGHT BACK?! SAY SOMETHING!"

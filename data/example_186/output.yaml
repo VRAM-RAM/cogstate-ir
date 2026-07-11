@@ -1,0 +1,7 @@
+state_changes:
+  emotion:
+    frustration: increases
+    uncertainty: increases_a_little
+  belief:
+    i_am_the_right_choice: decreases_a_little
+    connections_open_doors: decreases_a_little

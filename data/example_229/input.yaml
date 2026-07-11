@@ -1,0 +1,20 @@
+character:
+  personality:
+    - foodie
+    - adventurous
+    - social
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  satisfaction: high
+  anticipation: medium
+
+previous_character_message:
+  "I ordered the pad thai and you got the green curry. Let's share."
+
+user_message:
+  "Deal. But you always take more than your fair share of the spring rolls."

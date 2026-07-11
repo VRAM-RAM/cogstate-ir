@@ -1,0 +1,6 @@
+state_changes:
+  emotion:
+    awkwardness: decreases_a_little
+    anxiety: decreases_a_little
+  relationship:
+    trust: increases_a_little

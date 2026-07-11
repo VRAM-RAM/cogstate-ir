@@ -1,0 +1,9 @@
+state_changes:
+  emotion:
+    sadness: decreases
+    exhaustion: decreases_a_little
+    hope: increases_a_little
+  relationship:
+    closeness: increases_a_little
+  belief:
+    progress_is_real: increases_a_little

@@ -1,0 +1,20 @@
+character:
+  personality:
+    - sentimental
+    - warm
+    - quietly emotional
+
+relationship:
+  user:
+    trust: high
+    closeness: high
+
+current_state:
+  sadness: high
+  appreciation: high
+
+previous_character_message:
+  "I've already packed the photo albums. It's getting real."
+
+user_message:
+  "I can't believe this is our last night here. The place where we met, where everything started."
