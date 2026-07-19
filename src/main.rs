@@ -1,6 +1,5 @@
 use std::path::PathBuf;
 
-use candle_core::Device;
 use candle_nn::VarMap;
 use candle_transformers::models::llama;
 use clap::{Parser, Subcommand};
@@ -18,20 +17,6 @@ mod tokenizer;
 mod train;
 mod util;
 
-fn select_device(no_metal: bool) -> anyhow::Result<Device> {
-    if no_metal {
-        println!("Metal disabled, using CPU");
-        return Ok(Device::Cpu);
-    }
-    if candle_core::utils::metal_is_available() {
-        println!("using Metal GPU");
-        Ok(Device::new_metal(0)?)
-    } else {
-        println!("Metal not available, using CPU");
-        Ok(Device::Cpu)
-    }
-}
-
 fn download_config(model_id: &str) -> anyhow::Result<llama::Config> {
     let (owner, name) = util::split_model_id(model_id);
     let client = hf_hub::HFClientSync::new()?;
@@ -47,9 +32,9 @@ fn download_config(model_id: &str) -> anyhow::Result<llama::Config> {
 #[derive(Parser)]
 #[command(name = "cogstate", about = "Cognitive State IR toolchain")]
 struct Cli {
-    /// Disable Metal GPU acceleration (use CPU)
-    #[arg(long, global = true)]
-    no_metal: bool,
+    /// Select compute device: auto, cpu, metal, cuda
+    #[arg(long, default_value = "auto", global = true)]
+    device: String,
 
     #[command(subcommand)]
     command: Command,
@@ -220,7 +205,7 @@ fn main() -> anyhow::Result<()> {
             resume,
             batch_size,
         } => {
-            let device = select_device(cli.no_metal)?;
+            let device = util::select_device(&cli.device)?;
             println!("device: {device:?}");
             println!("model: {model_id}");
 
@@ -275,7 +260,7 @@ fn main() -> anyhow::Result<()> {
             input,
             model_id,
         } => {
-            let device = select_device(cli.no_metal)?;
+            let device = util::select_device(&cli.device)?;
             println!("device: {device:?}");
             println!("model: {model_id}");
 
@@ -318,6 +303,7 @@ fn main() -> anyhow::Result<()> {
             model_id,
             output,
         } => {
+            let device = util::select_device(&cli.device)?;
             infer::run(
                 &state,
                 &message,
@@ -325,7 +311,7 @@ fn main() -> anyhow::Result<()> {
                 &weights,
                 &model_id,
                 output.as_deref(),
-                cli.no_metal,
+                &device,
             )?;
         }
         Command::Chat {
@@ -336,6 +322,7 @@ fn main() -> anyhow::Result<()> {
             port,
             output,
         } => {
+            let device = util::select_device(&cli.device)?;
             let renderer_model = renderer.as_ref().map(|p| p.to_string_lossy().to_string());
             let config = chat::ChatConfig {
                 state_path: &state,
@@ -344,7 +331,7 @@ fn main() -> anyhow::Result<()> {
                 renderer_model: renderer_model.as_deref(),
                 renderer_port: port,
                 output_state: output.as_deref(),
-                no_metal: cli.no_metal,
+                device,
             };
             chat::run(&config)?;
         }

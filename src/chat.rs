@@ -5,6 +5,8 @@ use std::time::Duration;
 use colored::*;
 use indicatif::{ProgressBar, ProgressStyle};
 
+use candle_core::Device;
+
 use crate::engine::{self, CharacterState};
 use crate::infer;
 use crate::model;
@@ -21,7 +23,7 @@ pub struct ChatConfig<'a> {
     pub renderer_model: Option<&'a str>,
     pub renderer_port: u16,
     pub output_state: Option<&'a Path>,
-    pub no_metal: bool,
+    pub device: Device,
 }
 
 fn with_spinner<T>(msg: &str, f: impl FnOnce() -> T) -> T {
@@ -42,13 +44,7 @@ fn print_turn_separator() {
 }
 
 pub fn run(config: &ChatConfig) -> anyhow::Result<()> {
-    let device = if config.no_metal {
-        candle_core::Device::Cpu
-    } else if candle_core::utils::metal_is_available() {
-        candle_core::Device::new_metal(0)?
-    } else {
-        candle_core::Device::Cpu
-    };
+    let device = &config.device;
 
     // ── Startup banner ──
     let banner_mode = config.renderer_model.map_or("compiler only", |_| "full pipeline");
@@ -86,7 +82,7 @@ pub fn run(config: &ChatConfig) -> anyhow::Result<()> {
         &mut varmap,
         config.compiler_weights,
         &llama_config,
-        &device,
+        device,
     )?;
     eprintln!(" {}", "✓".bright_green());
 
@@ -203,7 +199,7 @@ pub fn run(config: &ChatConfig) -> anyhow::Result<()> {
                 &compiler,
                 &tokenizer,
                 &input_text,
-                &device,
+                device,
                 &llama_config,
                 256,
                 None,

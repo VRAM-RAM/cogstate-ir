@@ -1,6 +1,8 @@
 use std::collections::BTreeMap;
 use std::path::Path;
 
+use candle_core::Device;
+
 use crate::engine::{self, CharacterState};
 use crate::model;
 use crate::predict;
@@ -62,15 +64,8 @@ pub fn run(
     weights: &Path,
     model_id: &str,
     output: Option<&Path>,
-    no_metal: bool,
+    device: &Device,
 ) -> anyhow::Result<()> {
-    let device = if no_metal {
-        candle_core::Device::Cpu
-    } else if candle_core::utils::metal_is_available() {
-        candle_core::Device::new_metal(0)?
-    } else {
-        candle_core::Device::Cpu
-    };
     println!("device: {device:?}");
 
     // Load character state

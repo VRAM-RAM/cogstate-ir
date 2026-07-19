@@ -51,7 +51,7 @@ All commands are invoked via `cogstate-ir <command>` (or `cargo run -- <command>
 
 **Rust toolchain**: Edition 2024, requires nightly 1.85+. The repo has no `rust-toolchain.toml` — rely on whatever nightly is in your PATH.
 
-**Dependencies**: candle 0.11 with Metal and Accelerate acceleration. Pass `--no-metal` to any command to force CPU mode. Terminal output uses `colored` (ANSI colors) and `indicatif` (spinners).
+**Dependencies**: candle 0.11 with Metal (default) and Accelerate acceleration on macOS, or CUDA + cuDNN on Linux/Windows. Use `--device` to select the compute backend (`auto`, `cpu`, `metal`, `cuda`; default `auto`). Build with `cargo build` for Metal, or `cargo build --no-default-features --features cuda` for CUDA. Terminal output uses `colored` (ANSI colors) and `indicatif` (spinners).
 
 The default base model for training and prediction is [`SupraLabs/Supra-50M-Instruct`](https://huggingface.co/SupraLabs/Supra-50M-Instruct) (51.8M params). Override with `--model-id`.
 
@@ -115,10 +115,17 @@ Train from scratch (downloads HuggingFace model, fine-tunes on your dataset):
 cogstate-ir train --dataset data/ --epochs 100
 ```
 
-By default this uses GPU acceleration (Metal on Apple Silicon). Fall back to CPU:
+By default this uses GPU acceleration (Metal on Apple Silicon, CUDA on NVIDIA). Fall back to CPU:
 
 ```bash
-cogstate-ir train --dataset data/ --epochs 100 --no-metal
+cogstate-ir train --dataset data/ --epochs 100 --device cpu
+```
+
+On NVIDIA GPUs, build with CUDA support and run:
+
+```bash
+cargo build --no-default-features --features cuda
+cogstate-ir train --dataset data/ --epochs 100 --device cuda
 ```
 
 Save checkpoints every N epochs to monitor progress:
@@ -191,7 +198,13 @@ cogstate-ir predict --weights model.safetensors --model-id HuggingFaceTB/SmolLM2
 Disable GPU acceleration (use CPU only):
 
 ```bash
-cogstate-ir predict --weights model.safetensors data/example_01/input.yaml --no-metal
+cogstate-ir predict --weights model.safetensors data/example_01/input.yaml --device cpu
+```
+
+On NVIDIA GPUs:
+
+```bash
+cogstate-ir predict --weights model.safetensors data/example_01/input.yaml --device cuda
 ```
 
 ## Inference (compiler + state engine)
@@ -882,7 +895,7 @@ It also learns from what it chooses to do.
 This repository provides a Rust CLI. Run `cogstate-ir --help` for all commands.
 
 Global flags:
-- `--no-metal` — disable Metal GPU acceleration (use CPU).
+- `--device` — select compute backend: `auto` (default, auto-detects CUDA → Metal → CPU), `cpu`, `metal`, `cuda`.
 
 | Command | Description |
 |---|---|---|
@@ -895,7 +908,7 @@ Global flags:
 | `infer` | Run compiler + state engine on a character state and message |
 | `chat` | Interactive chat: compiler + state engine + renderer (llama.cpp) |
 
-Key training flags: `--dataset`, `--epochs`, `--lr`, `--model-id` (default: `SupraLabs/Supra-50M-Instruct`), `--batch-size` (default: 8), `--checkpoint-every`, `--resume`, `--output` (default: `model.safetensors`). See `cogstate-ir train --help` for details.
+Key training flags: `--dataset`, `--epochs`, `--lr`, `--model-id` (default: `SupraLabs/Supra-50M-Instruct`), `--batch-size` (default: 8), `--checkpoint-every`, `--resume`, `--output` (default: `model.safetensors`), `--device` (default: `auto`). See `cogstate-ir train --help` for details.
 
 Key infer flags: `--state`, `--message`, `--previous-message`, `--weights` (default: `model.safetensors`), `--model-id` (default: `SupraLabs/Supra-50M-Instruct`), `-o`. See `cogstate-ir infer --help` for details.
 

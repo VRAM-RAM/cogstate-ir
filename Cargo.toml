@@ -3,15 +3,34 @@ name = "cogstate-ir"
 version = "0.1.0"
 edition = "2024"
 
+[features]
+default = ["metal"]
+metal = [
+    "candle-core/metal",
+    "candle-nn/metal",
+    "candle-transformers/metal",
+    "candle-core/accelerate",
+    "candle-nn/accelerate",
+    "candle-transformers/accelerate",
+]
+cuda = [
+    "candle-core/cuda",
+    "candle-core/cudnn",
+    "candle-nn/cuda",
+    "candle-nn/cudnn",
+    "candle-transformers/cuda",
+    "candle-transformers/cudnn",
+]
+
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_yaml = "0.9"
 serde_json = "1"
 clap = { version = "4", features = ["derive"] }
 anyhow = "1"
-candle-core = { version = "0.11", features = ["accelerate", "metal"] }
-candle-nn = { version = "0.11", features = ["accelerate", "metal"] }
-candle-transformers = { version = "0.11", features = ["accelerate", "metal"] }
+candle-core = { version = "0.11" }
+candle-nn = { version = "0.11" }
+candle-transformers = { version = "0.11" }
 hf-hub = { version = "1.0.0-rc.1", features = ["blocking"] }
 tokenizers = "0.21"
 indicatif = "0.18"
