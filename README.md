@@ -128,6 +128,10 @@ cargo build --no-default-features --features cuda
 cogstate-ir train --dataset data/ --epochs 100 --device cuda
 ```
 
+> **Note:** Your NVIDIA driver must support the same or newer CUDA version as your installed toolkit. Check with `nvcc --version` (toolkit) and `nvidia-smi` (driver max CUDA version). If the toolkit version exceeds the driver's CUDA version, you'll get `CUDA_ERROR_UNSUPPORTED_PTX_VERSION` at runtime. Fix by either updating your driver or downgrading the toolkit.
+>
+> The `cuda` feature also requires **cuDNN**. Install it with your package manager (e.g. `sudo apt install libcudnn8-dev` on Debian/Ubuntu, `sudo dnf install cudnn-devel` on Fedora). Without cuDNN you'll get a linker error: `unable to find library -lcudnn`.
+
 Save checkpoints every N epochs to monitor progress:
 
 ```bash
